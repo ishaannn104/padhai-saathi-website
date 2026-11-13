@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#100b14" />
+    <meta name="description" content="Padhai Saathi brings focus sessions, distraction blocking, study planning, scheduled workspaces and music into one calm Windows app." />
+    <meta name="robots" content="index, follow" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data:; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self'; upgrade-insecure-requests" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Padhai Saathi — make space for focused work" />
+    <meta property="og:description" content="A calmer desktop for study sessions, planning and fewer distractions." />
+    <link rel="canonical" href="https://ishaannn104.github.io/padhai-saathi-website/" />
+    <meta property="og:image" content="https://ishaannn104.github.io/padhai-saathi-website/assets/PadhaiSaathi.svg" />
+    <title>Padhai Saathi — Make space for focused work</title>
+    <link rel="icon" type="image/svg+xml" href="assets/PadhaiSaathi.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <div class="ambient ambient-one" aria-hidden="true"></div>
+    <div class="ambient ambient-two" aria-hidden="true"></div>
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Padhai Saathi home">
+        <img src="assets/PadhaiSaathi.svg" alt="" width="42" height="42" />
+        <span><strong>Padhai</strong><small>SAATHI</small></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="main-nav">
+        <span></span><span></span>
+      </button>
+      <nav id="main-nav" class="nav-links" aria-label="Main navigation">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#inside-the-app">Inside the app</a>
+        <a class="nav-cta" href="#inside-the-app">Explore the app <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero section-wrap">
+        <div class="hero-copy reveal">
+          <div class="eyebrow"><span class="eyebrow-dot"></span> YOUR WINDOWS STUDY COMPANION</div>
+          <h1>Make space for<br /><span>your next big thing.</span></h1>
+          <p class="hero-lede">A calmer desktop for getting into flow. Plan the session, quiet the distractions, and keep your study day moving—all from one place.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#inside-the-app">Take a look inside <span aria-hidden="true">↗</span></a>
+            <a class="button button-quiet" href="#features"><span class="play-icon" aria-hidden="true">▶</span> See what it does</a>
+          </div>
+          <div class="hero-meta">
+            <span class="meta-icon" aria-hidden="true">▣</span>
+            <span>Made for Windows</span><i></i><span>Keep your study data on your PC</span>
+          </div>
+        </div>
+
+        <div class="hero-art reveal reveal-late" id="inside-the-app">
+          <div class="art-glow" aria-hidden="true"></div>
+          <div class="float-chip chip-top"><span class="chip-spark">✦</span> YOUR FOCUS, YOUR FLOW</div>
+          <div class="app-window" aria-label="Illustration of the Padhai Saathi focus room">
+            <div class="window-topbar">
+              <div class="mini-brand"><img src="assets/PadhaiSaathi.svg" alt="" /><span>Padhai <b>Saathi</b></span></div>
+              <div class="window-controls"><span></span><span></span><span></span></div>
+            </div>
+            <div class="window-body">
+              <aside class="mock-sidebar">
+                <div class="mock-side-logo"><span>✦</span><b>STUDY SPACE</b></div>
+                <div class="mock-nav active"><i>◷</i> Focus room</div>
+                <div class="mock-nav"><i>▤</i> My planner</div>
+                <div class="mock-nav"><i>◉</i> My progress</div>
+                <div class="mock-nav"><i>♫</i> Music</div>
+                <div class="mock-side-foot"><span class="avatar">S</span><span><b>Your study space</b><small>Ready when you are</small></span></div>
+              </aside>
+              <div class="mock-content">
+                <div class="mock-heading"><div><span class="mock-kicker">TUESDAY STUDY PLAN</span><h3>Let's get in the zone.</h3></div><span class="ready-pill"><i></i> READY TO FOCUS</span></div>
+                <div class="mock-focus-card" id="focus-demo" tabindex="-1" aria-label="Interactive focus timer preview">
+                  <div class="mock-card-top"><span data-demo-session-label>FOCUS SESSION</span><span class="mode-pill"><span data-demo-mode-name>POMODORO</span> <b aria-hidden="true">⌄</b></span></div>
+                  <div class="timer-zone">
+                    <div class="timer-ring"><div class="ring-inner"><span class="timer-readout" data-demo-timer aria-live="off">25:00</span><small data-demo-timer-caption>FOCUS TIME</small></div></div>
+                    <div class="timer-side"><span class="timer-side-label" data-demo-next-label>UP NEXT</span><strong data-demo-next-title>Take a breather</strong><span class="timer-side-time" data-demo-next-time>05 min break</span><div class="timer-progress"><span data-demo-progress></span></div><small data-demo-session-status>Focus session 1 of 4</small></div>
+                  </div>
+                  <div class="mock-controls"><button class="mock-start" type="button" data-demo-start aria-label="Start the timer preview"><span aria-hidden="true">▶</span> Start preview</button><button class="mock-control" type="button" data-demo-reset aria-label="Reset the timer preview">↺</button><a class="mock-control" href="#focus-modes" aria-label="Explore all focus modes">•••</a></div>
+                </div>
+                <div class="mock-bottom-grid">
+                  <div class="mock-task-card"><div class="mini-card-head"><span>TODAY'S PLAN</span><b>2 LEFT</b></div><div class="mini-task checked"><i>✓</i><span>Review biology notes</span><small>25 min</small></div><div class="mini-task"><i></i><span>Practice algebra</span><small>40 min</small></div><div class="mini-task"><i></i><span>Read chapter 4</span><small>30 min</small></div></div>
+                  <div class="mock-music-card"><div class="mini-card-head"><span>FOCUS MUSIC</span><i>♫</i></div><div class="track-art"><span>♫</span></div><div class="track-info"><b>Quiet moments</b><small>Now playing · 03:42</small></div><div class="track-controls"><span>‹</span><b>Ⅱ</b><span>›</span><div class="track-volume"><i></i></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="float-chip chip-bottom"><span class="shield-mini" aria-hidden="true">✳</span><span><b>Distractions handled.</b><small>Back to what matters.</small></span></div>
+          <div class="art-caption"><span class="caption-dot"></span> A little more room to focus.</div>
+        </div>
+      </section>
+
+      <section class="proof-strip section-wrap" aria-label="At a glance">
+        <div class="proof-item"><span class="proof-number">06</span><span><b>ways to focus</b><small>Choose a rhythm that fits</small></span></div>
+        <div class="proof-divider"></div>
+        <div class="proof-item"><span class="proof-symbol">⌘</span><span><b>Less distraction</b><small>App and website blocking</small></span></div>
+        <div class="proof-divider"></div>
+        <div class="proof-item"><span class="proof-symbol">◷</span><span><b>Made for your day</b><small>Schedules, tasks and progress</small></span></div>
+        <div class="proof-divider"></div>
+        <div class="proof-item"><span class="proof-symbol">⌂</span><span><b>Your device, your data</b><small>Study records stay local</small></span></div>
+      </section>
+
+      <section class="features section-wrap" id="features">
+        <div class="section-heading reveal">
+          <span class="eyebrow"><span class="eyebrow-dot"></span> EVERYTHING IN ITS PLACE</span>
+          <h2>One study space.<br /><span>Fewer open loops.</span></h2>
+          <p>Keep the small things from pulling you away from the important thing in front of you.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card feature-focus reveal">
+            <div class="feature-icon icon-pink"><span>◷</span></div>
+            <div class="feature-copy"><span class="feature-overline">FIND YOUR RHYTHM</span><h3>Focus your way.</h3><p>Pick Pomodoro, countdown, stopwatch, deep work, intervals or your own custom cycle. Save your preferred setup and get started.</p><a href="#focus-modes" class="text-link">Explore focus modes <span>↗</span></a></div>
+            <div class="mode-stack" aria-hidden="true"><span>Pomodoro <b>25 / 5</b></span><span>Deep work <b>90 min</b></span><span>Custom cycle <b>Set yours</b></span></div>
+          </article>
+          <article class="feature-card feature-block reveal reveal-late">
+            <div class="feature-icon icon-violet"><span>✳</span></div>
+            <div class="feature-copy"><span class="feature-overline">PROTECT YOUR ATTENTION</span><h3>Let distractions go.</h3><p>Choose apps and website domains separately. Focus sessions close selected app windows and remove matching website tabs while keeping the browser open.</p><div class="blocker-demo"><span><i class="app-dot dot-rose"></i> Social app <b>Blocked</b></span><span><i class="app-dot dot-blue"></i> Video site <b>Blocked</b></span></div></div>
+          </article>
+          <article class="feature-card feature-workspace reveal">
+            <div class="feature-icon icon-coral"><span>▦</span></div>
+            <div class="feature-copy"><span class="feature-overline">BUILD A ROUTINE</span><h3>Your desk, on a schedule.</h3><p>Set the days and hours for a workspace. Padhai Saathi can open your study links and keep the routine ready for you.</p><a href="#how-it-works" class="text-link">See how workspaces work <span>↗</span></a></div>
+            <div class="schedule-mini" aria-hidden="true"><div><span>WEEKDAY WORKSPACE</span><b>09:00 <i>→</i> 12:00</b></div><div class="weekday-row"><i>M</i><i>T</i><i>W</i><i>T</i><i>F</i><i class="off">S</i><i class="off">S</i></div><small><span></span> Study room is scheduled</small></div>
+          </article>
+          <article class="feature-card feature-plan reveal reveal-late">
+            <div class="feature-icon icon-mint"><span>✓</span></div>
+            <div class="feature-copy"><span class="feature-overline">TURN INTENTION INTO ACTION</span><h3>A plan you can finish.</h3><p>Break big goals into tasks with estimates, priorities and due dates. Plan your day around the time you actually have.</p><div class="plan-progress"><div class="plan-progress-top"><span>Today's plan</span><b>2 of 4 done</b></div><div class="plan-track"><i></i></div></div></div>
+          </article>
+          <article class="feature-card feature-music reveal">
+            <div class="feature-icon icon-amber"><span>♫</span></div>
+            <div class="feature-copy"><span class="feature-overline">SET THE MOOD</span><h3>Keep your sound close.</h3><p>Play your own audio with playback, volume, shuffle, repeat and track controls that stay available around the app.</p><div class="sound-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+          </article>
+          <article class="feature-card feature-insights reveal reveal-late">
+            <div class="feature-icon icon-blue"><span>⌁</span></div>
+            <div class="feature-copy"><span class="feature-overline">SEE YOUR MOMENTUM</span><h3>Notice the progress.</h3><p>Review focused time, streaks and subject totals. Export your progress and view a private activity log protected by your PIN.</p><div class="spark-bars" aria-hidden="true"><i style="--bar:32%"></i><i style="--bar:48%"></i><i style="--bar:42%"></i><i style="--bar:72%"></i><i style="--bar:60%"></i><i style="--bar:88%"></i><i style="--bar:70%"></i></div></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="modes-section" id="focus-modes">
+        <div class="section-wrap modes-layout">
+          <div class="modes-copy reveal">
+            <span class="eyebrow"><span class="eyebrow-dot"></span> SIX WAYS TO GET GOING</span>
+            <h2>Make the timer<br /><span>fit your brain.</span></h2>
+            <p>Some days call for sprints. Some call for a long, quiet stretch. Select a mode to preview its timer above; the demo does not start or control the desktop app.</p>
+            <a class="button button-outline" href="#inside-the-app">See the focus room <span>↗</span></a>
+          </div>
+          <div class="mode-grid reveal reveal-late">
+            <a class="mode-tile is-selected" href="#focus-demo" data-demo-mode="pomodoro" aria-current="true"><span class="tile-icon">🍅</span><span class="tile-copy"><b>Pomodoro</b><small>Focus, then recharge</small></span><span class="tile-arrow" aria-hidden="true">↗</span></a>
+            <a class="mode-tile" href="#focus-demo" data-demo-mode="countdown"><span class="tile-icon">◷</span><span class="tile-copy"><b>Countdown</b><small>Set your end time</small></span><span class="tile-arrow" aria-hidden="true">↗</span></a>
+            <a class="mode-tile" href="#focus-demo" data-demo-mode="stopwatch"><span class="tile-icon">↗</span><span class="tile-copy"><b>Stopwatch</b><small>Track as you go</small></span><span class="tile-arrow" aria-hidden="true">↗</span></a>
+            <a class="mode-tile" href="#focus-demo" data-demo-mode="deep-work"><span class="tile-icon">◉</span><span class="tile-copy"><b>Deep work</b><small>Protect a longer block</small></span><span class="tile-arrow" aria-hidden="true">↗</span></a>
+            <a class="mode-tile" href="#focus-demo" data-demo-mode="intervals"><span class="tile-icon">⟳</span><span class="tile-copy"><b>Intervals</b><small>Repeat your own cycle</small></span><span class="tile-arrow" aria-hidden="true">↗</span></a>
+            <a class="mode-tile" href="#focus-demo" data-demo-mode="custom"><span class="tile-icon">✳</span><span class="tile-copy"><b>Custom cycle</b><small>Name and shape your flow</small></span><span class="tile-arrow" aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="workflow section-wrap" id="how-it-works">
+        <div class="section-heading center-heading reveal">
+          <span class="eyebrow"><span class="eyebrow-dot"></span> A SMALLER STARTING FRICTION</span>
+          <h2>From “I should study”<br /><span>to already started.</span></h2>
+        </div>
+        <div class="steps-row">
+          <article class="step-card reveal"><div class="step-number">01</div><div class="step-icon">▤</div><h3>Shape the session</h3><p>Choose a focus mode, set today's priority and decide how long you want to work.</p></article>
+          <div class="step-connector" aria-hidden="true">→</div>
+          <article class="step-card reveal reveal-late"><div class="step-number">02</div><div class="step-icon">✳</div><h3>Clear the runway</h3><p>Turn on your blockers and let your scheduled workspace open the sites you need.</p></article>
+          <div class="step-connector" aria-hidden="true">→</div>
+          <article class="step-card reveal reveal-later"><div class="step-number">03</div><div class="step-icon">⌁</div><h3>Keep your momentum</h3><p>Take a planned break, finish a task and see the time you've put in.</p></article>
+        </div>
+        <div class="workspace-callout reveal">
+          <div class="callout-orbit" aria-hidden="true"><span>✦</span><i></i><i></i></div>
+          <div class="callout-copy"><span class="feature-overline">YOUR ROUTINE, ON AUTOPILOT</span><h3>Build a workspace for the hours that matter.</h3><p>Choose weekdays, set a time window and add the study websites you want ready. If a workspace tab gets closed, the app checks and reopens it while the schedule is active.</p></div>
+          <div class="callout-schedule"><span>YOUR STUDY WINDOW</span><b>Mon – Fri</b><strong>09:00 <i>→</i> 12:00</strong><small><i></i> 3 study links ready</small></div>
+        </div>
+      </section>
+
+      <section class="privacy-band">
+        <div class="section-wrap privacy-inner reveal">
+          <div class="privacy-symbol"><span>⌂</span><i>✦</i></div>
+          <div><span class="eyebrow">MADE FOR YOUR DESKTOP</span><h2>Your progress stays <span>yours.</span></h2><p>Study sessions and activity history are stored locally on your PC. Set a PIN for protected controls and your activity log.</p></div>
+          <div class="privacy-points"><span><i>✓</i> Local study data</span><span><i>✓</i> PIN-protected log</span><span><i>✓</i> Export when you need it</span></div>
+        </div>
+      </section>
+
+      <section class="faq-section section-wrap" id="faq">
+        <div class="faq-intro reveal"><span class="eyebrow"><span class="eyebrow-dot"></span> GOOD TO KNOW</span><h2>Before you<br /><span>make it a habit.</span></h2><p>A few quick answers about how Padhai Saathi works.</p></div>
+        <div class="faq-list reveal reveal-late">
+          <details><summary>What does website blocking do? <span>+</span></summary><p>During an active focus session or scheduled workspace, Padhai Saathi matches the blocked domain and closes that tab. It keeps the browser open; if that was the only tab, it opens a new-tab page first.</p></details>
+          <details><summary>What happens when an app is blocked? <span>+</span></summary><p>Selected apps are force-closed during focus or an enabled workspace. Save your work before starting a protected session, because unsaved changes in a blocked app may be lost.</p></details>
+          <details><summary>Can I use my own music? <span>+</span></summary><p>Yes. The player supports common local audio files, including MP3, WAV, WMA, M4A and AAC. Add audio you have the right to use.</p></details>
+          <details><summary>What happens to my study history? <span>+</span></summary><p>Your study and activity data is stored locally on your Windows PC. You can export progress reports from the app.</p></details>
+          <details><summary>Does a timer keep running if my laptop is off? <span>+</span></summary><p>The app saves the timer's end time and can restore it after you sign back into Windows. The app itself cannot run while Windows is powered off.</p></details>
+          <details><summary>Does this website take payments or ask for a password? <span>+</span></summary><p>No. This is an informational website about the Windows app. It has no checkout, payment form, account sign-in, or password collection.</p></details>
+        </div>
+      </section>
+
+      <section class="closing-cta section-wrap">
+        <div class="closing-card reveal">
+          <div class="closing-stars" aria-hidden="true"><i>✦</i><i>✧</i><i>✦</i><i>✧</i></div>
+          <div class="closing-content"><img src="assets/PadhaiSaathi.svg" alt="" width="52" height="52" /><span class="eyebrow">YOUR NEXT SESSION STARTS HERE</span><h2>Give your attention<br />a place to land.</h2><p>Meet the study space built to help you come back to what matters.</p><a href="#inside-the-app" class="button button-light">Explore Padhai Saathi <span>↗</span></a><small class="preview-note">Windows desktop app · Informational site, no checkout</small></div>
+          <div class="closing-shape shape-one" aria-hidden="true"></div><div class="closing-shape shape-two" aria-hidden="true"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer section-wrap">
+      <a class="brand footer-brand" href="#top"><img src="assets/PadhaiSaathi.svg" alt="" width="38" height="38" /><span><strong>Padhai</strong><small>SAATHI</small></span></a>
+      <p>Make space for focused work.</p>
+      <span class="footer-copy">© <span data-year></span> Padhai Saathi · Product information</span>
+    </footer>
+  </body>
+</html>
+
