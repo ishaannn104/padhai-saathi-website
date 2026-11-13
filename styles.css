@@ -298,6 +298,24 @@ h1, h2, h3 { font-family: var(--font-head); }
 .faq-list details[open] summary > span { transform: rotate(45deg); }
 .faq-list details p { max-width: 560px; margin: -1px 35px 18px 0; color: #a999ad; font-size: 10px; line-height: 1.8; }
 
+.download-section { padding: 0 0 126px; }
+.download-section .section-heading { max-width: 680px; margin-bottom: 34px; }
+.download-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.download-card { display: flex; min-height: 275px; flex-direction: column; align-items: flex-start; padding: 26px; border: 1px solid rgba(255,224,242,.11); border-radius: 18px; background: linear-gradient(145deg, rgba(34,24,41,.94), rgba(23,16,29,.94)); box-shadow: 0 22px 60px rgba(0,0,0,.19), inset 0 1px rgba(255,255,255,.035); }
+.download-card-featured { border-color: rgba(255,133,190,.32); background: linear-gradient(145deg, rgba(68,35,67,.88), rgba(30,19,37,.97) 72%); }
+.download-card-top { display: flex; width: 100%; align-items: center; justify-content: space-between; margin-bottom: 17px; }
+.download-badge { display: inline-flex; align-items: center; min-height: 24px; padding: 0 9px; border: 1px solid rgba(255,138,193,.32); border-radius: 8px; color: #ffc3df; background: rgba(255,114,178,.09); font-size: 8px; font-weight: 800; letter-spacing: .13em; }
+.download-badge-soft { border-color: rgba(189,140,255,.27); color: #d7baff; background: rgba(189,140,255,.07); }
+.download-mark { display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid rgba(255,255,255,.11); border-radius: 11px; color: #ffc0dc; background: rgba(255,255,255,.045); font-size: 18px; }
+.download-card h3 { margin: 0 0 8px; font-size: 20px; letter-spacing: -.04em; }
+.download-card p { max-width: 470px; margin: 0; color: #bcaebe; font-size: 11px; line-height: 1.8; }
+.download-card p strong { color: #f8eaf5; font-weight: 700; }
+.download-button { margin-top: auto; }
+.download-card > small { display: block; margin-top: 12px; color: #9e8ca2; font-size: 9px; }
+.download-note { margin: 17px 0 0; color: #9f8ca2; font-size: 10px; line-height: 1.8; }
+.download-note a { color: #e4b6fb; text-decoration: underline; text-underline-offset: 3px; }
+.download-note a:hover { color: #ffd4e9; }
+
 .closing-cta { padding-bottom: 75px; }
 .closing-card { position: relative; min-height: 347px; display: grid; place-items: center; overflow: hidden; border: 1px solid rgba(255,216,242,.22); border-radius: 22px; background: linear-gradient(108deg,#382044 0%,#682a62 43%,#c34b82 78%,#f36f85 100%); box-shadow: 0 27px 90px rgba(0,0,0,.29), inset 0 1px rgba(255,255,255,.28); }
 .closing-card::before { position: absolute; inset: 1px; border: 1px solid rgba(255,255,255,.12); border-radius: 21px; content: ""; pointer-events: none; }
@@ -406,6 +424,12 @@ h1, h2, h3 { font-family: var(--font-head); }
   .faq-section { grid-template-columns: 1fr; gap: 29px; padding-top: 92px; padding-bottom: 91px; }
   .faq-intro h2 { font-size: 43px; }
   .faq-list summary { min-height: 55px; font-size: 10px; }
+  .download-section { padding-bottom: 91px; }
+  .download-section .section-heading { margin-bottom: 27px; }
+  .download-grid { grid-template-columns: 1fr; gap: 12px; }
+  .download-card { min-height: 255px; padding: 21px; }
+  .download-card h3 { font-size: 18px; }
+  .download-card p { font-size: 10px; }
   .closing-cta { padding-bottom: 44px; }
   .closing-card { min-height: 337px; }
   .closing-content h2 { font-size: 36px; }
