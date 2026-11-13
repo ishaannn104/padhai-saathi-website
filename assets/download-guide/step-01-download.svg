@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">Download the complete Padhai Saathi bundle</title>
+  <desc id="desc">A browser on the official Padhai Saathi website with the Download complete bundle button and a downloaded ZIP.</desc>
+  <defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#271a31"/><stop offset="1" stop-color="#15101d"/></linearGradient><linearGradient id="pink" x2="1"><stop stop-color="#ff84bd"/><stop offset="1" stop-color="#ff9b9b"/></linearGradient></defs>
+  <rect width="640" height="360" rx="20" fill="url(#bg)"/>
+  <rect x="25" y="23" width="590" height="314" rx="16" fill="#17121c" stroke="#49354f"/>
+  <path d="M41 23h558a16 16 0 0 1 16 16v27H25V39a16 16 0 0 1 16-16" fill="#261d2b"/>
+  <circle cx="47" cy="44" r="5" fill="#f17da1"/><circle cx="65" cy="44" r="5" fill="#eac06b"/><circle cx="83" cy="44" r="5" fill="#81d4a3"/>
+  <rect x="120" y="34" width="380" height="20" rx="8" fill="#17131b" stroke="#413447"/><text x="136" y="48" fill="#bcaec1" font-family="Segoe UI,Arial" font-size="10">ishaannn104.github.io/padhai-saathi-website</text>
+  <rect x="48" y="82" width="34" height="34" rx="10" fill="#f28bb9"/><path d="m65 89 3 7 7 3-7 3-3 7-3-7-7-3 7-3z" fill="#29192a"/>
+  <text x="92" y="96" fill="#fff4fb" font-family="Segoe UI,Arial" font-size="17" font-weight="700">Padhai Saathi</text><text x="92" y="111" fill="#baadbe" font-family="Segoe UI,Arial" font-size="8" letter-spacing="2">YOUR WINDOWS STUDY COMPANION</text>
+  <text x="49" y="157" fill="#fff4fb" font-family="Segoe UI,Arial" font-size="23" font-weight="700">Make space for your next big thing.</text>
+  <text x="50" y="179" fill="#b9aabc" font-family="Segoe UI,Arial" font-size="11">Get the complete Windows bundle from the official site.</text>
+  <rect x="49" y="201" width="214" height="44" rx="11" fill="url(#pink)"/><text x="68" y="228" fill="#321626" font-family="Segoe UI,Arial" font-size="11" font-weight="700">Download complete bundle</text><path d="M239 217v13m-5-5 5 5 5-5" fill="none" stroke="#321626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M265 220h45" stroke="#d38cbf" stroke-width="2" stroke-dasharray="4 5"/><path d="m304 214 7 6-7 6" fill="none" stroke="#d38cbf" stroke-width="2"/>
+  <rect x="322" y="199" width="246" height="55" rx="12" fill="#211927" stroke="#58425c"/><rect x="337" y="211" width="29" height="31" rx="5" fill="#bf83eb"/><path d="M344 220h15M344 226h15M344 232h11" stroke="#211927" stroke-width="2"/><text x="376" y="222" fill="#f5eaf4" font-family="Segoe UI,Arial" font-size="10" font-weight="600">PadhaiSaathi bundle</text><text x="376" y="237" fill="#a99aaa" font-family="Segoe UI,Arial" font-size="8">ZIP file · saved in Downloads</text>
+  <rect x="48" y="282" width="544" height="35" rx="9" fill="#1e1725"/><circle cx="66" cy="299" r="6" fill="#99e8c6"/><text x="81" y="303" fill="#c8bacb" font-family="Segoe UI,Arial" font-size="9">Download the complete ZIP so the app's supporting files stay together.</text>
+</svg>

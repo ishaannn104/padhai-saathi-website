@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">Pause if Windows Defender SmartScreen warns you</title>
+  <desc id="desc">A Windows security warning with Don't run selected and a reminder to verify the publisher and use a signed release.</desc>
+  <defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#182336"/><stop offset="1" stop-color="#111620"/></linearGradient></defs>
+  <rect width="640" height="360" rx="20" fill="url(#bg)"/><rect x="58" y="36" width="524" height="288" rx="15" fill="#f3f3f3"/><rect x="58" y="36" width="524" height="39" rx="15" fill="#e8e8e8"/><path d="M58 60v-9a15 15 0 0 1 15-15h494a15 15 0 0 1 15 15v9" fill="#e8e8e8"/><rect x="77" y="49" width="15" height="15" rx="4" fill="#4a83c5"/><path d="M84 52 80 59h8z" fill="#fff"/><text x="102" y="60" fill="#333" font-family="Segoe UI,Arial" font-size="9">Microsoft Defender SmartScreen</text><path d="M558 51l12 12m0-12-12 12" stroke="#666" stroke-width="1.5"/>
+  <circle cx="113" cy="122" r="22" fill="#e8eef8"/><path d="M113 104 128 110v12c0 11-8 18-15 21-7-3-15-10-15-21v-12z" fill="#5889c4"/><path d="m106 122 5 5 10-12" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="149" y="117" fill="#252525" font-family="Segoe UI,Arial" font-size="18" font-weight="600">Windows protected your PC</text><text x="93" y="167" fill="#363636" font-family="Segoe UI,Arial" font-size="10">SmartScreen can't confirm the publisher or reputation of this app.</text><text x="93" y="185" fill="#363636" font-family="Segoe UI,Arial" font-size="10">Pause here and verify the download before opening it.</text>
+  <rect x="94" y="218" width="451" height="1" fill="#d9d9d9"/><text x="94" y="244" fill="#6b6b6b" font-family="Segoe UI,Arial" font-size="9">Recommended safe action</text>
+  <rect x="94" y="258" width="204" height="42" rx="5" fill="#e7eef8" stroke="#5486bd" stroke-width="2"/><text x="196" y="284" text-anchor="middle" fill="#234c7c" font-family="Segoe UI,Arial" font-size="10" font-weight="700">Don't run · verify first</text>
+  <rect x="310" y="258" width="235" height="42" rx="5" fill="#efefef" stroke="#c6c6c6"/><text x="427" y="284" text-anchor="middle" fill="#555" font-family="Segoe UI,Arial" font-size="9">Use a verified, signed release</text>
+</svg>
