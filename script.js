@@ -39,6 +39,183 @@
     revealItems.forEach((item) => revealObserver.observe(item));
   }
 
+  const initStudyPlanner = () => {
+    const form = document.querySelector("#study-planner-form");
+    const taskList = document.querySelector("[data-plan-list]");
+    const taskTemplate = document.querySelector("#planner-task-template");
+    const emptyMessage = document.querySelector("[data-plan-empty]");
+    if (!form || !taskList || !taskTemplate || !emptyMessage) return;
+
+    const titleInput = document.querySelector("#planner-task");
+    const subjectInput = document.querySelector("#planner-subject");
+    const minutesInput = document.querySelector("#planner-minutes");
+    const message = document.querySelector("[data-plan-message]");
+    const clearButton = document.querySelector("[data-plan-clear]");
+    const exportButton = document.querySelector("[data-plan-export]");
+    const filters = [...document.querySelectorAll("[data-plan-filter]")];
+    const storageKey = "padhai-saathi-web-plan-v1";
+    let tasks = [];
+    let activeFilter = "all";
+
+    try {
+      const stored = JSON.parse(window.localStorage.getItem(storageKey) || "[]");
+      if (Array.isArray(stored)) {
+        tasks = stored.slice(0, 80).map((item, index) => {
+          const title = typeof item?.title === "string" ? item.title.trim().slice(0, 100) : "";
+          const subject = typeof item?.subject === "string" ? item.subject.trim().slice(0, 48) : "";
+          const minutes = Number.parseInt(item?.minutes, 10);
+          return {
+            id: typeof item?.id === "string" ? item.id.slice(0, 100) : `saved-${index}`,
+            title,
+            subject,
+            minutes: Number.isFinite(minutes) ? Math.min(480, Math.max(1, minutes)) : 25,
+            done: item?.done === true
+          };
+        }).filter((item) => item.title.length > 0);
+      }
+    } catch {
+      tasks = [];
+    }
+
+    const setMessage = (text) => {
+      if (message) message.textContent = text;
+    };
+
+    const saveTasks = () => {
+      try {
+        window.localStorage.setItem(storageKey, JSON.stringify(tasks));
+        return true;
+      } catch {
+        return false;
+      }
+    };
+
+    const renderTasks = () => {
+      const completed = tasks.filter((task) => task.done).length;
+      const remaining = tasks.filter((task) => !task.done);
+      const remainingMinutes = remaining.reduce((sum, task) => sum + task.minutes, 0);
+      const percent = tasks.length ? Math.round((completed / tasks.length) * 100) : 0;
+      const remainingNode = document.querySelector("[data-plan-remaining]");
+      const minutesNode = document.querySelector("[data-plan-minutes]");
+      const completedNode = document.querySelector("[data-plan-complete]");
+      const totalNode = document.querySelector("[data-plan-total]");
+      const progress = document.querySelector(".planner-progress");
+      const progressFill = document.querySelector("[data-plan-progress]");
+
+      if (remainingNode) remainingNode.textContent = String(remaining.length);
+      if (minutesNode) minutesNode.textContent = String(remainingMinutes);
+      if (completedNode) completedNode.textContent = String(percent);
+      if (totalNode) totalNode.textContent = `${tasks.length} ${tasks.length === 1 ? "task" : "tasks"}`;
+      if (progress) progress.setAttribute("aria-valuenow", String(percent));
+      if (progressFill) progressFill.style.width = `${percent}%`;
+      if (clearButton) clearButton.disabled = completed === 0;
+      if (exportButton) exportButton.disabled = tasks.length === 0;
+
+      const visibleTasks = tasks.filter((task) => activeFilter === "all"
+        || (activeFilter === "open" && !task.done)
+        || (activeFilter === "done" && task.done));
+      taskList.replaceChildren();
+      visibleTasks.forEach((task) => {
+        const item = taskTemplate.content.firstElementChild.cloneNode(true);
+        item.classList.toggle("is-done", task.done);
+        item.dataset.taskId = task.id;
+        item.querySelector("[data-task-title]").textContent = task.title;
+        const subject = item.querySelector("[data-task-subject]");
+        subject.textContent = task.subject || "No subject";
+        subject.hidden = !task.subject;
+        item.querySelector("[data-task-minutes]").textContent = String(task.minutes);
+
+        const toggle = item.querySelector("[data-task-toggle]");
+        toggle.setAttribute("aria-pressed", String(task.done));
+        toggle.setAttribute("aria-label", task.done ? `Mark ${task.title} as not done` : `Mark ${task.title} complete`);
+        toggle.addEventListener("click", () => {
+          task.done = !task.done;
+          const saved = saveTasks();
+          renderTasks();
+          setMessage(saved ? (task.done ? "Nice work—task complete." : "Task moved back to your list.") : "Couldn't save in this browser. Your plan is still open for now.");
+        });
+
+        const remove = item.querySelector("[data-task-delete]");
+        remove.setAttribute("aria-label", `Delete ${task.title}`);
+        remove.addEventListener("click", () => {
+          tasks = tasks.filter((candidate) => candidate.id !== task.id);
+          const saved = saveTasks();
+          renderTasks();
+          setMessage(saved ? "Task removed from your plan." : "Couldn't save in this browser. Your plan is still open for now.");
+        });
+        taskList.append(item);
+      });
+
+      emptyMessage.hidden = visibleTasks.length > 0;
+      if (visibleTasks.length === 0) {
+        emptyMessage.textContent = tasks.length === 0
+          ? "No tasks yet. Add one small step to get started."
+          : activeFilter === "open" ? "All caught up—there are no tasks left to do."
+            : activeFilter === "done" ? "Completed tasks will show here."
+              : "Nothing matches this filter.";
+      }
+    };
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const title = titleInput.value.trim();
+      const subject = subjectInput.value.trim();
+      const minutes = Number.parseInt(minutesInput.value, 10);
+      if (!title || !Number.isFinite(minutes) || minutes < 1 || minutes > 480 || tasks.length >= 80) {
+        if (tasks.length >= 80) setMessage("This plan has reached 80 tasks. Remove one before adding another.");
+        else setMessage("Add a task and choose a time from 1 to 480 minutes.");
+        return;
+      }
+
+      const id = window.crypto?.randomUUID?.() || `task-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+      tasks.push({ id, title, subject, minutes, done: false });
+      const saved = saveTasks();
+      activeFilter = "all";
+      filters.forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.planFilter === activeFilter)));
+      renderTasks();
+      setMessage(saved ? "Task added and saved in this browser." : "Task added for now, but this browser couldn't save it.");
+      form.reset();
+      minutesInput.value = "25";
+      titleInput.focus();
+    });
+
+    filters.forEach((button) => button.addEventListener("click", () => {
+      activeFilter = button.dataset.planFilter;
+      filters.forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
+      renderTasks();
+    }));
+
+    clearButton?.addEventListener("click", () => {
+      const before = tasks.length;
+      tasks = tasks.filter((task) => !task.done);
+      if (tasks.length === before) return;
+      const saved = saveTasks();
+      renderTasks();
+      setMessage(saved ? "Completed tasks cleared." : "Couldn't save in this browser. Your plan is still open for now.");
+    });
+
+    exportButton?.addEventListener("click", () => {
+      if (tasks.length === 0) return;
+      const stamp = new Intl.DateTimeFormat(undefined, { dateStyle: "full" }).format(new Date());
+      const lines = tasks.map((task) => `- [${task.done ? "x" : " "}] ${task.title}${task.subject ? ` · ${task.subject}` : ""} · ${task.minutes} min`);
+      const text = [`Padhai Saathi study plan · ${stamp}`, "", ...lines, "", `${tasks.filter((task) => task.done).length} of ${tasks.length} tasks complete.`].join("\n");
+      const url = URL.createObjectURL(new Blob([text], { type: "text/plain;charset=utf-8" }));
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "padhai-saathi-study-plan.txt";
+      document.body.append(link);
+      link.click();
+      link.remove();
+      window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+      setMessage("Your plan was exported as a text file.");
+    });
+
+    renderTasks();
+    setMessage(tasks.length ? "Your plan is saved in this browser." : "Add a task to start your plan.");
+  };
+
+  initStudyPlanner();
+
   const timerText = document.querySelector("[data-demo-timer]");
   const startButton = document.querySelector("[data-demo-start]");
   const resetButton = document.querySelector("[data-demo-reset]");
@@ -213,4 +390,3 @@
   modeLinks.forEach((link) => link.addEventListener("click", () => selectMode(link)));
   render();
 })();
-

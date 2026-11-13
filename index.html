@@ -35,6 +35,7 @@
       <nav id="main-nav" class="nav-links" aria-label="Main navigation">
         <a href="#features">Features</a>
         <a href="#how-it-works">How it works</a>
+        <a href="#quick-planner">Study planner</a>
         <a href="#inside-the-app">Inside the app</a>
         <a class="nav-cta" href="#download">Download app <span aria-hidden="true">↓</span></a>
       </nav>
@@ -158,6 +159,58 @@
             <a class="mode-tile" href="#focus-demo" data-demo-mode="custom"><span class="tile-icon">✳</span><span class="tile-copy"><b>Custom cycle</b><small>Name and shape your flow</small></span><span class="tile-arrow" aria-hidden="true">↗</span></a>
           </div>
         </div>
+      </section>
+
+      <section class="quick-planner section-wrap" id="quick-planner" aria-labelledby="planner-heading">
+        <div class="planner-intro reveal">
+          <span class="eyebrow"><span class="eyebrow-dot"></span> A SMALL PLAN, KEPT LOCAL</span>
+          <h2 id="planner-heading">Make a plan<br /><span>for right now.</span></h2>
+          <p>Turn a big study day into a few clear next steps. Add tasks, keep an eye on your remaining focus time, and save a copy when you're done.</p>
+          <div class="planner-privacy"><span aria-hidden="true">⌂</span><div><b>Saved in this browser</b><small>Your plan stays on this device and is separate from the desktop app.</small></div></div>
+        </div>
+        <div class="planner-card reveal reveal-late">
+          <div class="planner-card-top">
+            <div><span class="planner-kicker">QUICK STUDY PLAN</span><h3>Your next steps</h3></div>
+            <span class="planner-local-badge"><i></i> ON THIS DEVICE</span>
+          </div>
+          <div class="planner-stats" aria-label="Study plan summary">
+            <div class="planner-stat"><span>Tasks left</span><strong data-plan-remaining>0</strong></div>
+            <div class="planner-stat"><span>Focus time left</span><strong><span data-plan-minutes>0</span><small> min</small></strong></div>
+            <div class="planner-stat"><span>Done</span><strong><span data-plan-complete>0</span><small>%</small></strong></div>
+          </div>
+          <div class="planner-progress" role="progressbar" aria-label="Study plan completion" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i data-plan-progress></i></div>
+          <form class="planner-form" id="study-planner-form">
+            <label class="planner-field planner-field-task" for="planner-task">What do you need to do?<input id="planner-task" name="task" type="text" maxlength="100" placeholder="e.g. Revise the biology chapter" required /></label>
+            <label class="planner-field" for="planner-subject">Subject <span>(optional)</span><input id="planner-subject" name="subject" type="text" maxlength="48" placeholder="e.g. Biology" /></label>
+            <label class="planner-field" for="planner-minutes">Minutes<input id="planner-minutes" name="minutes" type="number" min="1" max="480" step="5" value="25" required /></label>
+            <button class="button button-primary planner-add" type="submit">Add task <span aria-hidden="true">+</span></button>
+          </form>
+          <div class="planner-list-head">
+            <div><b>Your list</b><span data-plan-total>0 tasks</span></div>
+            <div class="planner-filters" role="group" aria-label="Filter study tasks">
+              <button type="button" data-plan-filter="all" aria-pressed="true">All</button>
+              <button type="button" data-plan-filter="open" aria-pressed="false">To do</button>
+              <button type="button" data-plan-filter="done" aria-pressed="false">Done</button>
+            </div>
+          </div>
+          <ul class="planner-list" data-plan-list aria-label="Study tasks"></ul>
+          <p class="planner-empty" data-plan-empty>No tasks yet. Add one small step to get started.</p>
+          <div class="planner-footer">
+            <p data-plan-message aria-live="polite">Add a task to start your plan.</p>
+            <div class="planner-footer-actions">
+              <button type="button" data-plan-clear disabled>Clear done</button>
+              <button type="button" data-plan-export disabled>Export plan <span aria-hidden="true">↓</span></button>
+            </div>
+          </div>
+        </div>
+        <template id="planner-task-template">
+          <li class="planner-task">
+            <button class="planner-task-toggle" type="button" data-task-toggle aria-pressed="false" aria-label="Mark task complete"><span aria-hidden="true">✓</span></button>
+            <div class="planner-task-copy"><b data-task-title></b><span data-task-subject></span></div>
+            <span class="planner-task-time"><b data-task-minutes></b><small>min</small></span>
+            <button class="planner-task-delete" type="button" data-task-delete aria-label="Delete task">×</button>
+          </li>
+        </template>
       </section>
 
       <section class="workflow section-wrap" id="how-it-works">
