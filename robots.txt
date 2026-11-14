@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
 Sitemap: https://ishaannn104.github.io/padhai-saathi-website/sitemap.xml
-

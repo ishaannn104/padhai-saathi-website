@@ -1,24 +1,15 @@
-PADHAI SAATHI — STATIC PRODUCT WEBSITE
+PADHAI SAATHI — USER APP
+Windows 10/11, 64-bit
 
-This informational website introduces the Padhai Saathi Windows focus app. It has no checkout, payment provider, account sign-in, password collection, analytics, or customer form.
+This download contains the Padhai Saathi User app only. It does not include Owner Control or Admin tools, personal music, account data, session history, or backups.
 
-LOCAL PREVIEW
-1. Open PowerShell in this website folder.
-2. Run: py -m http.server 8080
-3. Open: http://localhost:8080
-4. Stop the local server with Ctrl+C.
+SETUP
+1. Extract this ZIP to a folder.
+2. Install the official .NET 10 Desktop Runtime if it is not already installed:
+   https://dotnet.microsoft.com/en-us/download/dotnet/10.0
+3. Open PadhaiSaathi.exe.
 
-The site uses plain HTML, CSS, and JavaScript. It has no build step or package installation. System fonts are available as a fallback if Google Fonts cannot load.
+OFFLINE SIGN-IN
+If the Owner remote service is unavailable, enter a username and password and choose Sign in to open a local offline profile. A first-time offline profile is local and is not Owner-verified until the server reconnects. The app keeps data on this PC and retries account, policy, and study-data sync automatically when the Owner service becomes reachable. Previously synced Owner rules remain cached locally.
 
-FILES
-- index.html: content, navigation, app illustration, focus timer preview, FAQ, and SEO metadata
-- styles.css: responsive layout, visual theme, and motion preferences
-- script.js: mobile navigation, reveal effects, six selectable timer previews, start/pause, and reset
-- assets/PadhaiSaathi.svg: app mark and favicon
-- .nojekyll: serves static files directly on GitHub Pages
-- robots.txt and sitemap.xml: search crawler instructions and sitemap
-
-GITHUB PAGES
-Publish from the main branch root. There is no build command. The public page describes the app only; it does not accept payments or collect account credentials.
-
-The product mockup is an illustration of the app experience, not a live app window. Product details follow the current Padhai Saathi v4 feature set, including a YouTube channel allowlist that can keep selected study channels available during focus.
+This app only synchronizes when the Owner service is reachable. Keep the Owner service running for live policy updates and remote study-data sync.
