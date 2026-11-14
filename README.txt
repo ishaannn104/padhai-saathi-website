@@ -10,6 +10,6 @@ SETUP
 3. Open PadhaiSaathi.exe.
 
 OFFLINE SIGN-IN
-If the Owner remote service is unavailable, enter a username and password and choose Sign in to open a local offline profile. A first-time offline profile is local and is not Owner-verified until the server reconnects. The app keeps data on this PC and retries account, policy, and study-data sync automatically when the Owner service becomes reachable. Previously synced Owner rules remain cached locally.
+If the Owner remote service is unavailable, enter a username and password and choose Sign in to open a local offline profile. A first-time offline profile is local and is not Owner-verified until the server reconnects. The app keeps data on this PC and retries account, policy, and study-data sync automatically after the Owner sync URL is provisioned and the Owner service becomes reachable. Previously synced Owner rules remain cached locally.
 
-This app only synchronizes when the Owner service is reachable. Keep the Owner service running for live policy updates and remote study-data sync.
+Remote synchronization requires the Owner sync URL to be provisioned and the Owner service to be reachable. Keep the Owner service running for live policy updates and remote study-data sync.
