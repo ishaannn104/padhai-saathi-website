@@ -53,7 +53,111 @@
     }
   }
 
-  // Load Saved Data from LocalStorage
+  
+  // Auto-Sync Configuration & Credentials
+  const SYNC_CONFIG = {
+    defaultServer: 'http://192.168.1.11:5088',
+    intervalMs: 15000 // 15 seconds background heartbeat like desktop exe
+  };
+
+  async function performLogin(username, password, serverUrl) {
+    serverUrl = serverUrl || localStorage.getItem('ps_server_url') || SYNC_CONFIG.defaultServer;
+    serverUrl = serverUrl.replace(/\/+$/, '');
+    try {
+      showToast('Connecting to Padhai Saathi Server...');
+      const res = await fetch(`${serverUrl}/api/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+      });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        showToast('Login failed: ' + (err.error || res.statusText));
+        return false;
+      }
+      const data = await res.json();
+      localStorage.setItem('ps_auth_token', data.accessToken);
+      localStorage.setItem('ps_auth_user', data.username);
+      localStorage.setItem('ps_server_url', serverUrl);
+      state.user = data.username;
+      saveLocalState();
+      updateDashboardStats();
+      updateSyncStatusBadge(true, `Auto-Synced · ${data.username}`);
+      showToast(`⚡ Connected as ${data.username}! Auto-Syncing Active.`);
+      
+      // Immediate sync
+      syncHeartbeat();
+      return true;
+    } catch (e) {
+      showToast('Could not reach server at ' + serverUrl + '. Check Wi-Fi connection.');
+      return false;
+    }
+  }
+
+  async function syncHeartbeat() {
+    const token = localStorage.getItem('ps_auth_token');
+    const serverUrl = localStorage.getItem('ps_server_url') || SYNC_CONFIG.defaultServer;
+    if (!token) {
+      updateSyncStatusBadge(false, 'Not Connected (Tap to Connect)');
+      return;
+    }
+
+    try {
+      // 1. Pull policy
+      const policyRes = await fetch(`${serverUrl}/api/policy`, {
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+      if (policyRes.ok) {
+        const policy = await policyRes.json();
+        if (policy.controls) {
+          if (policy.controls.dailyTargetMinutes) state.dailyTargetMinutes = policy.controls.dailyTargetMinutes;
+        }
+        updateSyncStatusBadge(true, `Auto-Synced · ${state.user}`);
+      }
+
+      // 2. Push mobile study progress
+      const studyPayload = {
+        user: state.user,
+        streak: state.streak,
+        focusedMinutesToday: state.focusedMinutesToday,
+        lastActive: new Date().toISOString()
+      };
+      await fetch(`${serverUrl}/api/account/data`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          deviceId: 'android-mobile-' + (localStorage.getItem('ps_device_id') || '01'),
+          payloadJson: JSON.stringify(studyPayload)
+        })
+      });
+
+      const lastSyncEl = document.getElementById('last-sync-time');
+      if (lastSyncEl) {
+        const now = new Date();
+        lastSyncEl.textContent = `${now.getHours()}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
+      }
+    } catch (e) {
+      updateSyncStatusBadge(false, 'Offline Mode (Local Cache Active)');
+    }
+  }
+
+  function updateSyncStatusBadge(isOnline, text) {
+    const badge = document.getElementById('sync-header-badge');
+    const dot = document.getElementById('sync-header-dot');
+    const label = document.getElementById('sync-header-label');
+    if (dot) dot.style.background = isOnline ? '#64FFDA' : '#F5CB91';
+    if (label) label.textContent = isOnline ? 'Synced' : 'Offline';
+    
+    const panelStatus = document.getElementById('panel-sync-status');
+    if (panelStatus) {
+      panelStatus.innerHTML = `<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${isOnline ? '#64FFDA' : '#F5CB91'};margin-right:6px;"></span> ${text}`;
+    }
+  }
+
+// Load Saved Data from LocalStorage
   function loadLocalState() {
     try {
       const saved = localStorage.getItem('ps_mobile_state');
@@ -450,6 +554,10 @@
   // Initialization
   document.addEventListener('DOMContentLoaded', () => {
     loadLocalState();
+    // Start background auto-sync heartbeat (every 15s, matching desktop exe)
+    syncHeartbeat();
+    setInterval(syncHeartbeat, SYNC_CONFIG.intervalMs);
+
     updateDashboardStats();
     setTimerMode('pomodoro');
     loadHandbooks();
