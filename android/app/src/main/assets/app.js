@@ -184,29 +184,30 @@
     }
   }
 
-  // Anti-Cheat Focus Strict Mode: Detects minimizing / switching to other apps
+  // Background Continuous Timer Sync: Timer NEVER stops, keeps running continuously!
   document.addEventListener('visibilitychange', () => {
-    if (state.timer.isRunning && document.visibilityState === 'hidden') {
-      // Focus violation occurred: user left the study app
-      state.distractionsToday += 1;
-      pauseTimer();
-      
-      const violationEvent = {
-        Id: 'viol-' + Date.now(),
-        Name: 'App Switched / Minimized',
-        Kind: 'App',
-        BlockedAttempt: true,
-        StartedAt: new Date().toISOString(),
-        EndedAt: new Date().toISOString(),
-        DurationSeconds: 0
-      };
-      state.pendingUsageEvents.push(violationEvent);
-      saveLocalState();
-      updateShieldDisplay();
-      
-      if (navigator.vibrate) navigator.vibrate([300, 150, 300, 150, 600]);
-    } else if (document.visibilityState === 'visible' && state.distractionsToday > 0) {
-      showToast('⚠️ Focus Broken! Minimized during study. Violation logged to Parent Admin.');
+    if (state.timer.isRunning) {
+      if (document.visibilityState === 'visible') {
+        const now = Date.now();
+        const remaining = Math.max(0, Math.round((state.timer.targetEndTime - now) / 1000));
+        state.timer.remainingSeconds = remaining;
+        updateTimerDisplay();
+
+        if (remaining <= 0) {
+          state.timer.isRunning = false;
+          clearInterval(state.timer.intervalId);
+          const playBtn = document.getElementById('btn-timer-play');
+          if (playBtn) playBtn.innerHTML = '▶';
+          
+          const minsDone = Math.round(state.timer.totalSeconds / 60);
+          state.focusedMinutesToday += minsDone;
+          saveLocalState();
+          updateDashboardStats();
+          playFocusChime();
+          showToast(`🎉 Focus Session Complete (+${minsDone} Mins)!`);
+          if (navigator.vibrate) navigator.vibrate([200, 100, 200, 100, 400]);
+        }
+      }
     }
   });
 
