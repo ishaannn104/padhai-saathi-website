@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#100B14">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="description" content="Padhai Saathi Mobile Companion — 20 PDF Handbooks, Formula Hub, Pomodoro Focus Timer & AI Tutor">
+  <title>Padhai Saathi — Mobile Companion</title>
+  
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" type="image/svg+xml" href="./icons/icon.svg">
+  <link rel="apple-touch-icon" href="./icons/icon.svg">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+  <!-- App Header -->
+  <header class="app-header">
+    <div class="brand" onclick="window.psApp.switchTab('home')">
+      <img src="./icons/icon.svg" alt="Padhai Saathi" class="brand-icon">
+      <div class="brand-title">Padhai Saathi</div>
+    </div>
+    <div class="header-badges">
+      <div class="streak-pill" id="header-streak">
+        <span>🔥</span> <span id="streak-count">7 Days</span>
+      </div>
+      <div class="sync-pill" onclick="window.psApp.switchTab('sync')">
+        <span>⚡</span> <span>Sync</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Viewport -->
+  <main class="app-container">
+
+    <!-- PWA Install Banner -->
+    <div class="install-banner" id="install-banner" style="display:none;">
+      <div class="install-banner-text">
+        <h4>📲 Install Padhai Saathi App</h4>
+        <p>Zero risk, no Play Protect warnings, 100% free!</p>
+      </div>
+      <button class="btn-install" onclick="window.psApp.triggerPwaInstall()">Install App</button>
+    </div>
+
+    <!-- TAB 1: HOME / DASHBOARD -->
+    <section class="tab-content active" id="tab-home">
+      <div class="card" style="background: linear-gradient(135deg, #1C1224, #261730); border-color: rgba(255, 114, 178, 0.25);">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+          <div>
+            <div style="font-size:12px; color:var(--accent-mint); font-weight:700; text-transform:uppercase; letter-spacing:0.5px;">Welcome Back</div>
+            <div style="font-size:20px; font-weight:800; color:#FFF;" id="dash-user-name">Student</div>
+          </div>
+          <button class="btn-small primary" onclick="window.psApp.switchTab('focus')">
+            ⏱️ Start Study
+          </button>
+        </div>
+        <p style="font-size:13px; color:var(--text-soft); line-height:1.5;">
+          Padhai Saathi is running on mobile. Your daily streak and study minutes are automatically synchronized with your Desktop PC!
+        </p>
+      </div>
+
+      <!-- Quick Stats -->
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-value pink" id="stat-focus-mins">0m</div>
+          <div class="stat-label">Focus Today</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value mint" id="stat-target-mins">180m</div>
+          <div class="stat-label">Daily Target</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value violet" id="stat-progress-pct">0%</div>
+          <div class="stat-label">Target Progress</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value amber">20</div>
+          <div class="stat-label">Handbooks</div>
+        </div>
+      </div>
+
+      <!-- Quick Launch Grid -->
+      <div class="card">
+        <div class="card-title">📚 Study Ecosystem</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+          <div class="stat-box" style="cursor:pointer; text-align:left; padding:14px;" onclick="window.psApp.switchTab('handbooks')">
+            <div style="font-size:22px; margin-bottom:4px;">📖</div>
+            <div style="font-weight:700; font-size:14px; color:var(--text-main);">20 Handbooks</div>
+            <div style="font-size:11px; color:var(--text-muted);">Class 11, 12, JEE &amp; Boards</div>
+          </div>
+          <div class="stat-box" style="cursor:pointer; text-align:left; padding:14px;" onclick="window.psApp.switchTab('formulas')">
+            <div style="font-size:22px; margin-bottom:4px;">⚡</div>
+            <div style="font-weight:700; font-size:14px; color:var(--text-main);">Formula Hub</div>
+            <div style="font-size:11px; color:var(--text-muted);">62 Master Formula Groups</div>
+          </div>
+          <div class="stat-box" style="cursor:pointer; text-align:left; padding:14px;" onclick="window.psApp.switchTab('focus')">
+            <div style="font-size:22px; margin-bottom:4px;">⏱️</div>
+            <div style="font-weight:700; font-size:14px; color:var(--text-main);">Focus Room</div>
+            <div style="font-size:11px; color:var(--text-muted);">Pomodoro &amp; Deep Work</div>
+          </div>
+          <div class="stat-box" style="cursor:pointer; text-align:left; padding:14px;" onclick="window.psApp.switchTab('aitutor')">
+            <div style="font-size:22px; margin-bottom:4px;">✦</div>
+            <div style="font-weight:700; font-size:14px; color:var(--text-main);">AI Doubt Solver</div>
+            <div style="font-size:11px; color:var(--text-muted);">Step-by-step marking rubrics</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: FOCUS ROOM / TIMER -->
+    <section class="tab-content" id="tab-focus">
+      <div class="card">
+        <div class="timer-container">
+          <!-- Mode Selector -->
+          <div class="timer-mode-selector">
+            <button class="mode-btn active" data-mode="pomodoro">25m Pomodoro</button>
+            <button class="mode-btn" data-mode="deep">50m Deep Work</button>
+            <button class="mode-btn" data-mode="break">5m Break</button>
+          </div>
+
+          <!-- Animated Circular SVG Ring -->
+          <div class="timer-circle-wrap">
+            <svg class="timer-svg" viewBox="0 0 240 240">
+              <circle class="timer-bg-circle" cx="120" cy="120" r="105"></circle>
+              <circle class="timer-progress-circle" id="timer-progress" cx="120" cy="120" r="105" 
+                      style="stroke-dasharray: 659.73; stroke-dashoffset: 0;"></circle>
+            </svg>
+            <div class="timer-inner-text">
+              <div class="timer-display" id="timer-display">25:00</div>
+              <div class="timer-sublabel">Focus Session</div>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <div class="timer-controls">
+            <button class="btn-timer-secondary" id="btn-timer-reset" title="Reset Timer">↺</button>
+            <button class="btn-timer-primary" id="btn-timer-play" title="Start/Pause">▶</button>
+            <button class="btn-timer-secondary" onclick="window.psApp.showToast('Audio chime enabled!')" title="Sound">🔔</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">💡 Study Wisdom</div>
+        <p style="font-size:13px; color:var(--text-soft); line-height:1.6;">
+          "The secret to cracking JEE &amp; Boards is not 14 hours of scattered reading — it is 4 to 5 hours of ruthless, uninterrupted, single-task deep focus."
+        </p>
+      </div>
+    </section>
+
+    <!-- TAB 3: 20 PDF HANDBOOKS -->
+    <section class="tab-content" id="tab-handbooks">
+      <div class="card-title" style="margin-bottom:10px;">
+        <span>📚 Official PDF Handbooks</span>
+        <span style="font-size:12px; color:var(--accent-mint);">20 Books Bundled</span>
+      </div>
+
+      <!-- Filter Chips -->
+      <div class="filter-scroll">
+        <button class="filter-chip hb-chip active" data-filter="all">🌟 All (20)</button>
+        <button class="filter-chip hb-chip" data-filter="11th">📘 Class 11th</button>
+        <button class="filter-chip hb-chip" data-filter="12th">📕 Class 12th</button>
+        <button class="filter-chip hb-chip" data-filter="jee">🎯 JEE (Main &amp; Adv)</button>
+        <button class="filter-chip hb-chip" data-filter="boards">🏆 Boards Special</button>
+      </div>
+
+      <!-- Handbooks List -->
+      <div id="handbooks-list"></div>
+    </section>
+
+    <!-- TAB 4: FORMULA HUB -->
+    <section class="tab-content" id="tab-formulas">
+      <div class="card-title" style="margin-bottom:10px;">
+        <span>⚡ Subject Formula Hub</span>
+        <span style="font-size:12px; color:var(--accent-pink);">Instant Search</span>
+      </div>
+
+      <!-- Search Box -->
+      <div class="search-box-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="formula-search" class="search-input" placeholder="Search formulas (e.g. Coulomb, Integration, Carnot)...">
+      </div>
+
+      <!-- Subject Filter Chips -->
+      <div class="filter-scroll">
+        <button class="filter-chip fm-chip active" data-filter="all">All Subjects</button>
+        <button class="filter-chip fm-chip" data-filter="maths">Mathematics</button>
+        <button class="filter-chip fm-chip" data-filter="physics">Physics</button>
+        <button class="filter-chip fm-chip" data-filter="chemistry">Chemistry</button>
+        <button class="filter-chip fm-chip" data-filter="biology">Biology</button>
+      </div>
+
+      <!-- Formulas List -->
+      <div id="formulas-list"></div>
+    </section>
+
+    <!-- TAB 5: AI DOUBT SOLVER -->
+    <section class="tab-content" id="tab-aitutor">
+      <div class="card">
+        <div class="card-title">✦ AI Question &amp; Doubt Solver</div>
+        <p style="font-size:12px; color:var(--text-soft); margin-bottom:12px;">
+          Type any derivation, concept doubt, or numerical to reveal the official step-marking breakdown.
+        </p>
+
+        <div class="tutor-form">
+          <label style="font-size:12px; color:var(--text-muted); font-weight:700;">TARGET EXAM PATTERN:</label>
+          <select class="tutor-select" id="tutor-level">
+            <option value="CBSE Boards">CBSE Boards (Step-by-Step Marking)</option>
+            <option value="JEE Main">JEE Main (+4 / -1 Marking)</option>
+            <option value="JEE Advanced">JEE Advanced (Deep Analytical)</option>
+            <option value="NEET">NEET (High Yield Concept)</option>
+          </select>
+
+          <label style="font-size:12px; color:var(--text-muted); font-weight:700;">QUESTION / DOUBT:</label>
+          <textarea class="tutor-textarea" id="tutor-input" placeholder="E.g., State Gauss Law and derive electric field due to an infinite line charge..."></textarea>
+
+          <button class="btn-solve" onclick="window.psApp.solveDoubt()">
+            <span>✦</span> Solve with Step-by-Step Marking
+          </button>
+        </div>
+
+        <div class="solution-box" id="tutor-solution">
+          <div id="tutor-solution-text"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 6: CLOUD SYNC & SETTINGS -->
+        <!-- TAB 6: BACKGROUND AUTO-SYNC (MATCHES DESKTOP EXE) -->
+    <section class="tab-content" id="tab-sync">
+      <div class="card" style="border-color: rgba(100, 255, 218, 0.35); background: linear-gradient(135deg, rgba(25, 18, 30, 0.95), rgba(28, 22, 38, 0.95));">
+        <div class="card-title">
+          <span>⚡ Real-Time Auto-Syncing</span>
+          <span class="item-level-tag jee" id="panel-sync-status">🟢 Auto-Sync Active</span>
+        </div>
+        <p style="font-size:13px; color:var(--text-soft); line-height:1.6; margin-bottom:14px;">
+          Just like <strong>PadhaiSaathi.exe</strong> on your PC, this app runs a silent background heartbeat every 15 seconds. No repeated OTPs, no codes — sign in once, and study minutes, streaks, and targets stay synced forever!
+        </p>
+
+        <div style="background:var(--bg-deep); border:1px solid var(--line); border-radius:12px; padding:14px; margin-bottom:14px;">
+          <div style="display:flex; justify-content:space-between; margin-bottom:6px; font-size:12px;">
+            <span style="color:var(--text-muted);">Sync Server Address:</span>
+            <span style="color:var(--accent-mint); font-family:monospace;" id="current-server-display">http://192.168.1.11:5088</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; margin-bottom:6px; font-size:12px;">
+            <span style="color:var(--text-muted);">Active Student Account:</span>
+            <span style="color:var(--accent-pink); font-weight:700;" id="current-user-display">aaravg</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; font-size:12px;">
+            <span style="color:var(--text-muted);">Last Background Heartbeat:</span>
+            <span style="color:var(--text-main); font-family:monospace;" id="last-sync-time">Just now</span>
+          </div>
+        </div>
+
+        <button class="btn-solve" style="width:100%;" onclick="window.psApp.syncHeartbeat(); window.psApp.showToast('⚡ Auto-sync heartbeat executed!');">
+          🔄 Force Sync Now
+        </button>
+      </div>
+
+      <!-- Account Sign-in (1-Time Setup) -->
+      <div class="card">
+        <div class="card-title">👤 Account Login (One-Time Setup)</div>
+        <p style="font-size:12px; color:var(--text-soft); margin-bottom:12px;">
+          Log in with your student profile to link this phone with your Desktop PC database:
+        </p>
+
+        <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:14px;">
+          <input type="text" id="sync-input-server" class="search-input" style="padding-left:14px;" value="http://192.168.1.11:5088" placeholder="Server URL (e.g. http://192.168.1.11:5088)">
+          <input type="text" id="sync-input-user" class="search-input" style="padding-left:14px;" value="aaravg" placeholder="Username (e.g. aaravg)">
+          <input type="password" id="sync-input-pass" class="search-input" style="padding-left:14px;" value="Aarav@1234" placeholder="Password">
+          
+          <div style="display:flex; gap:10px;">
+            <button class="btn-install" style="flex:1; padding:12px; font-size:13px;" onclick="
+              const s = document.getElementById('sync-input-server').value;
+              const u = document.getElementById('sync-input-user').value;
+              const p = document.getElementById('sync-input-pass').value;
+              window.psApp.performLogin(u, p, s);
+            ">
+              ⚡ Sign In &amp; Auto-Sync
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Download Standalone APK Card -->
+      <div class="card" style="border-color: rgba(255, 114, 178, 0.35);">
+        <div class="card-title">
+          <span>📦 Standalone Android APK</span>
+          <span style="font-size:11px; color:var(--accent-mint);">v4.2.0</span>
+        </div>
+        <p style="font-size:13px; color:var(--text-soft); line-height:1.6; margin-bottom:14px;">
+          Want an actual <strong>.apk</strong> file instead of installing via Chrome? Download the release-signed APK below. Clean permissions, zero spyware, 100% Google Play Protect safe!
+        </p>
+        <a href="https://github.com/ishaannn104/padhai-saathi-website/releases/download/v4.2.0/PadhaiSaathi.apk" class="button button-primary download-button" style="width:100%; text-align:center; display:block; padding:12px;" download>
+          ⬇ Download PadhaiSaathi.apk (Direct)
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Bottom Navigation Bar -->
+  <nav class="bottom-nav">
+    <button class="nav-item active" data-tab="home">
+      <span class="nav-icon">⌂</span>
+      <span>Home</span>
+    </button>
+    <button class="nav-item" data-tab="focus">
+      <span class="nav-icon">⏱️</span>
+      <span>Focus</span>
+    </button>
+    <button class="nav-item" data-tab="handbooks">
+      <span class="nav-icon">📚</span>
+      <span>Books</span>
+    </button>
+    <button class="nav-item" data-tab="formulas">
+      <span class="nav-icon">⚡</span>
+      <span>Formulas</span>
+    </button>
+    <button class="nav-item" data-tab="aitutor">
+      <span class="nav-icon">✦</span>
+      <span>AI Tutor</span>
+    </button>
+    <button class="nav-item" data-tab="sync">
+      <span class="nav-icon">🔄</span>
+      <span>Sync</span>
+    </button>
+  </nav>
+
+  <!-- Fullscreen In-App PDF Modal Viewer -->
+  <div class="modal-overlay" id="pdf-modal">
+    <div class="modal-header">
+      <div class="modal-title" id="modal-pdf-title">Handbook Viewer</div>
+      <button class="modal-close" onclick="window.psApp.closePdfModal()">✕ Close</button>
+    </div>
+    <iframe class="modal-frame" id="pdf-frame" src="about:blank"></iframe>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
