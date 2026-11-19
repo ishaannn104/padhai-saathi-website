@@ -94,6 +94,26 @@
     }
   }
 
+  function getOrCreateDeviceId() {
+    let devId = localStorage.getItem('ps_device_guid');
+    if (!devId || devId.length !== 32 || !/^[0-9a-f]{32}$/i.test(devId)) {
+      try {
+        if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+          devId = crypto.randomUUID().replace(/-/g, '').toLowerCase();
+        } else {
+          devId = 'xxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, c => {
+            const r = Math.random() * 16 | 0;
+            return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+          }).replace(/-/g, '').toLowerCase();
+        }
+      } catch (_) {
+        devId = Array.from({length: 32}, () => Math.floor(Math.random() * 16).toString(16)).join('');
+      }
+      localStorage.setItem('ps_device_guid', devId);
+    }
+    return devId;
+  }
+
   async function syncHeartbeat() {
     const token = localStorage.getItem('ps_auth_token');
     const serverUrl = localStorage.getItem('ps_server_url') || SYNC_CONFIG.defaultServer;
@@ -129,7 +149,7 @@
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          deviceId: 'android-mobile-' + (localStorage.getItem('ps_device_id') || '01'),
+          deviceId: getOrCreateDeviceId(),
           payloadJson: JSON.stringify(studyPayload)
         })
       });
