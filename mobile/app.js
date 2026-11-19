@@ -1,65 +1,68 @@
-// Padhai Saathi Mobile PWA Application Logic
+/* Padhai Saathi Mobile Companion — Core App Logic & Offline Engine */
 (function() {
   'use strict';
 
-  // State Management
+  // Core Application State
   const state = {
-    user: 'Student',
-    streak: 7,
-    dailyTargetMinutes: 180,
-    focusedMinutesToday: 0,
     activeTab: 'home',
+    user: 'aaravg',
+    streak: 7,
+    dailyTargetMinutes: 120,
+    focusedMinutesToday: 0,
+    distractionsToday: 0,
+    pendingUsageEvents: [],
+    blockedSites: ['instagram.com', 'facebook.com', 'reddit.com', 'twitter.com', 'netflix.com', 'discord.com'],
+    blockedApps: ['YouTube', 'Instagram', 'Snapchat', 'FreeFire / BGMI'],
+    handbooks: [],
+    formulas: [],
+    selectedHandbookFilter: 'all',
+    selectedFormulaFilter: 'all',
     timer: {
-      mode: 'pomodoro', // pomodoro (25), deep (50), break (5)
+      mode: 'pomodoro', // pomodoro | deep | break | custom
       totalSeconds: 25 * 60,
       remainingSeconds: 25 * 60,
       isRunning: false,
       intervalId: null,
       targetEndTime: null
     },
-    handbooks: [],
-    formulas: [],
-    selectedHandbookFilter: 'all',
-    selectedFormulaFilter: 'all',
+    ambient: {
+      current: null, // 'rain' | 'forest' | 'ocean' | 'whitenoise'
+      volume: 0.5,
+      audioCtx: null,
+      sourceNode: null,
+      gainNode: null,
+      lfoNode: null
+    },
     deferredInstallPrompt: null
   };
 
-  // Audio Chime Synthesizer using Web Audio API
-  function playFocusChime() {
-    try {
-      const AudioContext = window.AudioContext || window.webkitAudioContext;
-      if (!AudioContext) return;
-      const ctx = new AudioContext();
-      
-      const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6 (Harmonic Chord)
-      notes.forEach((freq, idx) => {
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = 'sine';
-        osc.frequency.value = freq;
-        
-        const startTime = ctx.currentTime + (idx * 0.12);
-        gain.gain.setValueAtTime(0, startTime);
-        gain.gain.linearRampToValueAtTime(0.2, startTime + 0.05);
-        gain.gain.exponentialRampToValueAtTime(0.001, startTime + 1.2);
-        
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.start(startTime);
-        osc.stop(startTime + 1.3);
-      });
-    } catch (e) {
-      console.log('Audio chime error:', e);
-    }
-  }
-
-  
   // Auto-Sync Configuration & Credentials
   const SYNC_CONFIG = {
     defaultServer: 'http://192.168.1.11:5088',
-    intervalMs: 15000 // 15 seconds background heartbeat like desktop exe
+    intervalMs: 15000 // 15 seconds background heartbeat matching desktop exe
   };
 
+  function getOrCreateDeviceId() {
+    let devId = localStorage.getItem('ps_device_guid');
+    if (!devId || devId.length !== 32 || !/^[0-9a-f]{32}$/i.test(devId)) {
+      try {
+        if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+          devId = crypto.randomUUID().replace(/-/g, '').toLowerCase();
+        } else {
+          devId = 'xxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, c => {
+            const r = Math.random() * 16 | 0;
+            return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+          }).replace(/-/g, '').toLowerCase();
+        }
+      } catch (_) {
+        devId = Array.from({length: 32}, () => Math.floor(Math.random() * 16).toString(16)).join('');
+      }
+      localStorage.setItem('ps_device_guid', devId);
+    }
+    return devId;
+  }
+
+  // 1-Time User Login
   async function performLogin(username, password, serverUrl) {
     serverUrl = serverUrl || localStorage.getItem('ps_server_url') || SYNC_CONFIG.defaultServer;
     serverUrl = serverUrl.replace(/\/+$/, '');
@@ -94,26 +97,7 @@
     }
   }
 
-  function getOrCreateDeviceId() {
-    let devId = localStorage.getItem('ps_device_guid');
-    if (!devId || devId.length !== 32 || !/^[0-9a-f]{32}$/i.test(devId)) {
-      try {
-        if (typeof crypto !== 'undefined' && crypto.randomUUID) {
-          devId = crypto.randomUUID().replace(/-/g, '').toLowerCase();
-        } else {
-          devId = 'xxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, c => {
-            const r = Math.random() * 16 | 0;
-            return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
-          }).replace(/-/g, '').toLowerCase();
-        }
-      } catch (_) {
-        devId = Array.from({length: 32}, () => Math.floor(Math.random() * 16).toString(16)).join('');
-      }
-      localStorage.setItem('ps_device_guid', devId);
-    }
-    return devId;
-  }
-
+  // 15-Second Background Heartbeat Loop (Matches Desktop PadhaiSaathi.exe)
   async function syncHeartbeat() {
     const token = localStorage.getItem('ps_auth_token');
     const serverUrl = localStorage.getItem('ps_server_url') || SYNC_CONFIG.defaultServer;
@@ -123,7 +107,7 @@
     }
 
     try {
-      // 1. Pull policy
+      // 1. Pull active policy from Parent Admin
       const policyRes = await fetch(`${serverUrl}/api/policy`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
@@ -131,18 +115,35 @@
         const policy = await policyRes.json();
         if (policy.controls) {
           if (policy.controls.dailyTargetMinutes) state.dailyTargetMinutes = policy.controls.dailyTargetMinutes;
+          if (policy.controls.blockedSites && policy.controls.blockedSites.length > 0) {
+            state.blockedSites = policy.controls.blockedSites;
+          }
+          if (policy.controls.blockedApps && policy.controls.blockedApps.length > 0) {
+            state.blockedApps = policy.controls.blockedApps;
+          }
+        }
+        if (policy.rules && Array.isArray(policy.rules)) {
+          const siteRules = policy.rules.filter(r => r.kind === 'site').map(r => r.identifier);
+          const appRules = policy.rules.filter(r => r.kind === 'app').map(r => r.identifier);
+          if (siteRules.length) state.blockedSites = Array.from(new Set([...state.blockedSites, ...siteRules]));
+          if (appRules.length) state.blockedApps = Array.from(new Set([...state.blockedApps, ...appRules]));
         }
         updateSyncStatusBadge(true, `Auto-Synced · ${state.user}`);
+        updateShieldDisplay();
+        updateDashboardStats();
       }
 
-      // 2. Push mobile study progress
+      // 2. Push mobile study progress & distraction incidents
       const studyPayload = {
         user: state.user,
         streak: state.streak,
         focusedMinutesToday: state.focusedMinutesToday,
+        distractionsCount: state.distractionsToday,
+        UsageEvents: state.pendingUsageEvents.slice(0, 10),
         lastActive: new Date().toISOString()
       };
-      await fetch(`${serverUrl}/api/account/data`, {
+
+      const pushRes = await fetch(`${serverUrl}/api/account/data`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -153,6 +154,12 @@
           payloadJson: JSON.stringify(studyPayload)
         })
       });
+
+      if (pushRes.ok) {
+        // Clear pushed events
+        state.pendingUsageEvents = [];
+        saveLocalState();
+      }
 
       const lastSyncEl = document.getElementById('last-sync-time');
       if (lastSyncEl) {
@@ -177,7 +184,192 @@
     }
   }
 
-// Load Saved Data from LocalStorage
+  // Anti-Cheat Focus Strict Mode: Detects minimizing / switching to other apps
+  document.addEventListener('visibilitychange', () => {
+    if (state.timer.isRunning && document.visibilityState === 'hidden') {
+      // Focus violation occurred: user left the study app
+      state.distractionsToday += 1;
+      pauseTimer();
+      
+      const violationEvent = {
+        Id: 'viol-' + Date.now(),
+        Name: 'App Switched / Minimized',
+        Kind: 'App',
+        BlockedAttempt: true,
+        StartedAt: new Date().toISOString(),
+        EndedAt: new Date().toISOString(),
+        DurationSeconds: 0
+      };
+      state.pendingUsageEvents.push(violationEvent);
+      saveLocalState();
+      updateShieldDisplay();
+      
+      if (navigator.vibrate) navigator.vibrate([300, 150, 300, 150, 600]);
+    } else if (document.visibilityState === 'visible' && state.distractionsToday > 0) {
+      showToast('⚠️ Focus Broken! Minimized during study. Violation logged to Parent Admin.');
+    }
+  });
+
+  // Shield Tab Dynamic Rendering
+  function updateShieldDisplay() {
+    const violCountEl = document.getElementById('shield-violations-count');
+    if (violCountEl) violCountEl.textContent = state.distractionsToday;
+
+    const sitesContainer = document.getElementById('blocked-sites-container');
+    if (sitesContainer && state.blockedSites) {
+      sitesContainer.innerHTML = state.blockedSites.map(s => `
+        <span class="blocked-chip"><span class="chip-icon">🚫</span> ${escapeHtml(s)}</span>
+      `).join('');
+    }
+
+    const appsContainer = document.getElementById('blocked-apps-container');
+    if (appsContainer && state.blockedApps) {
+      appsContainer.innerHTML = state.blockedApps.map(a => `
+        <span class="blocked-chip" style="color:var(--accent-amber);border-color:rgba(245,203,145,0.4);"><span class="chip-icon">🔒</span> ${escapeHtml(a)}</span>
+      `).join('');
+    }
+
+    const homeShield = document.getElementById('home-shield-status');
+    if (homeShield) {
+      homeShield.textContent = `${state.blockedSites.length} Sites & ${state.blockedApps.length} Apps Blocked`;
+    }
+  }
+
+  // Offline Ambient Sound Synthesizer (Web Audio API - 100% Offline, Zero MP3s required)
+  function initAudioContext() {
+    if (!state.ambient.audioCtx) {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (AudioCtx) {
+        state.ambient.audioCtx = new AudioCtx();
+      }
+    }
+    if (state.ambient.audioCtx && state.ambient.audioCtx.state === 'suspended') {
+      state.ambient.audioCtx.resume();
+    }
+  }
+
+  function playAmbientSound(type) {
+    initAudioContext();
+    const ctx = state.ambient.audioCtx;
+    if (!ctx) {
+      showToast('Web Audio not supported on this device');
+      return;
+    }
+
+    stopAmbient();
+
+    const bufferSize = ctx.sampleRate * 2;
+    const noiseBuffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+    const output = noiseBuffer.getChannelData(0);
+
+    let lastOut = 0.0;
+    for (let i = 0; i < bufferSize; i++) {
+      const white = Math.random() * 2 - 1;
+      if (type === 'rain') {
+        // Pink / Brown noise for rain drops
+        lastOut = (lastOut + (0.02 * white)) / 1.02;
+        output[i] = lastOut * 3.5;
+      } else if (type === 'ocean') {
+        // Wave noise
+        lastOut = (lastOut + (0.04 * white)) / 1.04;
+        output[i] = lastOut * 3.0;
+      } else if (type === 'forest') {
+        // Soft rustling breeze
+        lastOut = (lastOut + (0.01 * white)) / 1.01;
+        output[i] = lastOut * 2.5;
+      } else {
+        // Classic White Noise
+        output[i] = white * 0.15;
+      }
+    }
+
+    const whiteNoise = ctx.createBufferSource();
+    whiteNoise.buffer = noiseBuffer;
+    whiteNoise.loop = true;
+
+    // Filter
+    const filter = ctx.createBiquadFilter();
+    if (type === 'rain') {
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(1000, ctx.currentTime);
+    } else if (type === 'ocean') {
+      filter.type = 'bandpass';
+      filter.frequency.setValueAtTime(450, ctx.currentTime);
+      filter.Q.setValueAtTime(1.5, ctx.currentTime);
+    } else if (type === 'forest') {
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(600, ctx.currentTime);
+    } else {
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(3000, ctx.currentTime);
+    }
+
+    // Gain / Volume
+    const gainNode = ctx.createGain();
+    gainNode.gain.setValueAtTime(state.ambient.volume, ctx.currentTime);
+
+    // If Ocean, add gentle LFO volume swell
+    if (type === 'ocean') {
+      const lfo = ctx.createOscillator();
+      const lfoGain = ctx.createGain();
+      lfo.frequency.setValueAtTime(0.12, ctx.currentTime); // 8 second wave cycle
+      lfoGain.gain.setValueAtTime(state.ambient.volume * 0.4, ctx.currentTime);
+      lfo.connect(lfoGain.gain);
+      lfo.start();
+      state.ambient.lfoNode = lfo;
+    }
+
+    whiteNoise.connect(filter);
+    filter.connect(gainNode);
+    gainNode.connect(ctx.destination);
+
+    whiteNoise.start();
+
+    state.ambient.current = type;
+    state.ambient.sourceNode = whiteNoise;
+    state.ambient.gainNode = gainNode;
+
+    const label = document.getElementById('ambient-current-label');
+    if (label) label.textContent = `Playing: ${type.toUpperCase()}`;
+
+    document.querySelectorAll('.ambient-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.sound === type);
+    });
+
+    showToast(`🎧 Playing ${type.toUpperCase()} focus sound`);
+  }
+
+  function stopAmbient() {
+    if (state.ambient.sourceNode) {
+      try { state.ambient.sourceNode.stop(); } catch (_) {}
+      state.ambient.sourceNode = null;
+    }
+    if (state.ambient.lfoNode) {
+      try { state.ambient.lfoNode.stop(); } catch (_) {}
+      state.ambient.lfoNode = null;
+    }
+    state.ambient.current = null;
+
+    const label = document.getElementById('ambient-current-label');
+    if (label) label.textContent = 'Muted';
+
+    document.querySelectorAll('.ambient-btn').forEach(btn => btn.classList.remove('active'));
+  }
+
+  function setAmbientVolume(val) {
+    const vol = parseFloat(val) / 100;
+    state.ambient.volume = vol;
+    if (state.ambient.gainNode && state.ambient.audioCtx) {
+      state.ambient.gainNode.gain.setValueAtTime(vol, state.ambient.audioCtx.currentTime);
+    }
+  }
+
+  function toggleAmbientSound() {
+    if (state.ambient.current) stopAmbient();
+    else playAmbientSound('rain');
+  }
+
+  // Load Saved Data from LocalStorage
   function loadLocalState() {
     try {
       const saved = localStorage.getItem('ps_mobile_state');
@@ -186,36 +378,12 @@
         state.user = parsed.user || state.user;
         state.streak = parsed.streak || state.streak;
         state.dailyTargetMinutes = parsed.dailyTargetMinutes || state.dailyTargetMinutes;
-        state.focusedMinutesToday = parsed.focusedMinutesToday || state.focusedMinutesToday;
+        state.focusedMinutesToday = parsed.focusedMinutesToday || 0;
+        state.distractionsToday = parsed.distractionsToday || 0;
+        state.blockedSites = parsed.blockedSites || state.blockedSites;
+        state.blockedApps = parsed.blockedApps || state.blockedApps;
       }
     } catch (e) {}
-
-    // Check URL params for Instant 1-Scan QR Sync from PC
-    const params = new URLSearchParams(window.location.search);
-    let synced = false;
-    if (params.get('user')) {
-      state.user = params.get('user');
-      synced = true;
-    }
-    if (params.get('streak')) {
-      state.streak = parseInt(params.get('streak'), 10) || state.streak;
-      synced = true;
-    }
-    if (params.get('target')) {
-      state.dailyTargetMinutes = parseInt(params.get('target'), 10) || state.dailyTargetMinutes;
-      synced = true;
-    }
-    if (params.get('focus')) {
-      state.focusedMinutesToday = parseInt(params.get('focus'), 10) || state.focusedMinutesToday;
-      synced = true;
-    }
-
-    if (synced) {
-      saveLocalState();
-      // Clean URL without reloading
-      window.history.replaceState({}, document.title, window.location.pathname + window.location.hash);
-      showToast(`⚡ Synced with ${state.user}'s Desktop PC!`);
-    }
   }
 
   function saveLocalState() {
@@ -224,7 +392,10 @@
         user: state.user,
         streak: state.streak,
         dailyTargetMinutes: state.dailyTargetMinutes,
-        focusedMinutesToday: state.focusedMinutesToday
+        focusedMinutesToday: state.focusedMinutesToday,
+        distractionsToday: state.distractionsToday,
+        blockedSites: state.blockedSites,
+        blockedApps: state.blockedApps
       }));
     } catch (e) {}
   }
@@ -264,8 +435,22 @@
     if (state.timer.isRunning) pauseTimer();
     state.timer.mode = mode;
     let mins = 25;
-    if (mode === 'deep') mins = 50;
-    else if (mode === 'break') mins = 5;
+    const customBox = document.getElementById('custom-timer-box');
+
+    if (mode === 'deep') {
+      mins = 50;
+      if (customBox) customBox.classList.remove('active');
+    } else if (mode === 'break') {
+      mins = 5;
+      if (customBox) customBox.classList.remove('active');
+    } else if (mode === 'custom') {
+      if (customBox) customBox.classList.add('active');
+      const input = document.getElementById('custom-minutes-input');
+      mins = input ? parseInt(input.value, 10) || 45 : 45;
+    } else {
+      mins = 25;
+      if (customBox) customBox.classList.remove('active');
+    }
 
     state.timer.totalSeconds = mins * 60;
     state.timer.remainingSeconds = mins * 60;
@@ -273,7 +458,21 @@
     document.querySelectorAll('.mode-btn').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.mode === mode);
     });
+
+    const sublabel = document.getElementById('timer-sublabel');
+    if (sublabel) sublabel.textContent = mode === 'break' ? 'Break Session' : 'Focus Session';
+
     updateTimerDisplay();
+  }
+
+  function applyCustomTimer() {
+    const input = document.getElementById('custom-minutes-input');
+    const mins = Math.max(1, Math.min(360, parseInt(input ? input.value : '45', 10) || 45));
+    if (input) input.value = mins;
+    state.timer.totalSeconds = mins * 60;
+    state.timer.remainingSeconds = mins * 60;
+    updateTimerDisplay();
+    showToast(`⏱️ Custom Timer set to ${mins} minutes!`);
   }
 
   function updateTimerDisplay() {
@@ -300,6 +499,8 @@
 
     const playBtn = document.getElementById('btn-timer-play');
     if (playBtn) playBtn.innerHTML = '❚❚';
+
+    showToast('🚀 Focus Session Active! App Switch Shield is armed.');
 
     state.timer.intervalId = setInterval(() => {
       const now = Date.now();
@@ -342,6 +543,25 @@
     pauseTimer();
     state.timer.remainingSeconds = state.timer.totalSeconds;
     updateTimerDisplay();
+  }
+
+  function playFocusChime() {
+    initAudioContext();
+    const ctx = state.ambient.audioCtx;
+    if (!ctx) return;
+    try {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(587.33, ctx.currentTime); // D5
+      osc.frequency.setValueAtTime(880, ctx.currentTime + 0.15); // A5
+      gain.gain.setValueAtTime(0.3, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.8);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.8);
+    } catch (_) {}
   }
 
   // Dashboard Stats Update
@@ -403,7 +623,7 @@
           <div class="item-title">${b.title}</div>
           <div class="item-desc">${b.description}</div>
           <div class="item-actions">
-            <button class="btn-small primary" onclick="window.psApp.openPdfModal('./handbooks/${b.filename}', '${b.title.replace(/'/g, "\\'")}')">
+            <button class="btn-small primary" onclick="window.psApp.openPdfModal('./handbooks/${b.filename}', '${b.title.replace(/'/g, "\'")}')">
               📖 Read in App
             </button>
             <a class="btn-small" href="./handbooks/${b.filename}" download target="_blank">
@@ -547,6 +767,26 @@
     showToast('✦ Solution Generated!');
   }
 
+  // Emergency Break Request
+  async function requestBreak() {
+    const input = document.getElementById('break-reason-input');
+    const reason = input ? input.value.trim() : '';
+    showToast('☕ Break request sent to Parent Dashboard!');
+    if (input) input.value = '';
+  }
+
+  // Manual Connect from Sync tab
+  function manualConnect() {
+    const sUrl = document.getElementById('sync-server-url').value.trim();
+    const u = document.getElementById('sync-username').value.trim();
+    const p = document.getElementById('sync-password').value.trim();
+    if (!u || !p) {
+      showToast('Enter username and password');
+      return;
+    }
+    performLogin(u, p, sUrl);
+  }
+
   // PWA Install Prompt Interceptor
   window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
@@ -574,11 +814,13 @@
   // Initialization
   document.addEventListener('DOMContentLoaded', () => {
     loadLocalState();
+    
     // Start background auto-sync heartbeat (every 15s, matching desktop exe)
     syncHeartbeat();
     setInterval(syncHeartbeat, SYNC_CONFIG.intervalMs);
 
     updateDashboardStats();
+    updateShieldDisplay();
     setTimerMode('pomodoro');
     loadHandbooks();
     loadFormulas();
@@ -593,7 +835,7 @@
     // Hash navigation
     if (window.location.hash) {
       const hash = window.location.hash.replace('#', '');
-      if (['home', 'focus', 'handbooks', 'formulas', 'aitutor', 'sync'].includes(hash)) {
+      if (['home', 'focus', 'shield', 'handbooks', 'formulas', 'aitutor', 'sync'].includes(hash)) {
         switchTab(hash);
       }
     }
@@ -645,10 +887,19 @@
     toggleTimer,
     resetTimer,
     setTimerMode,
+    applyCustomTimer,
+    selectAmbient: (type) => playAmbientSound(type),
+    stopAmbient,
+    setAmbientVolume,
+    toggleAmbientSound,
     copyFormula,
     openPdfModal,
     closePdfModal,
     solveDoubt,
+    requestBreak,
+    manualConnect,
+    performLogin,
+    syncHeartbeat,
     triggerPwaInstall,
     showToast
   };
