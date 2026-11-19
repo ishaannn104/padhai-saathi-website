@@ -13,6 +13,825 @@
   <link rel="icon" type="image/svg+xml" href="./icons/icon.svg">
   <link rel="apple-touch-icon" href="./icons/icon.svg">
   <link rel="stylesheet" href="./styles.css">
+  
+  <!-- Bulletproof Inlined CSS to guarantee 100% theme rendering on all Android WebViews -->
+  <style>
+/* Padhai Saathi Mobile PWA Stylesheet */
+:root {
+  color-scheme: dark;
+  --bg-deep: #100B14;
+  --bg-panel: #19121E;
+  --bg-card: #211727;
+  --bg-hover: #2B1D33;
+  --line: rgba(255, 255, 255, 0.09);
+  --line-strong: rgba(255, 114, 178, 0.25);
+  
+  --text-main: #FBF0F8;
+  --text-soft: #D4C4D7;
+  --text-muted: #9D8A9F;
+  
+  --accent-pink: #FF72B2;
+  --accent-glow: rgba(255, 114, 178, 0.35);
+  --accent-mint: #64FFDA;
+  --accent-violet: #BD8CFF;
+  --accent-amber: #F5CB91;
+  --accent-blue: #9FC9FF;
+  
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+  
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --nav-height: 64px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  background-color: var(--bg-deep);
+  color: var(--text-main);
+  font-family: var(--font-family);
+  font-size: 15px;
+  line-height: 1.5;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Background Subtle Mesh */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 80% 20%, rgba(189, 140, 255, 0.08), transparent 45%),
+              radial-gradient(circle at 20% 80%, rgba(255, 114, 178, 0.07), transparent 45%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* App Header */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(16, 11, 20, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 2px 8px var(--accent-glow);
+}
+
+.brand-title {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  background: linear-gradient(135deg, #FFF, var(--accent-pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.header-badges {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.streak-pill {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255, 114, 178, 0.12);
+  border: 1px solid rgba(255, 114, 178, 0.3);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent-pink);
+}
+
+.sync-pill {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(100, 255, 218, 0.1);
+  border: 1px solid rgba(100, 255, 218, 0.25);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent-mint);
+  cursor: pointer;
+}
+
+/* Main Viewport Container */
+.app-container {
+  position: relative;
+  z-index: 10;
+  padding: 16px 16px calc(var(--nav-height) + 24px) 16px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* Tab Panels */
+.tab-content {
+  display: none;
+  animation: fadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Card Elements */
+.card {
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* PWA Install Banner */
+.install-banner {
+  background: linear-gradient(135deg, rgba(255, 114, 178, 0.15), rgba(189, 140, 255, 0.1));
+  border: 1px solid rgba(255, 114, 178, 0.3);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.install-banner-text h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.install-banner-text p {
+  font-size: 11px;
+  color: var(--text-soft);
+}
+
+.btn-install {
+  background: var(--accent-pink);
+  color: #100B14;
+  border: none;
+  border-radius: var(--radius-full);
+  padding: 7px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px var(--accent-glow);
+}
+
+/* Dashboard Quick Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.stat-box {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.stat-value.pink { color: var(--accent-pink); }
+.stat-value.mint { color: var(--accent-mint); }
+.stat-value.violet { color: var(--accent-violet); }
+.stat-value.amber { color: var(--accent-amber); }
+
+.stat-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+
+/* Focus Timer Styling */
+.timer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.timer-mode-selector {
+  display: flex;
+  gap: 8px;
+  background: var(--bg-card);
+  padding: 4px;
+  border-radius: var(--radius-full);
+  margin-bottom: 24px;
+  border: 1px solid var(--line);
+}
+
+.mode-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-soft);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mode-btn.active {
+  background: var(--accent-pink);
+  color: #100B14;
+  font-weight: 700;
+  box-shadow: 0 2px 8px var(--accent-glow);
+}
+
+.timer-circle-wrap {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  margin-bottom: 24px;
+}
+
+.timer-svg {
+  transform: rotate(-90deg);
+  width: 100%;
+  height: 100%;
+}
+
+.timer-bg-circle {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.06);
+  stroke-width: 10;
+}
+
+.timer-progress-circle {
+  fill: none;
+  stroke: var(--accent-pink);
+  stroke-width: 10;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.8s ease;
+  filter: drop-shadow(0 0 6px var(--accent-glow));
+}
+
+.timer-inner-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.timer-display {
+  font-size: 46px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-main);
+}
+
+.timer-sublabel {
+  font-size: 13px;
+  color: var(--accent-mint);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.timer-controls {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.btn-timer-primary {
+  background: linear-gradient(135deg, var(--accent-pink), #E63985);
+  color: #FFF;
+  border: none;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 16px var(--accent-glow);
+  transition: transform 0.15s ease;
+}
+
+.btn-timer-primary:active {
+  transform: scale(0.94);
+}
+
+.btn-timer-secondary {
+  background: var(--bg-card);
+  color: var(--text-soft);
+  border: 1px solid var(--line);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-timer-secondary:active {
+  transform: scale(0.92);
+}
+
+/* Filter Chips (Handbooks & Formulas) */
+.filter-scroll {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  margin-bottom: 14px;
+  scrollbar-width: none;
+}
+.filter-scroll::-webkit-scrollbar { display: none; }
+
+.filter-chip {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  color: var(--text-soft);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.filter-chip.active {
+  background: rgba(255, 114, 178, 0.18);
+  border-color: var(--accent-pink);
+  color: var(--accent-pink);
+  font-weight: 700;
+}
+
+/* Search Box */
+.search-box-wrap {
+  position: relative;
+  margin-bottom: 14px;
+}
+
+.search-input {
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 11px 14px 11px 38px;
+  color: var(--text-main);
+  font-size: 14px;
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: var(--accent-pink);
+  box-shadow: 0 0 0 2px rgba(255, 114, 178, 0.2);
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 14px;
+  pointer-events: none;
+}
+
+/* Handbook & Formula Cards */
+.item-card {
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  margin-bottom: 10px;
+  transition: transform 0.15s ease;
+}
+
+.item-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 6px;
+}
+
+.item-level-tag {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+}
+.item-level-tag.p11 { background: rgba(189, 140, 255, 0.15); color: var(--accent-violet); }
+.item-level-tag.p12 { background: rgba(255, 114, 178, 0.15); color: var(--accent-pink); }
+.item-level-tag.jee { background: rgba(100, 255, 218, 0.15); color: var(--accent-mint); }
+.item-level-tag.board { background: rgba(245, 203, 145, 0.15); color: var(--accent-amber); }
+
+.item-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+
+.item-desc {
+  font-size: 12px;
+  color: var(--text-soft);
+  margin-bottom: 10px;
+}
+
+.item-formula-box {
+  background: var(--bg-deep);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-sm);
+  padding: 10px;
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 13px;
+  color: var(--accent-mint);
+  white-space: pre-wrap;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.item-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-small {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  color: var(--text-soft);
+  border-radius: var(--radius-full);
+  padding: 5px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.btn-small.primary {
+  background: rgba(255, 114, 178, 0.15);
+  border-color: rgba(255, 114, 178, 0.35);
+  color: var(--accent-pink);
+}
+
+/* AI Doubt Solver View */
+.tutor-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.tutor-select {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  color: var(--text-main);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  font-size: 13px;
+  outline: none;
+}
+
+.tutor-textarea {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  color: var(--text-main);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  font-size: 14px;
+  min-height: 90px;
+  outline: none;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.tutor-textarea:focus {
+  border-color: var(--accent-pink);
+}
+
+.btn-solve {
+  background: linear-gradient(135deg, var(--accent-pink), var(--accent-violet));
+  color: #FFF;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.solution-box {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-top: 14px;
+  display: none;
+}
+
+/* Cloud Sync Panel */
+.sync-code-display {
+  background: var(--bg-deep);
+  border: 2px dashed rgba(255, 114, 178, 0.4);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  text-align: center;
+  margin: 14px 0;
+}
+
+.sync-pin {
+  font-size: 32px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  color: var(--accent-pink);
+  margin: 6px 0;
+}
+
+/* Bottom Navigation Bar */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--nav-height);
+  background: rgba(16, 11, 20, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 100;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.nav-item {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 6px 8px;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.nav-icon {
+  font-size: 19px;
+  line-height: 1;
+}
+
+.nav-item.active {
+  color: var(--accent-pink);
+}
+
+.nav-item.active .nav-icon {
+  transform: translateY(-1px);
+}
+
+/* PDF Modal Viewer */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  z-index: 200;
+  display: none;
+  flex-direction: column;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--bg-panel);
+  border-bottom: 1px solid var(--line);
+}
+
+.modal-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-main);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 70%;
+}
+
+.modal-close {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  color: var(--text-main);
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.modal-frame {
+  flex: 1;
+  width: 100%;
+  border: none;
+  background: #FFF;
+}
+
+
+/* Extra features styling: Shield, Ambient Audio & Custom Timer */
+.shield-banner {
+  background: linear-gradient(135deg, rgba(100, 255, 218, 0.12), rgba(189, 140, 255, 0.08));
+  border: 1px solid rgba(100, 255, 218, 0.3);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.shield-badge-active {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(100, 255, 218, 0.18);
+  color: var(--accent-mint);
+  border: 1px solid var(--accent-mint);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.chip-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+.blocked-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 114, 178, 0.12);
+  border: 1px solid rgba(255, 114, 178, 0.35);
+  color: var(--accent-pink);
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 600;
+}
+.blocked-chip .chip-icon {
+  font-size: 13px;
+}
+.ambient-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-top: 12px;
+}
+.ambient-btn {
+  background: var(--bg-deep);
+  border: 1px solid var(--line);
+  color: var(--text-soft);
+  padding: 10px 4px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.ambient-btn.active {
+  background: rgba(100, 255, 218, 0.15);
+  border-color: var(--accent-mint);
+  color: var(--accent-mint);
+  font-weight: 700;
+}
+.ambient-volume-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+  padding: 10px 14px;
+  background: var(--bg-deep);
+  border-radius: var(--radius-sm);
+}
+.ambient-slider {
+  flex: 1;
+  accent-color: var(--accent-mint);
+}
+.custom-timer-box {
+  display: none;
+  background: var(--bg-deep);
+  border: 1px solid var(--line-strong);
+  padding: 12px;
+  border-radius: var(--radius-md);
+  margin-bottom: 16px;
+  align-items: center;
+  gap: 10px;
+}
+.custom-timer-box.active {
+  display: flex;
+}
+.custom-timer-input {
+  width: 70px;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  color: #FFF;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  text-align: center;
+}
+.violation-card {
+  background: rgba(255, 75, 75, 0.08);
+  border: 1px solid rgba(255, 75, 75, 0.25);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  margin-top: 14px;
+}
+
+  </style>
 </head>
 <body>
 
@@ -26,49 +845,48 @@
       <div class="streak-pill" id="header-streak">
         <span>🔥</span> <span id="streak-count">7 Days</span>
       </div>
-      <div class="sync-pill" onclick="window.psApp.switchTab('sync')">
-        <span>⚡</span> <span>Sync</span>
+      <div class="sync-pill" id="sync-header-badge" onclick="window.psApp.switchTab('sync')">
+        <span id="sync-header-dot" style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#64FFDA;"></span>
+        <span id="sync-header-label">Synced</span>
       </div>
     </div>
   </header>
 
-  <!-- Main Viewport -->
-  <main class="app-container">
+  <!-- PWA Install Banner -->
+  <div id="install-banner" class="install-banner" style="display:none;">
+    <span>⚡ Add Padhai Saathi to your Home Screen for faster offline access</span>
+    <button class="btn-install" onclick="window.psApp.triggerPwaInstall()">Install</button>
+  </div>
 
-    <!-- PWA Install Banner -->
-    <div class="install-banner" id="install-banner" style="display:none;">
-      <div class="install-banner-text">
-        <h4>📲 Install Padhai Saathi App</h4>
-        <p>Zero risk, no Play Protect warnings, 100% free!</p>
-      </div>
-      <button class="btn-install" onclick="window.psApp.triggerPwaInstall()">Install App</button>
-    </div>
+  <!-- Main Scrollable App Container -->
+  <main class="app-body">
 
-    <!-- TAB 1: HOME / DASHBOARD -->
+    <!-- TAB 1: HOME DASHBOARD -->
     <section class="tab-content active" id="tab-home">
-      <div class="card" style="background: linear-gradient(135deg, #1C1224, #261730); border-color: rgba(255, 114, 178, 0.25);">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+      <!-- Greeting Card -->
+      <div class="card" style="margin-bottom:14px;">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start;">
           <div>
-            <div style="font-size:12px; color:var(--accent-mint); font-weight:700; text-transform:uppercase; letter-spacing:0.5px;">Welcome Back</div>
-            <div style="font-size:20px; font-weight:800; color:#FFF;" id="dash-user-name">Student</div>
+            <div style="font-size:12px; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px;">Student Dashboard</div>
+            <div style="font-size:20px; font-weight:800; color:var(--text-main); margin-top:2px;">
+              Welcome back, <span id="dash-user-name" style="color:var(--accent-pink);">aaravg</span> 👋
+            </div>
           </div>
-          <button class="btn-small primary" onclick="window.psApp.switchTab('focus')">
-            ⏱️ Start Study
-          </button>
+          <div class="badge-tag live-badge">● Active</div>
         </div>
-        <p style="font-size:13px; color:var(--text-soft); line-height:1.5;">
-          Padhai Saathi is running on mobile. Your daily streak and study minutes are automatically synchronized with your Desktop PC!
+        <p style="font-size:13px; color:var(--text-soft); margin-top:8px; line-height:1.5;">
+          All 20 Handbooks, Subject Formulas &amp; Focus Timer synced with your Desktop PC.
         </p>
       </div>
 
-      <!-- Quick Stats -->
-      <div class="stats-grid">
+      <!-- Quick Metrics Grid -->
+      <div class="metrics-grid">
         <div class="stat-box">
           <div class="stat-value pink" id="stat-focus-mins">0m</div>
           <div class="stat-label">Focus Today</div>
         </div>
         <div class="stat-box">
-          <div class="stat-value mint" id="stat-target-mins">180m</div>
+          <div class="stat-value mint" id="stat-target-mins">120m</div>
           <div class="stat-label">Daily Target</div>
         </div>
         <div class="stat-box">
@@ -98,12 +916,12 @@
           <div class="stat-box" style="cursor:pointer; text-align:left; padding:14px;" onclick="window.psApp.switchTab('focus')">
             <div style="font-size:22px; margin-bottom:4px;">⏱️</div>
             <div style="font-weight:700; font-size:14px; color:var(--text-main);">Focus Room</div>
-            <div style="font-size:11px; color:var(--text-muted);">Pomodoro &amp; Deep Work</div>
+            <div style="font-size:11px; color:var(--text-muted);">Pomodoro, Sounds &amp; Custom</div>
           </div>
-          <div class="stat-box" style="cursor:pointer; text-align:left; padding:14px;" onclick="window.psApp.switchTab('aitutor')">
-            <div style="font-size:22px; margin-bottom:4px;">✦</div>
-            <div style="font-weight:700; font-size:14px; color:var(--text-main);">AI Doubt Solver</div>
-            <div style="font-size:11px; color:var(--text-muted);">Step-by-step marking rubrics</div>
+          <div class="stat-box" style="cursor:pointer; text-align:left; padding:14px;" onclick="window.psApp.switchTab('shield')">
+            <div style="font-size:22px; margin-bottom:4px;">🛡️</div>
+            <div style="font-weight:700; font-size:14px; color:var(--text-main);">Guardian Shield</div>
+            <div style="font-size:11px; color:var(--accent-mint);" id="home-shield-status">Active Protection</div>
           </div>
         </div>
       </div>
@@ -118,18 +936,27 @@
             <button class="mode-btn active" data-mode="pomodoro">25m Pomodoro</button>
             <button class="mode-btn" data-mode="deep">50m Deep Work</button>
             <button class="mode-btn" data-mode="break">5m Break</button>
+            <button class="mode-btn" data-mode="custom">Custom</button>
           </div>
 
-          <!-- Animated Circular SVG Ring -->
+          <!-- Custom Timer Input Box (Shown when Custom is selected) -->
+          <div id="custom-timer-box" class="custom-timer-box">
+            <span style="font-size:13px;color:var(--text-soft);">Set Minutes:</span>
+            <input type="number" id="custom-minutes-input" class="custom-timer-input" min="1" max="360" value="45">
+            <button class="btn-small primary" onclick="window.psApp.applyCustomTimer()">Apply</button>
+          </div>
+
+          <!-- Animated Circular SVG Ring with explicit inline attributes so it NEVER renders black -->
           <div class="timer-circle-wrap">
             <svg class="timer-svg" viewBox="0 0 240 240">
-              <circle class="timer-bg-circle" cx="120" cy="120" r="105"></circle>
+              <circle class="timer-bg-circle" cx="120" cy="120" r="105" fill="none" stroke="rgba(255, 255, 255, 0.08)" stroke-width="10"></circle>
               <circle class="timer-progress-circle" id="timer-progress" cx="120" cy="120" r="105" 
-                      style="stroke-dasharray: 659.73; stroke-dashoffset: 0;"></circle>
+                      fill="none" stroke="#FF72B2" stroke-width="10" stroke-linecap="round"
+                      style="stroke-dasharray: 659.73; stroke-dashoffset: 0; filter: drop-shadow(0 0 8px rgba(255, 114, 178, 0.4));"></circle>
             </svg>
             <div class="timer-inner-text">
               <div class="timer-display" id="timer-display">25:00</div>
-              <div class="timer-sublabel">Focus Session</div>
+              <div class="timer-sublabel" id="timer-sublabel">Focus Session</div>
             </div>
           </div>
 
@@ -137,8 +964,39 @@
           <div class="timer-controls">
             <button class="btn-timer-secondary" id="btn-timer-reset" title="Reset Timer">↺</button>
             <button class="btn-timer-primary" id="btn-timer-play" title="Start/Pause">▶</button>
-            <button class="btn-timer-secondary" onclick="window.psApp.showToast('Audio chime enabled!')" title="Sound">🔔</button>
+            <button class="btn-timer-secondary" onclick="window.psApp.toggleAmbientSound()" id="btn-quick-sound" title="Ambient Sound">🎧</button>
           </div>
+        </div>
+      </div>
+
+      <!-- Ambient Focus Sound Player (Completely Offline Synthesizer) -->
+      <div class="card">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div class="card-title" style="margin-bottom:0;">🎧 Ambient Study Sounds (Offline)</div>
+          <span id="ambient-current-label" style="font-size:11px; color:var(--accent-mint);">Muted</span>
+        </div>
+        <div class="ambient-grid">
+          <button class="ambient-btn" data-sound="rain" onclick="window.psApp.selectAmbient('rain')">
+            <span style="font-size:18px;">🌧️</span>
+            <span>Rain</span>
+          </button>
+          <button class="ambient-btn" data-sound="forest" onclick="window.psApp.selectAmbient('forest')">
+            <span style="font-size:18px;">🌲</span>
+            <span>Forest</span>
+          </button>
+          <button class="ambient-btn" data-sound="ocean" onclick="window.psApp.selectAmbient('ocean')">
+            <span style="font-size:18px;">🌊</span>
+            <span>Ocean</span>
+          </button>
+          <button class="ambient-btn" data-sound="whitenoise" onclick="window.psApp.selectAmbient('whitenoise')">
+            <span style="font-size:18px;">📻</span>
+            <span>Focus</span>
+          </button>
+        </div>
+        <div class="ambient-volume-wrap">
+          <span style="font-size:13px; color:var(--text-muted);">🔊 Volume:</span>
+          <input type="range" min="0" max="100" value="50" class="ambient-slider" id="ambient-volume" oninput="window.psApp.setAmbientVolume(this.value)">
+          <button class="btn-small" onclick="window.psApp.stopAmbient()">Stop</button>
         </div>
       </div>
 
@@ -150,7 +1008,84 @@
       </div>
     </section>
 
-    <!-- TAB 3: 20 PDF HANDBOOKS -->
+    <!-- TAB 3: GUARDIAN SHIELD & APP BLOCKING POLICY -->
+    <section class="tab-content" id="tab-shield">
+      <div class="shield-banner">
+        <div>
+          <div style="font-size:17px; font-weight:800; color:var(--text-main);">🛡️ Guardian Shield Active</div>
+          <div style="font-size:12px; color:var(--text-muted); margin-top:2px;">Enforcing Owner &amp; Parent Policy</div>
+        </div>
+        <span class="shield-badge-active">● Active</span>
+      </div>
+
+      <!-- Anti-Cheat Status Card -->
+      <div class="card">
+        <div class="card-title">⚡ Anti-Cheat Focus Enforcement</div>
+        <p style="font-size:13px; color:var(--text-soft); line-height:1.5;">
+          When a study session is running, minimizing Padhai Saathi or switching to other apps (Instagram, YouTube, Games) will immediately pause the timer and log a violation to your parent's dashboard.
+        </p>
+        <div class="violation-card">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-weight:700; color:#FF7272; font-size:13px;">🚨 Distractions Recorded Today:</span>
+            <span id="shield-violations-count" style="font-size:18px; font-weight:800; color:#FF7272;">0</span>
+          </div>
+          <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">
+            Auto-synced to PC database (<span style="color:var(--accent-mint);">policy.sqlite</span>)
+          </div>
+        </div>
+      </div>
+
+      <!-- Blocked Websites List Card -->
+      <div class="card">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div class="card-title" style="margin-bottom:0;">🚫 Blocked Websites</div>
+          <span style="font-size:11px; color:var(--accent-pink);" id="blocked-sites-count">Active Rules</span>
+        </div>
+        <p style="font-size:12px; color:var(--text-muted); margin-top:6px;">
+          These domains cannot be opened during study hours:
+        </p>
+        <div class="chip-grid" id="blocked-sites-container">
+          <span class="blocked-chip"><span class="chip-icon">🚫</span> instagram.com</span>
+          <span class="blocked-chip"><span class="chip-icon">🚫</span> facebook.com</span>
+          <span class="blocked-chip"><span class="chip-icon">🚫</span> reddit.com</span>
+          <span class="blocked-chip"><span class="chip-icon">🚫</span> twitter.com</span>
+          <span class="blocked-chip"><span class="chip-icon">🚫</span> netflix.com</span>
+          <span class="blocked-chip"><span class="chip-icon">🚫</span> discord.com</span>
+        </div>
+      </div>
+
+      <!-- Blocked Apps Card -->
+      <div class="card">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div class="card-title" style="margin-bottom:0;">📱 Distraction Apps Restricted</div>
+          <span style="font-size:11px; color:var(--accent-amber);" id="blocked-apps-count">Policy Watch</span>
+        </div>
+        <p style="font-size:12px; color:var(--text-muted); margin-top:6px;">
+          Apps monitored under parent focus mode:
+        </p>
+        <div class="chip-grid" id="blocked-apps-container">
+          <span class="blocked-chip" style="color:var(--accent-amber);border-color:rgba(245,203,145,0.4);"><span class="chip-icon">🔒</span> YouTube</span>
+          <span class="blocked-chip" style="color:var(--accent-amber);border-color:rgba(245,203,145,0.4);"><span class="chip-icon">🔒</span> Instagram</span>
+          <span class="blocked-chip" style="color:var(--accent-amber);border-color:rgba(245,203,145,0.4);"><span class="chip-icon">🔒</span> Snapchat</span>
+          <span class="blocked-chip" style="color:var(--accent-amber);border-color:rgba(245,203,145,0.4);"><span class="chip-icon">🔒</span> FreeFire / BGMI</span>
+        </div>
+      </div>
+
+      <!-- Emergency Break Request Card -->
+      <div class="card">
+        <div class="card-title">☕ Emergency Break Request</div>
+        <p style="font-size:12px; color:var(--text-soft); line-height:1.5;">
+          Need a quick 5-minute breather before the next session? Send a direct break request to your parent:
+        </p>
+        <div style="display:flex; gap:8px; margin-top:10px;">
+          <input type="text" id="break-reason-input" placeholder="e.g. Completed 1 chapter of Physics..." 
+                 style="flex:1; background:var(--bg-card); border:1px solid var(--line); color:#FFF; font-size:13px; padding:8px 12px; border-radius:var(--radius-sm);">
+          <button class="btn-small primary" onclick="window.psApp.requestBreak()">Send Request</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: 20 PDF HANDBOOKS -->
     <section class="tab-content" id="tab-handbooks">
       <div class="card-title" style="margin-bottom:10px;">
         <span>📚 Official PDF Handbooks</span>
@@ -170,7 +1105,7 @@
       <div id="handbooks-list"></div>
     </section>
 
-    <!-- TAB 4: FORMULA HUB -->
+    <!-- TAB 5: FORMULA HUB -->
     <section class="tab-content" id="tab-formulas">
       <div class="card-title" style="margin-bottom:10px;">
         <span>⚡ Subject Formula Hub</span>
@@ -178,130 +1113,116 @@
       </div>
 
       <!-- Search Box -->
-      <div class="search-box-wrap">
-        <span class="search-icon">🔍</span>
-        <input type="text" id="formula-search" class="search-input" placeholder="Search formulas (e.g. Coulomb, Integration, Carnot)...">
+      <div class="search-wrap">
+        <input type="text" id="formula-search" class="search-input" placeholder="Search formulas, laws, theorems...">
       </div>
 
-      <!-- Subject Filter Chips -->
+      <!-- Filter Chips -->
       <div class="filter-scroll">
         <button class="filter-chip fm-chip active" data-filter="all">All Subjects</button>
-        <button class="filter-chip fm-chip" data-filter="maths">Mathematics</button>
-        <button class="filter-chip fm-chip" data-filter="physics">Physics</button>
-        <button class="filter-chip fm-chip" data-filter="chemistry">Chemistry</button>
-        <button class="filter-chip fm-chip" data-filter="biology">Biology</button>
+        <button class="filter-chip fm-chip" data-filter="physics">⚡ Physics</button>
+        <button class="filter-chip fm-chip" data-filter="chemistry">🧪 Chemistry</button>
+        <button class="filter-chip fm-chip" data-filter="mathematics">📐 Mathematics</button>
       </div>
 
       <!-- Formulas List -->
       <div id="formulas-list"></div>
     </section>
 
-    <!-- TAB 5: AI DOUBT SOLVER -->
+    <!-- TAB 6: AI TUTOR (MARKING SCHEME DOUBT SOLVER) -->
     <section class="tab-content" id="tab-aitutor">
       <div class="card">
-        <div class="card-title">✦ AI Question &amp; Doubt Solver</div>
-        <p style="font-size:12px; color:var(--text-soft); margin-bottom:12px;">
-          Type any derivation, concept doubt, or numerical to reveal the official step-marking breakdown.
+        <div class="card-title">✦ CBSE / JEE Marking-Scheme AI Doubt Solver</div>
+        <p style="font-size:13px; color:var(--text-soft); line-height:1.5; margin-bottom:12px;">
+          Type any textbook question, formula derivation, or conceptual doubt. Generates exact step-by-step marking rubrics (+1 Mark diagram, +1.5 Marks substitution, etc.).
         </p>
 
-        <div class="tutor-form">
-          <label style="font-size:12px; color:var(--text-muted); font-weight:700;">TARGET EXAM PATTERN:</label>
-          <select class="tutor-select" id="tutor-level">
-            <option value="CBSE Boards">CBSE Boards (Step-by-Step Marking)</option>
-            <option value="JEE Main">JEE Main (+4 / -1 Marking)</option>
-            <option value="JEE Advanced">JEE Advanced (Deep Analytical)</option>
-            <option value="NEET">NEET (High Yield Concept)</option>
+        <div style="margin-bottom:10px;">
+          <label style="font-size:12px; color:var(--text-muted); display:block; margin-bottom:4px;">Target Examination Pattern:</label>
+          <select id="tutor-level" class="search-input" style="padding:8px 12px; font-size:13px;">
+            <option value="CBSE Class 12 Boards (NCERT Step-by-Step)">CBSE Class 12 Boards (NCERT Step-by-Step)</option>
+            <option value="CBSE Class 11 Final Exams">CBSE Class 11 Final Exams</option>
+            <option value="JEE Main (Speed &amp; Elimination Trick)">JEE Main (Speed &amp; Elimination Trick)</option>
+            <option value="JEE Advanced (Multi-Concept Calculus)">JEE Advanced (Multi-Concept Calculus)</option>
+            <option value="NEET UG (NCERT High-Yield Fact)">NEET UG (NCERT High-Yield Fact)</option>
           </select>
-
-          <label style="font-size:12px; color:var(--text-muted); font-weight:700;">QUESTION / DOUBT:</label>
-          <textarea class="tutor-textarea" id="tutor-input" placeholder="E.g., State Gauss Law and derive electric field due to an infinite line charge..."></textarea>
-
-          <button class="btn-solve" onclick="window.psApp.solveDoubt()">
-            <span>✦</span> Solve with Step-by-Step Marking
-          </button>
         </div>
 
-        <div class="solution-box" id="tutor-solution">
+        <textarea id="tutor-input" class="search-input" rows="3" placeholder="e.g. State Gauss's Law and derive electric field of an infinite plane sheet..." style="resize:none; padding:12px;"></textarea>
+        
+        <button class="btn-small primary" style="width:100%; margin-top:10px; padding:12px; font-size:14px;" onclick="window.psApp.solveDoubt()">
+          ⚡ Generate Verified Solution
+        </button>
+
+        <!-- Solution Container -->
+        <div id="tutor-solution" style="display:none; margin-top:16px; padding:14px; background:var(--bg-deep); border-radius:var(--radius-sm); border:1px solid var(--line);">
           <div id="tutor-solution-text"></div>
         </div>
       </div>
     </section>
 
-    <!-- TAB 6: CLOUD SYNC & SETTINGS -->
-        <!-- TAB 6: BACKGROUND AUTO-SYNC (MATCHES DESKTOP EXE) -->
+    <!-- TAB 7: SYNC & ACCOUNTS (1-TIME SIGN IN, 15S AUTO-SYNC) -->
     <section class="tab-content" id="tab-sync">
-      <div class="card" style="border-color: rgba(100, 255, 218, 0.35); background: linear-gradient(135deg, rgba(25, 18, 30, 0.95), rgba(28, 22, 38, 0.95));">
-        <div class="card-title">
-          <span>⚡ Real-Time Auto-Syncing</span>
-          <span class="item-level-tag jee" id="panel-sync-status">🟢 Auto-Sync Active</span>
+      <!-- Direct APK Download Notification Card -->
+      <div class="card" style="background: linear-gradient(135deg, rgba(255,114,178,0.14), rgba(100,255,218,0.08)); border: 1px solid var(--accent-pink);">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <div style="font-size:15px; font-weight:800; color:var(--text-main);">📱 Standalone Android App</div>
+            <div style="font-size:12px; color:var(--text-muted); margin-top:2px;">Safe &amp; Free APK · No Play Protect Block</div>
+          </div>
+          <span class="badge-tag live-badge">v4.2.0</span>
         </div>
-        <p style="font-size:13px; color:var(--text-soft); line-height:1.6; margin-bottom:14px;">
-          Just like <strong>PadhaiSaathi.exe</strong> on your PC, this app runs a silent background heartbeat every 15 seconds. No repeated OTPs, no codes — sign in once, and study minutes, streaks, and targets stay synced forever!
+        <p style="font-size:12px; color:var(--text-soft); margin-top:8px; line-height:1.4;">
+          Direct native Android APK signed with official release certificate. 0 accessibility spyware permissions.
         </p>
-
-        <div style="background:var(--bg-deep); border:1px solid var(--line); border-radius:12px; padding:14px; margin-bottom:14px;">
-          <div style="display:flex; justify-content:space-between; margin-bottom:6px; font-size:12px;">
-            <span style="color:var(--text-muted);">Sync Server Address:</span>
-            <span style="color:var(--accent-mint); font-family:monospace;" id="current-server-display">http://192.168.1.11:5088</span>
-          </div>
-          <div style="display:flex; justify-content:space-between; margin-bottom:6px; font-size:12px;">
-            <span style="color:var(--text-muted);">Active Student Account:</span>
-            <span style="color:var(--accent-pink); font-weight:700;" id="current-user-display">aaravg</span>
-          </div>
-          <div style="display:flex; justify-content:space-between; font-size:12px;">
-            <span style="color:var(--text-muted);">Last Background Heartbeat:</span>
-            <span style="color:var(--text-main); font-family:monospace;" id="last-sync-time">Just now</span>
-          </div>
-        </div>
-
-        <button class="btn-solve" style="width:100%;" onclick="window.psApp.syncHeartbeat(); window.psApp.showToast('⚡ Auto-sync heartbeat executed!');">
-          🔄 Force Sync Now
-        </button>
-      </div>
-
-      <!-- Account Sign-in (1-Time Setup) -->
-      <div class="card">
-        <div class="card-title">👤 Account Login (One-Time Setup)</div>
-        <p style="font-size:12px; color:var(--text-soft); margin-bottom:12px;">
-          Log in with your student profile to link this phone with your Desktop PC database:
-        </p>
-
-        <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:14px;">
-          <input type="text" id="sync-input-server" class="search-input" style="padding-left:14px;" value="http://192.168.1.11:5088" placeholder="Server URL (e.g. http://192.168.1.11:5088)">
-          <input type="text" id="sync-input-user" class="search-input" style="padding-left:14px;" value="aaravg" placeholder="Username (e.g. aaravg)">
-          <input type="password" id="sync-input-pass" class="search-input" style="padding-left:14px;" value="Aarav@1234" placeholder="Password">
-          
-          <div style="display:flex; gap:10px;">
-            <button class="btn-install" style="flex:1; padding:12px; font-size:13px;" onclick="
-              const s = document.getElementById('sync-input-server').value;
-              const u = document.getElementById('sync-input-user').value;
-              const p = document.getElementById('sync-input-pass').value;
-              window.psApp.performLogin(u, p, s);
-            ">
-              ⚡ Sign In &amp; Auto-Sync
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Download Standalone APK Card -->
-      <div class="card" style="border-color: rgba(255, 114, 178, 0.35);">
-        <div class="card-title">
-          <span>📦 Standalone Android APK</span>
-          <span style="font-size:11px; color:var(--accent-mint);">v4.2.0</span>
-        </div>
-        <p style="font-size:13px; color:var(--text-soft); line-height:1.6; margin-bottom:14px;">
-          Want an actual <strong>.apk</strong> file instead of installing via Chrome? Download the release-signed APK below. Clean permissions, zero spyware, 100% Google Play Protect safe!
-        </p>
-        <a href="https://github.com/ishaannn104/padhai-saathi-website/releases/download/v4.2.0/PadhaiSaathi.apk" class="button button-primary download-button" style="width:100%; text-align:center; display:block; padding:12px;" download>
+        <a href="https://github.com/ishaannn104/padhai-saathi-website/releases/download/v4.2.0/PadhaiSaathi.apk" 
+           class="button button-primary download-button" 
+           style="width:100%; margin-top:10px; display:inline-block; text-align:center; padding:10px 14px; background:var(--accent-pink); color:#100B14; font-weight:800; border-radius:var(--radius-full); text-decoration:none;">
           ⬇ Download PadhaiSaathi.apk (Direct)
         </a>
+      </div>
+
+      <!-- Auto-Sync Connection Status Card -->
+      <div class="card">
+        <div class="card-title">🔄 Auto-Sync Engine (Desktop Parity)</div>
+        <p style="font-size:13px; color:var(--text-soft); line-height:1.5;">
+          Matches the desktop <span style="color:var(--accent-pink); font-family:monospace;">PadhaiSaathi.exe</span> engine. Logs in once and runs a 15-second background heartbeat to sync your focus minutes, streak, and daily targets automatically.
+        </p>
+
+        <div style="margin-top:14px; padding:12px; background:var(--bg-deep); border-radius:var(--radius-sm); border:1px solid var(--line);">
+          <div style="font-size:12px; color:var(--text-muted); margin-bottom:4px;">SYNC STATUS:</div>
+          <div id="panel-sync-status" style="font-weight:700; font-size:14px; color:var(--accent-mint); display:flex; align-items:center;">
+            <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#64FFDA;margin-right:6px;"></span>
+            Auto-Syncing Active · aaravg
+          </div>
+          <div style="font-size:11px; color:var(--text-muted); margin-top:6px;">
+            Last Heartbeat: <span id="last-sync-time" style="color:var(--text-main);">Just now</span> (Pings every 15s)
+          </div>
+        </div>
+
+        <!-- Credentials Form -->
+        <div style="margin-top:16px;">
+          <div style="font-size:13px; font-weight:700; color:var(--text-main); margin-bottom:8px;">Student Account Credentials</div>
+          
+          <label style="font-size:11px; color:var(--text-muted); display:block; margin-bottom:3px;">Parent Admin / Wi-Fi IP Server:</label>
+          <input type="text" id="sync-server-url" class="search-input" value="http://192.168.1.11:5088" style="padding:8px 12px; font-size:13px; margin-bottom:8px;">
+
+          <label style="font-size:11px; color:var(--text-muted); display:block; margin-bottom:3px;">Student Username:</label>
+          <input type="text" id="sync-username" class="search-input" value="aaravg" style="padding:8px 12px; font-size:13px; margin-bottom:8px;">
+
+          <label style="font-size:11px; color:var(--text-muted); display:block; margin-bottom:3px;">Password:</label>
+          <input type="password" id="sync-password" class="search-input" value="Aarav@1234" style="padding:8px 12px; font-size:13px; margin-bottom:12px;">
+
+          <button class="btn-small primary" style="width:100%; padding:10px; font-size:13px;" onclick="window.psApp.manualConnect()">
+            ⚡ Connect &amp; Auto-Sync Now
+          </button>
+        </div>
       </div>
     </section>
 
   </main>
 
-  <!-- Bottom Navigation Bar -->
+  <!-- Bottom Navigation Bar (7 Tabs, Balanced Mobile Layout) -->
   <nav class="bottom-nav">
     <button class="nav-item active" data-tab="home">
       <span class="nav-icon">⌂</span>
@@ -310,6 +1231,10 @@
     <button class="nav-item" data-tab="focus">
       <span class="nav-icon">⏱️</span>
       <span>Focus</span>
+    </button>
+    <button class="nav-item" data-tab="shield">
+      <span class="nav-icon">🛡️</span>
+      <span>Shield</span>
     </button>
     <button class="nav-item" data-tab="handbooks">
       <span class="nav-icon">📚</span>
@@ -321,7 +1246,7 @@
     </button>
     <button class="nav-item" data-tab="aitutor">
       <span class="nav-icon">✦</span>
-      <span>AI Tutor</span>
+      <span>Tutor</span>
     </button>
     <button class="nav-item" data-tab="sync">
       <span class="nav-icon">🔄</span>
@@ -329,7 +1254,7 @@
     </button>
   </nav>
 
-  <!-- Fullscreen In-App PDF Modal Viewer -->
+  <!-- PDF Fullscreen Modal Viewer -->
   <div class="modal-overlay" id="pdf-modal">
     <div class="modal-header">
       <div class="modal-title" id="modal-pdf-title">Handbook Viewer</div>
