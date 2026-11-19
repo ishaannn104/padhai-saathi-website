@@ -228,39 +228,74 @@
     </section>
 
     <!-- TAB 6: CLOUD SYNC & SETTINGS -->
+        <!-- TAB 6: BACKGROUND AUTO-SYNC (MATCHES DESKTOP EXE) -->
     <section class="tab-content" id="tab-sync">
-      <div class="card">
-        <div class="card-title">⚡ Desktop PC Pairing &amp; Cloud Sync</div>
-        <p style="font-size:13px; color:var(--text-soft); line-height:1.6;">
-          Padhai Saathi seamlessly pairs your Android phone with your Desktop PC. Your study streak, focus minutes, and handbooks stay synchronized.
+      <div class="card" style="border-color: rgba(100, 255, 218, 0.35); background: linear-gradient(135deg, rgba(25, 18, 30, 0.95), rgba(28, 22, 38, 0.95));">
+        <div class="card-title">
+          <span>⚡ Real-Time Auto-Syncing</span>
+          <span class="item-level-tag jee" id="panel-sync-status">🟢 Auto-Sync Active</span>
+        </div>
+        <p style="font-size:13px; color:var(--text-soft); line-height:1.6; margin-bottom:14px;">
+          Just like <strong>PadhaiSaathi.exe</strong> on your PC, this app runs a silent background heartbeat every 15 seconds. No repeated OTPs, no codes — sign in once, and study minutes, streaks, and targets stay synced forever!
         </p>
 
-        <div class="sync-code-display">
-          <div style="font-size:11px; color:var(--text-muted); font-weight:700; text-transform:uppercase;">Student Pairing PIN</div>
-          <div class="sync-pin">PS-9315</div>
-          <div style="font-size:12px; color:var(--accent-mint); font-weight:600;">Status: Synced with Local Profile</div>
+        <div style="background:var(--bg-deep); border:1px solid var(--line); border-radius:12px; padding:14px; margin-bottom:14px;">
+          <div style="display:flex; justify-content:space-between; margin-bottom:6px; font-size:12px;">
+            <span style="color:var(--text-muted);">Sync Server Address:</span>
+            <span style="color:var(--accent-mint); font-family:monospace;" id="current-server-display">http://192.168.1.11:5088</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; margin-bottom:6px; font-size:12px;">
+            <span style="color:var(--text-muted);">Active Student Account:</span>
+            <span style="color:var(--accent-pink); font-weight:700;" id="current-user-display">aaravg</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; font-size:12px;">
+            <span style="color:var(--text-muted);">Last Background Heartbeat:</span>
+            <span style="color:var(--text-main); font-family:monospace;" id="last-sync-time">Just now</span>
+          </div>
         </div>
 
-        <button class="btn-solve" style="width:100%; margin-top:8px;" onclick="window.psApp.showToast('⚡ Study stats successfully synchronized!')">
-          🔄 Sync Now with PC
+        <button class="btn-solve" style="width:100%;" onclick="window.psApp.syncHeartbeat(); window.psApp.showToast('⚡ Auto-sync heartbeat executed!');">
+          🔄 Force Sync Now
         </button>
       </div>
 
-      <!-- App Installation Info -->
+      <!-- Account Sign-in (1-Time Setup) -->
       <div class="card">
-        <div class="card-title">📲 Install App to Android</div>
-        <p style="font-size:13px; color:var(--text-soft); line-height:1.6; margin-bottom:12px;">
-          This app can be installed directly to your phone's home screen without downloading risky APKs or getting blocked by Google Play Protect:
+        <div class="card-title">👤 Account Login (One-Time Setup)</div>
+        <p style="font-size:12px; color:var(--text-soft); margin-bottom:12px;">
+          Log in with your student profile to link this phone with your Desktop PC database:
         </p>
-        <ol style="margin-left:20px; font-size:13px; color:var(--text-soft); line-height:1.8;">
-          <li>In Chrome/Brave/Samsung Internet, tap the <strong>three dots (⋮)</strong> at top-right.</li>
-          <li>Tap <strong>"Install app"</strong> or <strong>"Add to Home screen"</strong>.</li>
-          <li>The official Padhai Saathi icon will appear in your app drawer!</li>
-          <li>Works 100% offline, zero battery drain, zero Play Protect warnings.</li>
-        </ol>
-        <button class="btn-install" style="width:100%; margin-top:14px; padding:12px; font-size:14px;" onclick="window.psApp.triggerPwaInstall()">
-          ⚡ Tap to Install App
-        </button>
+
+        <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:14px;">
+          <input type="text" id="sync-input-server" class="search-input" style="padding-left:14px;" value="http://192.168.1.11:5088" placeholder="Server URL (e.g. http://192.168.1.11:5088)">
+          <input type="text" id="sync-input-user" class="search-input" style="padding-left:14px;" value="aaravg" placeholder="Username (e.g. aaravg)">
+          <input type="password" id="sync-input-pass" class="search-input" style="padding-left:14px;" value="Aarav@1234" placeholder="Password">
+          
+          <div style="display:flex; gap:10px;">
+            <button class="btn-install" style="flex:1; padding:12px; font-size:13px;" onclick="
+              const s = document.getElementById('sync-input-server').value;
+              const u = document.getElementById('sync-input-user').value;
+              const p = document.getElementById('sync-input-pass').value;
+              window.psApp.performLogin(u, p, s);
+            ">
+              ⚡ Sign In &amp; Auto-Sync
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Download Standalone APK Card -->
+      <div class="card" style="border-color: rgba(255, 114, 178, 0.35);">
+        <div class="card-title">
+          <span>📦 Standalone Android APK</span>
+          <span style="font-size:11px; color:var(--accent-mint);">v4.2.0</span>
+        </div>
+        <p style="font-size:13px; color:var(--text-soft); line-height:1.6; margin-bottom:14px;">
+          Want an actual <strong>.apk</strong> file instead of installing via Chrome? Download the release-signed APK below. Clean permissions, zero spyware, 100% Google Play Protect safe!
+        </p>
+        <a href="https://github.com/ishaannn104/padhai-saathi-website/releases/download/v4.2.0/PadhaiSaathi.apk" class="button button-primary download-button" style="width:100%; text-align:center; display:block; padding:12px;" download>
+          ⬇ Download PadhaiSaathi.apk (Direct)
+        </a>
       </div>
     </section>
 
