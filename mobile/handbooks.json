@@ -1,0 +1,202 @@
+[
+  {
+    "id": "p11",
+    "title": "Class 11 Physics Formula Handbook",
+    "subject": "Physics",
+    "level": "Class 11",
+    "filename": "Class11_Physics_Formula_Handbook.pdf",
+    "description": "Comprehensive Class 11 Physics formulas: Kinematics, Dynamics, Work-Energy, Rotation, Gravitation, Fluids, Heat & Waves.",
+    "pages": 14,
+    "topics": "Mechanics, Rotational Motion, Fluids, Thermodynamics, SHM, Waves"
+  },
+  {
+    "id": "c11",
+    "title": "Class 11 Chemistry Quick Revision Handbook",
+    "subject": "Chemistry",
+    "level": "Class 11",
+    "filename": "Class11_Chemistry_Handbook.pdf",
+    "description": "High-yield Class 11 Chemistry: Mole concept, Atomic structure, Periodic trends, Bonding, Thermodynamics, Equilibrium, Hydrocarbons.",
+    "pages": 16,
+    "topics": "Physical, Inorganic, Organic Chemistry"
+  },
+  {
+    "id": "m11",
+    "title": "Class 11 Mathematics Formula Compendium",
+    "subject": "Maths",
+    "level": "Class 11",
+    "filename": "Class11_Maths_Handbook.pdf",
+    "description": "All Class 11 Maths formulas: Trigonometry, Complex Numbers, Sequences, Conic Sections, P&C, Binomial, Limits & Derivatives.",
+    "pages": 15,
+    "topics": "Algebra, Trigonometry, Coordinate Geometry, Calculus"
+  },
+  {
+    "id": "b11",
+    "title": "Class 11 Biology Core Revision Guide",
+    "subject": "Biology",
+    "level": "Class 11",
+    "filename": "Class11_Biology_Handbook.pdf",
+    "description": "NCERT Class 11 Biology: Cell Biology, Biomolecules, Plant Physiology (Photosynthesis, Respiration), Human Physiology (RAAS, ECG).",
+    "pages": 12,
+    "topics": "Cell Biology, Plant & Human Physiology"
+  },
+  {
+    "id": "p12",
+    "title": "Class 12 Physics Complete Formula & Derivations",
+    "subject": "Physics",
+    "level": "Class 12",
+    "filename": "Class12_Physics_Handbook.pdf",
+    "description": "Class 12 Physics: Electrostatics, Capacitance, Current Electricity, Biot-Savart, EMI, AC, Ray & Wave Optics, Modern Physics.",
+    "pages": 18,
+    "topics": "Electrostatics, Magnetism, Optics, Modern Physics"
+  },
+  {
+    "id": "c12",
+    "title": "Class 12 Chemistry Reactions & Formula Compendium",
+    "subject": "Chemistry",
+    "level": "Class 12",
+    "filename": "Class12_Chemistry_Handbook.pdf",
+    "description": "Class 12 Chemistry: Solutions, Electrochemistry, Kinetics, Coordination Compounds, All Named Organic Reactions (Aldol, Cannizzaro, Sandmeyer).",
+    "pages": 16,
+    "topics": "Solutions, Electrochemistry, Kinetics, Coordination, Named Reactions"
+  },
+  {
+    "id": "m12",
+    "title": "Class 12 Mathematics Formula & Shortcut Cheatsheet",
+    "subject": "Maths",
+    "level": "Class 12",
+    "filename": "Class12_Maths_Handbook.pdf",
+    "description": "Class 12 Maths: Relations, Inverse Trig, Matrices, Derivatives, Integrals (King's Property), D.E., Vectors, 3D Geometry, Bayes' Theorem.",
+    "pages": 16,
+    "topics": "Matrices, Calculus, Vectors, 3D Geometry, Probability"
+  },
+  {
+    "id": "b12",
+    "title": "Class 12 Biology Quick Revision & Diagram Guide",
+    "subject": "Biology",
+    "level": "Class 12",
+    "filename": "Class12_Biology_Handbook.pdf",
+    "description": "Class 12 Biology: Reproduction, Genetics & DNA Replication, Lac Operon, Biotechnology (PCR, rDNA), Ecology.",
+    "pages": 14,
+    "topics": "Genetics, Molecular Biology, Biotechnology"
+  },
+  {
+    "id": "jee",
+    "title": "JEE Main & Advanced High-Yield Formula Sheet",
+    "subject": "Maths",
+    "level": "JEE Main & Advanced",
+    "filename": "JEE_Formula_CheatSheet.pdf",
+    "description": "Crucial formulas, shortcuts, and analytical methods for JEE Main & JEE Advanced in Physics, Chemistry, and Mathematics.",
+    "pages": 20,
+    "topics": "JEE Main, JEE Advanced, High-Yield Shortcuts, Elimination Tricks"
+  },
+  {
+    "id": "eng",
+    "title": "CBSE English Writing Skills & Poetic Devices Guide",
+    "subject": "English",
+    "level": "Class 11 & 12",
+    "filename": "English_Writing_Formats_Guide.pdf",
+    "description": "CBSE standard formats: Notice Writing with Box, Letter to Editor, Job Application with Bio-Data, Invitations, Poetic Devices.",
+    "pages": 10,
+    "topics": "Notice Writing, Formal Letters, Invitations, Poetic Devices"
+  },
+  {
+    "id": "jm_phy",
+    "title": "JEE Main Physics Master Formula Handbook",
+    "subject": "Physics",
+    "level": "JEE Main",
+    "filename": "JEE_Main_Physics_Handbook.pdf",
+    "description": "NTA JEE Main high-frequency formulas: Projectile relations, rolling on inclines, gravitation potential, LCR resonance, wave optics shift.",
+    "pages": 22,
+    "topics": "Mechanics, Rotation, SHM, Electromagnetism, AC, Optics, Modern Physics"
+  },
+  {
+    "id": "jm_chem",
+    "title": "JEE Main Chemistry Master Compendium",
+    "subject": "Chemistry",
+    "level": "JEE Main",
+    "filename": "JEE_Main_Chemistry_Handbook.pdf",
+    "description": "JEE Main Physical, Inorganic & Organic: van der Waals critical constants, kinetics shortcuts, CFT splitting, distinction tests.",
+    "pages": 20,
+    "topics": "Thermodynamics, Kinetics, Periodic Trends, Coordination, Organic Tests"
+  },
+  {
+    "id": "jm_math",
+    "title": "JEE Main Mathematics Speed Cheatsheet",
+    "subject": "Maths",
+    "level": "JEE Main",
+    "filename": "JEE_Main_Maths_Handbook.pdf",
+    "description": "JEE Main high-speed shortcuts: Newton's sums for roots, conic director circles, 1^infinity limit rule, Leibniz integral differentiation, 3D skew lines.",
+    "pages": 22,
+    "topics": "Algebra, Conic Sections, Calculus, Vectors & 3D, Probability"
+  },
+  {
+    "id": "jm_pyq",
+    "title": "JEE Main High-Yield PYQ Blueprint & Scoring Strategy",
+    "subject": "Exam Strategy",
+    "level": "JEE Main",
+    "filename": "JEE_Main_PYQ_Blueprint.pdf",
+    "description": "NTA chapter weightage matrix (2024-2026), top recurring question archetypes, 3-round exam attempt method, negative marking elimination traps.",
+    "pages": 15,
+    "topics": "Weightage, 3-Round Strategy, Time Management, Trap Avoidance"
+  },
+  {
+    "id": "ja_phy",
+    "title": "JEE Advanced Physics Deep Concepts & Mechanics",
+    "subject": "Physics",
+    "level": "JEE Advanced",
+    "filename": "JEE_Advanced_Physics_Deep_Concepts.pdf",
+    "description": "Advanced multi-concept problem blueprints: Variable mass rocket propulsion, raindrop accretion, ICR rolling on accelerating planks, Coriolis force.",
+    "pages": 24,
+    "topics": "Rocket Dynamics, Constrained Rotation, Coriolis, Maxwell Displacement Current"
+  },
+  {
+    "id": "ja_chem",
+    "title": "JEE Advanced Chemistry Mechanisms & Stereochemistry",
+    "subject": "Chemistry",
+    "level": "JEE Advanced",
+    "filename": "JEE_Advanced_Chemistry_Mechanisms.pdf",
+    "description": "In-depth organic mechanisms: Pinacol-Pinacolone migratory aptitude, Wagner-Meerwein ring expansions, E2 anti-periplanar chair conformations, Jahn-Teller distortion.",
+    "pages": 22,
+    "topics": "Rearrangements, Stereochemistry, Cyclohexane Conformations, Jahn-Teller"
+  },
+  {
+    "id": "ja_math",
+    "title": "JEE Advanced Mathematics Mastery & Inequalities",
+    "subject": "Maths",
+    "level": "JEE Advanced",
+    "filename": "JEE_Advanced_Maths_Mastery.pdf",
+    "description": "Advanced analytical methods: Definite integrals as Riemann sums, Cauchy-Schwarz & AM-GM-HM chains, Argand plane loci (Apollonius circles, ellipses).",
+    "pages": 24,
+    "topics": "Riemann Sums, Inequalities, Complex Loci, Exact Differential Equations"
+  },
+  {
+    "id": "cbse_der12",
+    "title": "CBSE Class 12 Physics 5-Marker Derivations Master Guide",
+    "subject": "Physics",
+    "level": "Boards Special",
+    "filename": "CBSE_Class12_Physics_5Marker_Derivations.pdf",
+    "description": "Complete step-by-step 5-marker derivations with official CBSE step markings: Axial/Equatorial dipole, dielectric capacitor, Lens Maker, Telescope, YDSE fringe width.",
+    "pages": 20,
+    "topics": "5-Marker Derivations, Ray Diagrams, Proofs, Marking Scheme"
+  },
+  {
+    "id": "cbse_rxn12",
+    "title": "CBSE Class 12 Chemistry 28 Named Reactions Compendium",
+    "subject": "Chemistry",
+    "level": "Boards Special",
+    "filename": "CBSE_Class12_Chemistry_Named_Reactions.pdf",
+    "description": "All 28 official NCERT named reactions: Sandmeyer, Kolbe, Reimer-Tiemann, Rosenmund, Aldol, Cannizzaro, Clemmensen, Gabriel Phthalimide, Hoffmann Bromamide.",
+    "pages": 18,
+    "topics": "Named Reactions, Conditions, Electrophiles, Conversion Steps"
+  },
+  {
+    "id": "cbse_der11",
+    "title": "CBSE Class 11 Core Exam Derivations Handbook",
+    "subject": "Physics",
+    "level": "Boards Special",
+    "filename": "CBSE_Class11_Final_Exam_Derivations.pdf",
+    "description": "Class 11 core 3-marker & 5-marker derivations: Calculus equations of motion, banking of roads with friction, Bernoulli's theorem, terminal velocity by Stokes' Law.",
+    "pages": 16,
+    "topics": "Equations of Motion, Banking, Bernoulli, Terminal Velocity, Carnot Engine"
+  }
+]
