@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setNavigationBarColor(0xFF100B14);
 
         mWebView = new WebView(this);
+        mWebView.setBackgroundColor(0xFF100B14); // Prevent any white flash
         setContentView(mWebView);
 
         WebSettings settings = mWebView.getSettings();
@@ -46,6 +47,21 @@ public class MainActivity extends AppCompatActivity {
         mWebView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                if (url != null) {
+                    String lower = url.toLowerCase();
+                    if (lower.contains("instagram.com") || lower.contains("facebook.com") ||
+                        lower.contains("tiktok.com") || lower.contains("twitter.com") ||
+                        lower.contains("x.com") || lower.contains("reddit.com") ||
+                        lower.contains("netflix.com") || lower.contains("discord.com")) {
+                        
+                        new androidx.appcompat.app.AlertDialog.Builder(MainActivity.this)
+                            .setTitle("🛡️ Guardian Shield: Access Blocked")
+                            .setMessage("Access to this website is restricted during study hours by parent policy. Stay focused on your syllabus!")
+                            .setPositiveButton("Back to Study", null)
+                            .show();
+                        return true;
+                    }
+                }
                 view.loadUrl(url);
                 return true;
             }
