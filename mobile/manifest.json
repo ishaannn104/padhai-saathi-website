@@ -1,0 +1,61 @@
+{
+  "name": "Padhai Saathi — Student Companion",
+  "short_name": "Padhai Saathi",
+  "description": "The ultimate distraction-free study companion, formula hub, 20 vector handbooks, and AI tutor for Class 11, 12, JEE & Boards.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#100B14",
+  "theme_color": "#100B14",
+  "icons": [
+    {
+      "src": "./icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "productivity"],
+  "shortcuts": [
+    {
+      "name": "Focus Timer",
+      "short_name": "Focus",
+      "description": "Start a 25-minute Pomodoro study session",
+      "url": "./index.html#focus",
+      "icons": [{ "src": "./icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "20 Handbooks",
+      "short_name": "Handbooks",
+      "description": "Read all 20 official PDF study handbooks",
+      "url": "./index.html#handbooks",
+      "icons": [{ "src": "./icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Formula Hub",
+      "short_name": "Formulas",
+      "description": "Quickly look up math, physics, and chemistry formulas",
+      "url": "./index.html#formulas",
+      "icons": [{ "src": "./icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "AI Doubt Solver",
+      "short_name": "AI Tutor",
+      "description": "Step-by-step doubt solver and question generator",
+      "url": "./index.html#aitutor",
+      "icons": [{ "src": "./icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}
