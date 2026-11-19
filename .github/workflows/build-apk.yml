@@ -5,6 +5,9 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -47,8 +50,9 @@ jobs:
           if [ -n "$OLD_ASSET_ID" ] && [ "$OLD_ASSET_ID" != "null" ]; then
             curl -X DELETE -H "Authorization: token $GITHUB_TOKEN" "https://api.github.com/repos/${{ github.repository }}/releases/assets/$OLD_ASSET_ID"
           fi
+          UPLOAD_URL="https://uploads.github.com/repos/${{ github.repository }}/releases/$REL_ID/assets?name=PadhaiSaathi.apk"
           curl -H "Authorization: token $GITHUB_TOKEN" -H "Content-Type: application/vnd.android.package-archive" \
                --data-binary @PadhaiSaathi.apk \
-               "https://uploads.github.com/repos/${{ github.repository }}/releases/$REL_ID/assets?name=PadhaiSaathi.apk"
+               "$UPLOAD_URL"
           echo "PadhaiSaathi.apk successfully uploaded to Release v4.2.0!"
         fi
