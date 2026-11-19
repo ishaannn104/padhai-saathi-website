@@ -1,0 +1,498 @@
+[
+  {
+    "subject": "Maths",
+    "topic": "Sets & Relations",
+    "title": "Cartesian Product & Relations",
+    "formula": "n(A \u00d7 B) = n(A) \u00b7 n(B)\nTotal subsets of A = 2\u207f, Total relations from A to B = 2^(n(A)\u00b7n(B))\nn(A \u222a B) = n(A) + n(B) - n(A \u2229 B)\nn(A \u222a B \u222a C) = n(A) + n(B) + n(C) - n(A\u2229B) - n(B\u2229C) - n(A\u2229C) + n(A\u2229B\u2229C)",
+    "notes": "A relation R is reflexive if (a,a) \u2208 R, symmetric if (a,b)\u2208R \u21d2 (b,a)\u2208R, transitive if (a,b),(b,c)\u2208R \u21d2 (a,c)\u2208R. An equivalence relation satisfies all three.",
+    "level": "Class 11"
+  },
+  {
+    "subject": "Maths",
+    "topic": "Trigonometric Functions",
+    "title": "Compound & Multiple Angles",
+    "formula": "sin(A \u00b1 B) = sin A cos B \u00b1 cos A sin B\ncos(A \u00b1 B) = cos A cos B \u2213 sin A sin B\ntan(A \u00b1 B) = (tan A \u00b1 tan B) / (1 \u2213 tan A tan B)\nsin 2A = 2sin A cos A = (2tan A)/(1 + tan\u00b2A)\ncos 2A = cos\u00b2A - sin\u00b2A = 2cos\u00b2A - 1 = 1 - 2sin\u00b2A = (1 - tan\u00b2A)/(1 + tan\u00b2A)\ntan 2A = (2tan A)/(1 - tan\u00b2A)",
+    "notes": "Values of sin 15\u00b0 = (\u221a6 - \u221a2)/4, cos 15\u00b0 = (\u221a6 + \u221a2)/4, tan 15\u00b0 = 2 - \u221a3. sin 18\u00b0 = (\u221a5 - 1)/4, cos 36\u00b0 = (\u221a5 + 1)/4.",
+    "level": "Class 11"
+  },
+  {
+    "subject": "Maths",
+    "topic": "Trigonometric Functions",
+    "title": "Transformation & Triple Angle Formulas",
+    "formula": "sin C + sin D = 2 sin((C+D)/2) cos((C-D)/2)\nsin C - sin D = 2 cos((C+D)/2) sin((C-D)/2)\ncos C + cos D = 2 cos((C+D)/2) cos((C-D)/2)\ncos C - cos D = -2 sin((C+D)/2) sin((C-D)/2)\nsin 3A = 3sin A - 4sin\u00b3A\ncos 3A = 4cos\u00b3A - 3cos A\ntan 3A = (3tan A - tan\u00b3A) / (1 - 3tan\u00b2A)",
+    "notes": "Essential for converting product of trigonometric functions into sums/differences for integration and algebraic simplification.",
+    "level": "Class 11"
+  },
+  {
+    "subject": "Maths",
+    "topic": "Complex Numbers",
+    "title": "Modulus, Argument & Polar Form",
+    "formula": "z = x + iy   \u21d2   |z| = \u221a(x\u00b2 + y\u00b2)\nConjugate: z\u0304 = x - iy,   z \u00b7 z\u0304 = |z|\u00b2\nPolar Form: z = r(cos \u03b8 + i sin \u03b8) = r e^(i\u03b8)\nEuler: e^(i\u03b8) = cos \u03b8 + i sin \u03b8,   i\u00b2 = -1, i\u00b3 = -i, i\u2074 = 1",
+    "notes": "Argument \u03b8 = tan\u207b\u00b9|y/x| placed in correct quadrant. For ax\u00b2 + bx + c = 0 with D < 0, roots are x = (-b \u00b1 i\u221a(4ac - b\u00b2)) / (2a).",
+    "level": "Class 11"
+  },
+  {
+    "subject": "Maths",
+    "topic": "Quadratic Equations",
+    "title": "Roots & Nature of Discriminant",
+    "formula": "x = (-b \u00b1 \u221a(b\u00b2 - 4ac)) / (2a)\nSum of roots: \u03b1 + \u03b2 = -b/a,   Product of roots: \u03b1\u03b2 = c/a\nEquation: x\u00b2 - (Sum)x + (Product) = 0",
+    "notes": "D = b\u00b2 - 4ac. If D > 0: Real & Distinct; D = 0: Real & Equal (x = -b/2a); D < 0: Complex conjugate pair. If a,b,c are rational and D not a perfect square: conjugate surds.",
+    "level": "Class 11"
+  },
+  {
+    "subject": "Maths",
+    "topic": "Permutations & Combinations",
+    "title": "Arrangements & Selections",
+    "formula": "\u207fP\u1d63 = n! / (n - r)!\n\u207fC\u1d63 = n! / (r! \u00b7 (n - r)!)\n\u207fC\u1d63 = \u207fC_{n-r}\nPascal Identity: \u207fC\u1d63 + \u207fC_{r-1} = \u207f\u207a\u00b9C\u1d63\nTotal selections from n items: \u207fC\u2080 + \u207fC\u2081 + ... + \u207fC\u2099 = 2\u207f",
+    "notes": "Arrangement of n items where p are of one kind, q of another: n! / (p! \u00b7 q!). Circular permutations of n distinct items: (n - 1)!.",
+    "level": "Class 11"
+  },
+  {
+    "subject": "Maths",
+    "topic": "Binomial Theorem",
+    "title": "General & Middle Term",
+    "formula": "(a + b)\u207f = \u03a3_{r=0}^{n} \u207fC\u1d63 a\u207f\u207b\u02b3 b\u02b3\nGeneral Term: T_{r+1} = \u207fC\u1d63 a\u207f\u207b\u02b3 b\u02b3\nMiddle Term: If n is even, term is T_{(n/2)+1}. If n is odd, terms are T_{(n+1)/2} and T_{(n+3)/2}.",
+    "notes": "Number of terms in (a + b)\u207f is n + 1. Sum of coefficients in (1 + x)\u207f is 2\u207f. Ratio of consecutive terms: T_{r+1} / T\u1d63 = ((n - r + 1) / r) \u00b7 (b / a).",
+    "level": "Class 11"
+  },
+  {
+    "subject": "Maths",
+    "topic": "Sequences & Series",
+    "title": "AP, GP & Special Sums",
+    "formula": "AP: a\u2099 = a + (n - 1)d,   S\u2099 = (n/2)[2a + (n - 1)d] = (n/2)(a + l)\nGP: a\u2099 = a \u00b7 r\u207f\u207b\u00b9,   S\u2099 = a(1 - r\u207f) / (1 - r),   S_\u221e = a / (1 - r)  (|r| < 1)\n\u03a3n = n(n + 1)/2\n\u03a3n\u00b2 = n(n + 1)(2n + 1)/6\n\u03a3n\u00b3 = [n(n + 1)/2]\u00b2",
+    "notes": "Arithmetic Mean A = (a + b)/2, Geometric Mean G = \u221a(ab). For positive real numbers: A \u2265 G.",
+    "level": "Class 11"
+  },
+  {
+    "subject": "Maths",
+    "topic": "Straight Lines",
+    "title": "Forms of Equation & Angle",
+    "formula": "Slope-Intercept: y = mx + c\nPoint-Slope: y - y\u2081 = m(x - x\u2081)\nTwo-Point: (y - y\u2081) / (y\u2082 - y\u2081) = (x - x\u2081) / (x\u2082 - x\u2081)\nIntercept Form: x/a + y/b = 1\nPerpendicular Distance from (x\u2080,y\u2080) to Ax + By + C = 0: d = |Ax\u2080 + By\u2080 + C| / \u221a(A\u00b2 + B\u00b2)\nAngle between two lines: tan \u03b8 = |(m\u2082 - m\u2081) / (1 + m\u2081m\u2082)|",
+    "notes": "Lines are parallel if m\u2081 = m\u2082. Lines are perpendicular if m\u2081 \u00b7 m\u2082 = -1. Distance between parallel lines: d = |C\u2081 - C\u2082| / \u221a(A\u00b2 + B\u00b2).",
+    "level": "Class 11"
+  },
+  {
+    "subject": "Maths",
+    "topic": "Conic Sections",
+    "title": "Circle, Parabola, Ellipse & Hyperbola",
+    "formula": "Circle: (x - h)\u00b2 + (y - k)\u00b2 = r\u00b2\nParabola (y\u00b2 = 4ax): Focus (a,0), Directrix x = -a, Latus Rectum = 4a\nEllipse (x\u00b2/a\u00b2 + y\u00b2/b\u00b2 = 1, a > b): b\u00b2 = a\u00b2(1 - e\u00b2), Foci (\u00b1ae, 0), Latus Rectum = 2b\u00b2/a\nHyperbola (x\u00b2/a\u00b2 - y\u00b2/b\u00b2 = 1): b\u00b2 = a\u00b2(e\u00b2 - 1), Foci (\u00b1ae, 0), Latus Rectum = 2b\u00b2/a",
+    "notes": "Eccentricity e = c/a: Circle e = 0, Parabola e = 1, Ellipse e < 1, Hyperbola e > 1. Rectangular hyperbola has e = \u221a2.",
+    "level": "Class 11"
+  },
+  {
+    "subject": "Maths",
+    "topic": "Limits & Derivatives",
+    "title": "Standard Limits & First Principle",
+    "formula": "lim_{x\u21920} (sin x / x) = 1,   lim_{x\u21920} (tan x / x) = 1\nlim_{x\u21920} (e\u02e3 - 1) / x = 1,   lim_{x\u21920} (ln(1 + x) / x) = 1\nlim_{x\u2192a} (x\u207f - a\u207f) / (x - a) = n \u00b7 a\u207f\u207b\u00b9\nFirst Principle: f'(x) = lim_{h\u21920} [f(x + h) - f(x)] / h\nProduct: (uv)' = u'v + uv',   Quotient: (u/v)' = (u'v - uv') / v\u00b2",
+    "notes": "Standard derivatives: d/dx[x\u207f] = nx\u207f\u207b\u00b9, d/dx[sin x] = cos x, d/dx[cos x] = -sin x, d/dx[tan x] = sec\u00b2x, d/dx[sec x] = sec x tan x, d/dx[e\u02e3] = e\u02e3, d/dx[ln x] = 1/x.",
+    "level": "Class 11"
+  },
+  {
+    "subject": "Maths",
+    "topic": "Statistics & Probability",
+    "title": "Variance, Standard Deviation & Axioms",
+    "formula": "Mean: x\u0304 = (\u03a3x\u1d62) / n = (\u03a3f\u1d62x\u1d62) / N\nVariance: \u03c3\u00b2 = (\u03a3(x\u1d62 - x\u0304)\u00b2) / n = (\u03a3x\u1d62\u00b2 / n) - (x\u0304)\u00b2\nStandard Deviation: \u03c3 = \u221a(Variance)\nCoefficient of Variation: C.V. = (\u03c3 / x\u0304) \u00b7 100%\nProbability: P(A \u222a B) = P(A) + P(B) - P(A \u2229 B)",
+    "notes": "For mutually exclusive events: P(A \u2229 B) = 0 \u21d2 P(A \u222a B) = P(A) + P(B). A series with lower C.V. is more consistent/stable.",
+    "level": "Class 11"
+  },
+  {
+    "subject": "Physics",
+    "topic": "Units & Measurements",
+    "title": "Dimensions, Errors & Vernier",
+    "formula": "Principle of Homogeneity: Dimensions on LHS = Dimensions on RHS\nAbsolute Error: \u0394a\u1d62 = |a_mean - a\u1d62|\nRelative Error = \u0394a_mean / a_mean,   Percentage Error = (\u0394a_mean / a_mean) \u00b7 100%\nPropagation: Z = A \u00b7 B \u21d2 \u0394Z/Z = \u0394A/A + \u0394B/B;  Z = A\u207f \u21d2 \u0394Z/Z = n \u00b7 (\u0394A/A)\nLeast Count: Vernier = 1 MSD - 1 VSD; Screw Gauge = Pitch / Total circular scale divisions",
+    "notes": "Dimensions of Planck constant h: [ML\u00b2T\u207b\u00b9], Gravitational constant G: [M\u207b\u00b9L\u00b3T\u207b\u00b2], Viscosity \u03b7: [ML\u207b\u00b9T\u207b\u00b9], Surface tension T: [MT\u207b\u00b2].",
+    "level": "Class 11"
+  },
+  {
+    "subject": "Physics",
+    "topic": "Kinematics",
+    "title": "1D Motion & Projectile Motion",
+    "formula": "v = u + at,   s = ut + \u00bdat\u00b2,   v\u00b2 = u\u00b2 + 2as\ns_nth = u + \u00bda(2n - 1)\nProjectile Motion:\nTime of Flight: T = (2u sin \u03b8) / g\nMaximum Height: H = (u\u00b2 sin\u00b2\u03b8) / (2g)\nHorizontal Range: R = (u\u00b2 sin 2\u03b8) / g\nTrajectory Equation: y = x tan \u03b8 - (g x\u00b2) / (2u\u00b2 cos\u00b2\u03b8)",
+    "notes": "Maximum range occurs at \u03b8 = 45\u00b0: R_max = u\u00b2/g. Range is equal for complementary angles \u03b8 and (90\u00b0 - \u03b8).",
+    "level": "Class 11"
+  },
+  {
+    "subject": "Physics",
+    "topic": "Laws of Motion",
+    "title": "Force, Friction & Banking",
+    "formula": "Newton's 2nd Law: F\u20d7 = dp\u20d7 / dt = m a\u20d7\nImpulse: J\u20d7 = F\u20d7_avg \u00b7 \u0394t = \u0394p\u20d7\nStatic Friction: f_s \u2264 \u03bc_s N,   Kinetic Friction: f_k = \u03bc_k N\nAngle of Repose / Friction: tan \u03b8 = \u03bc_s\nSafe speed on banked road: v = \u221a[ r\u00b7g \u00b7 (tan \u03b8 + \u03bc) / (1 - \u03bc tan \u03b8) ]\nOptimal speed (no wear & tear): v_opt = \u221a(r \u00b7 g \u00b7 tan \u03b8)",
+    "notes": "Newton's 3rd Law: Action and reaction forces act on two different bodies and never cancel each other. Apparent weight in accelerating lift: W = m(g \u00b1 a).",
+    "level": "Class 11"
+  },
+  {
+    "subject": "Physics",
+    "topic": "Work, Energy & Power",
+    "title": "Work-Energy Theorem & Collisions",
+    "formula": "Work: W = F\u20d7 \u00b7 s\u20d7 = F s cos \u03b8\nWork-Energy Theorem: W_net = \u0394K = \u00bdmv\u00b2 - \u00bdmu\u00b2\nPotential Energy of Spring: U = \u00bdkx\u00b2\nPower: P = dW / dt = F\u20d7 \u00b7 v\u20d7\n1D Elastic Collision:\nv\u2081 = [(m\u2081 - m\u2082) / (m\u2081 + m\u2082)]u\u2081 + [2m\u2082 / (m\u2081 + m\u2082)]u\u2082\nv\u2082 = [2m\u2081 / (m\u2081 + m\u2082)]u\u2081 + [(m\u2082 - m\u2081) / (m\u2081 + m\u2082)]u\u2082",
+    "notes": "Coefficient of restitution e = (v\u2082 - v\u2081) / (u\u2081 - u\u2082). e = 1 for perfectly elastic, e = 0 for perfectly inelastic collision (bodies stick together).",
+    "level": "Class 11"
+  },
+  {
+    "subject": "Physics",
+    "topic": "Rotational Motion",
+    "title": "Torque, Angular Momentum & MOI",
+    "formula": "Center of Mass: r\u20d7_cm = (\u03a3m\u1d62 r\u20d7\u1d62) / \u03a3m\u1d62\nTorque: \u03c4\u20d7 = r\u20d7 \u00d7 F\u20d7 = I \u03b1\u20d7\nAngular Momentum: L\u20d7 = r\u20d7 \u00d7 p\u20d7 = I \u03c9\u20d7\nConservation of Angular Momentum: If \u03c4_ext = 0 \u21d2 I\u2081\u03c9\u2081 = I\u2082\u03c9\u2082\nRotational K.E.: K_rot = \u00bd I \u03c9\u00b2,   Total Rolling K.E.: K = \u00bdmv\u00b2(1 + k\u00b2/R\u00b2)\nParallel Axis: I = I_cm + Md\u00b2;   Perpendicular Axis: I_z = I_x + I_y",
+    "notes": "Moments of Inertia:\nRing (axis perp to plane): MR\u00b2\nDisc (axis perp to plane): \u00bdMR\u00b2\nSolid Cylinder: \u00bdMR\u00b2\nSolid Sphere: \u2156MR\u00b2\nHollow Sphere: \u2154MR\u00b2\nRod (axis through center): (1/12)ML\u00b2",
+    "level": "Class 11"
+  },
+  {
+    "subject": "Physics",
+    "topic": "Gravitation",
+    "title": "Kepler's Laws & Escape Velocity",
+    "formula": "Gravitational Force: F = G \u00b7 (m\u2081 m\u2082) / r\u00b2\nAcceleration due to gravity: g = GM / R\u00b2\nVariation with height h (h << R): g_h = g(1 - 2h/R)\nVariation with depth d: g_d = g(1 - d/R)\nGravitational Potential: V = -GM / r,   P.E. U = -GMm / r\nOrbital Velocity: v_o = \u221a(GM/R) = \u221a(gR) \u2248 7.92 km/s\nEscape Velocity: v_e = \u221a(2GM/R) = \u221a(2gR) = \u221a2 \u00b7 v_o \u2248 11.2 km/s",
+    "notes": "Kepler's 3rd Law: T\u00b2 \u221d r\u00b3. Geostationary satellite: Time period = 24 hours, height \u2248 36,000 km above Earth's surface, rotates from West to East.",
+    "level": "Class 11"
+  },
+  {
+    "subject": "Physics",
+    "topic": "Properties of Solids & Fluids",
+    "title": "Hooke's Law, Bernoulli & Viscosity",
+    "formula": "Stress = F / A,   Strain = \u0394L / L\nHooke's Law: Stress = Y \u00b7 Strain   (Y = Young's Modulus)\nBulk Modulus: B = -\u0394P / (\u0394V/V),   Compressibility = 1/B\nPascal's Law: Pressure P = F/A is transmitted equally in all directions\nEquation of Continuity: A\u2081v\u2081 = A\u2082v\u2082\nBernoulli's Theorem: P + \u00bd\u03c1v\u00b2 + \u03c1gh = Constant\nStokes' Law: F_v = 6\u03c0\u03b7rv,   Terminal Velocity: v_t = 2r\u00b2(\u03c1 - \u03c3)g / (9\u03b7)\nSurface Tension: T = F / L,   Excess Pressure: Drop \u0394P = 2T/R; Soap Bubble \u0394P = 4T/R\nCapillary Rise: h = (2T cos \u03b8) / (r \u03c1 g)",
+    "notes": "Torricelli's Law of efflux: v = \u221a(2gh). Venturimeter uses Bernoulli's principle to measure liquid flow rate.",
+    "level": "Class 11"
+  },
+  {
+    "subject": "Physics",
+    "topic": "Thermal Properties & Thermodynamics",
+    "title": "Heat Transfer & First Law",
+    "formula": "Linear Expansion: \u0394L = L\u2080 \u03b1 \u0394T,   Area: \u03b2 = 2\u03b1,   Volume: \u03b3 = 3\u03b1\nHeat: Q = mc\u0394T,   Latent Heat: Q = mL\nRate of Heat Conduction: dQ/dt = kA(T\u2081 - T\u2082) / L\nStefan-Boltzmann Law: E = e \u03c3 T\u2074\nWien's Displacement: \u03bb_max \u00b7 T = b \u2248 2.898 \u00d7 10\u207b\u00b3 m\u00b7K\nFirst Law of Thermodynamics: \u0394Q = \u0394U + \u0394W   (where \u0394W = P \u0394V)\nMayer's Relation: C_p - C_v = R\nAdiabatic: PV^\u03b3 = Constant,   TV^(\u03b3-1) = Constant   (\u03b3 = C_p/C_v)\nCarnot Engine Efficiency: \u03b7 = 1 - (T\u2082 / T\u2081) = W / Q\u2081",
+    "notes": "Work done in isothermal expansion: W = nRT ln(V\u2082/V\u2081). Work done in adiabatic: W = (P\u2081V\u2081 - P\u2082V\u2082) / (\u03b3 - 1) = nR(T\u2081 - T\u2082) / (\u03b3 - 1).",
+    "level": "Class 11"
+  },
+  {
+    "subject": "Physics",
+    "topic": "Oscillations (SHM)",
+    "title": "Simple Harmonic Motion & Pendulum",
+    "formula": "Displacement: x(t) = A sin(\u03c9t + \u03c6)\nVelocity: v = dx/dt = \u03c9\u221a(A\u00b2 - x\u00b2),   v_max = A\u03c9 (at mean position)\nAcceleration: a = -\u03c9\u00b2x,   a_max = A\u03c9\u00b2 (at extreme position)\nTime Period of Simple Pendulum: T = 2\u03c0 \u221a(L / g)\nSpring-Mass System: T = 2\u03c0 \u221a(m / k)\nTotal Energy in SHM: E = K + U = \u00bdm\u03c9\u00b2(A\u00b2 - x\u00b2) + \u00bdm\u03c9\u00b2x\u00b2 = \u00bdm\u03c9\u00b2A\u00b2 = Constant",
+    "notes": "In SHM, acceleration is directly proportional to displacement and opposite in direction. Kinetic energy is maximum at mean position, potential energy is maximum at extremes.",
+    "level": "Class 11"
+  },
+  {
+    "subject": "Physics",
+    "topic": "Waves",
+    "title": "Wave Equation, Organ Pipes & Doppler",
+    "formula": "Wave Equation: y(x,t) = A sin(kx - \u03c9t + \u03c6),   k = 2\u03c0/\u03bb,  \u03c9 = 2\u03c0\u03bd\nWave Speed: v = \u03bd \u00b7 \u03bb = \u03c9 / k\nTransverse wave on stretched string: v = \u221a(T / \u03bc)\nSound in gas (Newton-Laplace): v = \u221a(\u03b3P / \u03c1) = \u221a(\u03b3RT / M)\nOrgan Pipes:\nOpen Pipe: Fundamental f\u2081 = v / (2L),   Harmonics f_n = n \u00b7 f\u2081 (1:2:3:4...)\nClosed Pipe: Fundamental f\u2081 = v / (4L),   Harmonics f_n = (2n - 1)f\u2081 (1:3:5:7...)\nBeat Frequency: f_beat = |f\u2081 - f\u2082|\nDoppler Effect: f' = f \u00b7 [ (v \u00b1 v_o) / (v \u2213 v_s) ]",
+    "notes": "Upper sign when observer/source moves towards each other (frequency increases); lower sign when moving away (frequency decreases).",
+    "level": "Class 11"
+  },
+  {
+    "subject": "Chemistry",
+    "topic": "Mole Concept & Stoichiometry",
+    "title": "Concentration Terms & Limiting Reagent",
+    "formula": "Number of Moles: n = Mass / Molar Mass = N / N_A = Volume at STP(L) / 22.4\nMolarity (M) = Moles of Solute / Volume of Solution (in L)\nMolality (m) = Moles of Solute / Mass of Solvent (in kg)\nNormality (N) = Molarity \u00d7 n-factor (Gram equivalents / L)\nMole Fraction: x_A = n_A / (n_A + n_B),   x_A + x_B = 1\nDilution: M\u2081V\u2081 = M\u2082V\u2082,   Neutralization: N\u2081V\u2081 = N\u2082V\u2082\nMass % = (Mass of Solute / Total Mass of Solution) \u00d7 100",
+    "notes": "N_A = 6.022 \u00d7 10\u00b2\u00b3 mol\u207b\u00b9. Limiting reagent is the reactant completely consumed first in a reaction and determines amount of product formed.",
+    "level": "Class 11"
+  },
+  {
+    "subject": "Chemistry",
+    "topic": "Structure of Atom",
+    "title": "Bohr Model, de Broglie & Heisenberg",
+    "formula": "Bohr Energy: E_n = -13.6 \u00b7 (Z\u00b2 / n\u00b2) eV\nBohr Radius: r_n = 0.529 \u00b7 (n\u00b2 / Z) \u00c5\nRydberg Formula: 1/\u03bb = R_H \u00b7 Z\u00b2 \u00b7 [ (1/n\u2081\u00b2) - (1/n\u2082\u00b2) ]   (R_H \u2248 1.097 \u00d7 10\u2077 m\u207b\u00b9)\nde Broglie Wavelength: \u03bb = h / p = h / (m v) = h / \u221a(2m \u00b7 K.E.)\nHeisenberg Uncertainty Principle: \u0394x \u00b7 \u0394p \u2265 h / (4\u03c0)\nQuantum Numbers: n (1,2,3..), l (0 to n-1), m_l (-l to +l), m_s (\u00b1\u00bd)",
+    "notes": "Spectral Series of Hydrogen:\nLyman (n\u2081=1, UV)\nBalmer (n\u2081=2, Visible)\nPaschen (n\u2081=3, IR)\nBrackett (n\u2081=4, IR)\nPfund (n\u2081=5, IR). Hund's rule: pairing occurs only after each orbital has one electron.",
+    "level": "Class 11"
+  },
+  {
+    "subject": "Chemistry",
+    "topic": "Periodic Classification",
+    "title": "Periodic Trends & Anomalies",
+    "formula": "Atomic Radius: Decreases across period (effective nuclear charge Z_eff increases), Increases down group.\nIonization Enthalpy: Increases across period, Decreases down group.\nAnomalies in IE:\nIE\u2081(Be) > IE\u2081(B)  (Be has fully filled 2s\u00b2 configuration)\nIE\u2081(N) > IE\u2081(O)  (N has stable half-filled 2p\u00b3 configuration)\nElectron Gain Enthalpy (\u0394_egH): Cl has MORE negative \u0394_egH than F (due to small size of F and interelectronic repulsions in 2p orbital).\nElectronegativity: F (4.0) > O (3.5) > N (3.0) \u2248 Cl (3.0) > Br (2.8) > C (2.5) \u2248 I (2.5)",
+    "notes": "Metallic character decreases across period and increases down group. Amphoteric oxides: Al\u2082O\u2083, ZnO, BeO, SnO, PbO.",
+    "level": "Class 11"
+  },
+  {
+    "subject": "Chemistry",
+    "topic": "Chemical Bonding",
+    "title": "VSEPR, Hybridization & MOT",
+    "formula": "Formal Charge = V - N - \u00bdB\nHybridization Steric Number: SN = \u00bd[V + M - C + A]\nVSEPR Geometry:\nSN = 2: sp, Linear (180\u00b0)\nSN = 3: sp\u00b2, Trigonal Planar (120\u00b0)\nSN = 4: sp\u00b3, Tetrahedral (109.5\u00b0)\nSN = 5: sp\u00b3d, Trigonal Bipyramidal (90\u00b0, 120\u00b0)\nSN = 6: sp\u00b3d\u00b2, Octahedral (90\u00b0)\nMolecular Orbital Theory (MOT):\nBond Order = \u00bd(N_b - N_a)\nMagnetic Nature: Unpaired electrons \u21d2 Paramagnetic; All paired \u21d2 Diamagnetic",
+    "notes": "O\u2082 molecule has 16 electrons, Bond Order = 2, and is PARAMAGNETIC due to 2 unpaired electrons in \u03c0*2p_x and \u03c0*2p_y orbitals. Dipole moment \u03bc = q \u00d7 d (Debye).",
+    "level": "Class 11"
+  },
+  {
+    "subject": "Chemistry",
+    "topic": "Thermodynamics",
+    "title": "Enthalpy, Hess's Law & Gibbs Energy",
+    "formula": "First Law: \u0394U = q + w,   w = -P_ext \u0394V (expansion)\nEnthalpy: H = U + PV \u21d2 \u0394H = \u0394U + \u0394n_g RT\nHess's Law: \u0394H_reaction = \u03a3 \u0394_f H(Products) - \u03a3 \u0394_f H(Reactants)\nEntropy: \u0394S = q_rev / T\nGibbs Free Energy: \u0394G = \u0394H - T \u0394S\nStandard Gibbs Energy: \u0394G\u00b0 = -2.303 RT log\u2081\u2080 K_eq = -n F E\u00b0_cell",
+    "notes": "Spontaneity Criteria at constant T & P:\n\u0394G < 0: Spontaneous (exergonic)\n\u0394G = 0: System at equilibrium\n\u0394G > 0: Non-spontaneous (endergonic). For exothermic reactions (\u0394H < 0), spontaneity favoured at low T.",
+    "level": "Class 11"
+  },
+  {
+    "subject": "Chemistry",
+    "topic": "Equilibrium",
+    "title": "Chemical & Ionic Equilibrium, pH & Buffer",
+    "formula": "Equilibrium Relation: K_p = K_c (RT)^\u0394n_g\npH = -log\u2081\u2080[H\u207a],   pOH = -log\u2081\u2080[OH\u207b],   pH + pOH = 14 (at 298 K)\nOstwald's Dilution Law (weak electrolyte): K_a = C\u03b1\u00b2 / (1 - \u03b1) \u2248 C\u03b1\u00b2 \u21d2 \u03b1 = \u221a(K_a / C)\nBuffer Solutions (Henderson-Hasselbalch):\nAcidic Buffer: pH = pK_a + log([Salt] / [Acid])\nBasic Buffer: pOH = pK_b + log([Salt] / [Base])\nSolubility Product K_sp for A_x B_y \u21cc x A^(y+) + y B^(x-):\nK_sp = [A^(y+)]\u02e3 [B^(x-)]\u02b8 = x\u02e3 \u00b7 y\u02b8 \u00b7 S^(x+y)",
+    "notes": "Le Chatelier's Principle: If stress (P, T, concentration) is applied to equilibrium, system shifts in direction that counteracts the stress. Precipitation occurs when Ionic Product (Q_sp) > K_sp.",
+    "level": "Class 11"
+  },
+  {
+    "subject": "Chemistry",
+    "topic": "Redox Reactions",
+    "title": "Oxidation Numbers & Balancing",
+    "formula": "Rules: Free elemental state = 0; Group 1 = +1; Group 2 = +2; Fluorine = -1; Oxygen = -2 (except peroxides = -1, OF\u2082 = +2); Hydrogen = +1 (except metal hydrides = -1).\nBalancing by Ion-Electron Method (Half-Reaction Method):\n1. Divide into Oxidation and Reduction halves.\n2. Balance all atoms other than O and H.\n3. Balance O by adding H\u2082O.\n4. Balance H by adding H\u207a (in acidic medium).\n5. Balance charges by adding electrons e\u207b.\n6. Equalize electrons in both halves and add together.",
+    "notes": "Oxidizing agent undergoes reduction (oxidation number decreases). Reducing agent undergoes oxidation (oxidation number increases).",
+    "level": "Class 11"
+  },
+  {
+    "subject": "Chemistry",
+    "topic": "Organic Principles & Hydrocarbons",
+    "title": "IUPAC, Isomerism & Core Reactions",
+    "formula": "Stability of Intermediates:\nCarbocations: 3\u00b0 > 2\u00b0 > 1\u00b0 > CH\u2083\u207a (Stabilized by +I & Hyperconjugation)\nFree Radicals: 3\u00b0 > 2\u00b0 > 1\u00b0 > CH\u2083\u02d9\nCarbanions: CH\u2083\u207b > 1\u00b0 > 2\u00b0 > 3\u00b0 (Stabilized by -I)\nCore Named Reactions:\nWurtz Reaction: 2 R-X + 2 Na (dry ether) \u2192 R-R + 2 NaX\nKolbe Electrolysis: 2 RCOONa + 2 H\u2082O \u2192 R-R + 2 CO\u2082 + H\u2082 + 2 NaOH\nMarkownikoff's Rule: Negative part of addendum adds to carbon having fewer hydrogens.\nAnti-Markownikoff (Peroxide/Kharasch): Applies ONLY to HBr with peroxides (free radical mechanism).\nOzonolysis of Alkenes: R-CH=CH-R + O\u2083/Zn-H\u2082O \u2192 2 R-CHO (identifies double bond location)\nFriedel-Crafts Alkylation: Benzene + R-Cl (anhydrous AlCl\u2083) \u2192 Alkylbenzene + HCl",
+    "notes": "Huckel's Rule for Aromaticity: Cyclic, planar, completely conjugated ring with (4n + 2) \u03c0 electrons (where n = 0, 1, 2...). Ortho/para directing groups: -OH, -NH\u2082, -CH\u2083, -OCH\u2083, -Cl. Meta directing: -NO\u2082, -CHO, -COOH, -CN.",
+    "level": "Class 11"
+  },
+  {
+    "subject": "Biology",
+    "topic": "Biological Classification",
+    "title": "Five Kingdoms & Plant Groups",
+    "formula": "Whittaker's 5 Kingdoms (1969):\n1. Monera: Prokaryotic, unicellular, peptidoglycan wall (Bacteria, Cyanobacteria, Archaebacteria)\n2. Protista: Eukaryotic, unicellular (Amoeba, Euglena, Diatoms)\n3. Fungi: Heterotrophic, chitinous cell wall (Yeast, Rhizopus, Agaricus)\n4. Plantae: Autotrophic, cellulose wall (Algae, Bryophytes, Pteridophytes, Gymnosperms, Angiosperms)\n5. Animalia: Heterotrophic, multicellular, lack cell wall",
+    "notes": "Cyanobacteria have heterocysts for nitrogen fixation (e.g. Nostoc, Anabaena). Lichens are symbiotic associations of algae (phycobiont) and fungi (mycobiont).",
+    "level": "Class 11"
+  },
+  {
+    "subject": "Biology",
+    "topic": "Cell Biology & Division",
+    "title": "Organelles, Mitosis & Meiosis",
+    "formula": "Prokaryotic vs Eukaryotic: 70S ribosomes (30S+50S) in prokaryotes; 80S (40S+60S) in eukaryotes.\nMitochondria: Double membrane, cristae, ATP synthesis by oxidative phosphorylation, circular DNA.\nChloroplast: Thylakoids in grana (light reaction), stroma (Calvin cycle).\nMitosis: Prophase, Metaphase (chromosomes align at equator), Anaphase (sister chromatids separate), Telophase.\nMeiosis I Prophase I Stages:\n1. Leptotene: Chromatin condenses\n2. Zygotene: Synapsis of homologous chromosomes (synaptonemal complex)\n3. Pachytene: Crossing over mediated by enzyme recombinase\n4. Diplotene: Chiasmata visible\n5. Diakinesis: Terminalisation of chiasmata",
+    "notes": "S-phase of interphase is the DNA replication phase (amount of DNA doubles, chromosome number remains same). Meiosis results in 4 haploid genetically diverse daughter cells.",
+    "level": "Class 11"
+  },
+  {
+    "subject": "Biology",
+    "topic": "Plant Physiology",
+    "title": "Photosynthesis & Respiration",
+    "formula": "Photosynthesis Light Reactions: In thylakoid membranes; photolysis of water (2H\u2082O \u2192 4H\u207a + 4e\u207b + O\u2082), non-cyclic photophosphorylation generates ATP and NADPH.\nDark Reaction (Calvin Cycle): In stroma; 3 steps: Carboxylation (catalyzed by RuBisCO, most abundant enzyme on Earth), Reduction, Regeneration. Fixes 1 CO\u2082 using 3 ATP + 2 NADPH.\nC4 Pathway (Hatch-Slack): Kranz anatomy; avoids photorespiration; PEP carboxylase in mesophyll, RuBisCO in bundle sheath.\nRespiration (Glycolysis): EMP pathway in cytoplasm; 1 Glucose \u2192 2 Pyruvate, net gain 2 ATP + 2 NADH.\nKrebs Cycle: In mitochondrial matrix; generates 3 NADH, 1 FADH\u2082, 1 GTP per acetyl-CoA.\nPlant Hormones: Auxin (apical dominance), Gibberellin (bolting/internode elongation), Cytokinin (cell division), ABA (stress hormone/stomatal closure), Ethylene (gaseous/fruit ripening).",
+    "notes": "Photorespiration is a wasteful process in C3 plants occurring in Chloroplast, Peroxisome and Mitochondria when RuBisCO binds O\u2082 instead of CO\u2082.",
+    "level": "Class 11"
+  },
+  {
+    "subject": "Biology",
+    "topic": "Human Physiology",
+    "title": "Circulation, Excretion & Hormones",
+    "formula": "Circulation:\nHeart Pacemaker: SA Node (generates 70-75 action potentials/min) \u2192 AV Node \u2192 Bundle of His \u2192 Purkinje fibers.\nECG Waves: P wave (atrial depolarization), QRS complex (ventricular depolarization), T wave (ventricular repolarization).\nExcretion (Nephron):\nGlomerular Filtration Rate (GFR) \u2248 125 mL/min (180 L/day). 99% filtrate reabsorbed in PCT.\nCounter-Current Mechanism: Between Loop of Henle and Vasa Recta, concentrates urine (up to 1200 mOsmol/L).\nRAAS Mechanism: JGA cells release Renin when GFR falls \u2192 Angiotensinogen converted to Angiotensin II (vasoconstrictor) \u2192 Aldosterone released by adrenal cortex (reabsorbs Na\u207a and water).\nHormones:\nInsulin (\u03b2-cells of islets): Lowers blood glucose (hypoglycemic).\nGlucagon (\u03b1-cells): Raises blood glucose (hyperglycemic).\nAdrenaline (Adrenal medulla): Emergency / Fight-or-Flight hormone.",
+    "notes": "Normal blood pressure: 120/80 mmHg. Double circulation: Pulmonary (Heart \u2192 Lungs \u2192 Heart) and Systemic (Heart \u2192 Body \u2192 Heart).",
+    "level": "Class 11"
+  },
+  {
+    "subject": "English",
+    "topic": "Writing Skills",
+    "title": "Notice Writing Format (CBSE Standard)",
+    "formula": "Box is MANDATORY. Max 50 Words.\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         NAME OF ISSUING AUTHORITY / SCHOOL    \u2502\n\u2502                      NOTICE                   \u2502\n\u2502 Date: DD Month YYYY                           \u2502\n\u2502               CATCHY HEADING                  \u2502\n\u2502 Body: State event details clearly:            \u2502\n\u2502 - Date, Time, Venue                           \u2502\n\u2502 - Purpose / Eligibility / Agenda             \u2502\n\u2502 - Whom to contact for registration/details   \u2502\n\u2502 Signature                                     \u2502\n\u2502 NAME IN BLOCK LETTERS                         \u2502\n\u2502 Designation                                   \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518",
+    "notes": "Marking scheme: 1 Mark for Format (Box, Heading, Date, Signature), 2 Marks for Content, 1 Mark for Expression (Grammar & Spelling). Total = 4 Marks.",
+    "level": "Class 11"
+  },
+  {
+    "subject": "English",
+    "topic": "Writing Skills",
+    "title": "Letter to the Editor Format",
+    "formula": "Sender's Address (2-3 lines)\nDate: 19 November 2026\n\nThe Editor\nName of Newspaper (e.g. The Times of India)\nCity\n\nSubject: [Concise, catchy and underlined]\n\nSir / Madam,\n\nPara 1 (Introduction): Through the esteemed columns of your widely circulated daily, I wish to draw the attention of the concerned authorities and the public towards the pressing issue of [Problem]...\n\nPara 2 (Content & Impact): Explain the problem in detail, causes, real-world consequences and hardships faced by the citizens...\n\nPara 3 (Conclusion & Appeal): It is earnestly hoped that the relevant authorities will take swift and stringent measures to resolve this issue without delay.\n\nYours sincerely / Yours faithfully,\n[Signature / Name]",
+    "notes": "Word limit: 120-150 words. Total = 5 Marks (Format: 1, Content: 2, Expression: 2). Never write your real name if an assumed name is given in the question prompt.",
+    "level": "Class 11"
+  },
+  {
+    "subject": "English",
+    "topic": "Writing Skills",
+    "title": "Speech & Debate Writing Framework",
+    "formula": "Speech Writing:\n1. Catchy Title.\n2. Formal Opening Salutation: 'Respected Principal, worthy teachers, and my dear friends, a very warm good morning to one and all present here. Today, I, [Name], stand before you to express my views on...'\n3. Body: Define the issue, quote statistics, discuss pros and cons, suggest practical solutions.\n4. Conclusion: Inspirational closing appeal / thought.\n5. Closing: 'Thank you!'\n\nDebate Writing:\n1. Opening Salutation + Explicit Stand ('I firmly stand FOR / AGAINST the motion...').\n2. Rebuttal to opposition arguments.\n3. Logical arguments backed with facts.\n4. Strong concluding punchline + 'Thank you.'",
+    "notes": "Word limit: 120-150 words. Total = 5 Marks. Use rhetorical questions and persuasive connectors like 'Furthermore', 'On the contrary', 'Consequently'.",
+    "level": "Class 11"
+  },
+  {
+    "subject": "English",
+    "topic": "Poetic & Literary Devices",
+    "title": "Key Figures of Speech for Exams",
+    "formula": "1. Simile: Comparison using 'like' or 'as' (e.g. 'her face ashen like that of a corpse')\n2. Metaphor: Direct implied comparison without like/as (e.g. 'the paper-seeming boy')\n3. Personification: Giving human attributes to non-living objects (e.g. 'the tree stood mourning in silence')\n4. Alliteration: Repetition of initial consonant sounds (e.g. 'clean clothes', 'stop and smile')\n5. Oxymoron: Two contradictory terms juxtaposed together (e.g. 'laboured ease', 'sweet sorrow')\n6. Onomatopoeia: Words that imitate natural sounds (e.g. 'buzz', 'rattle', 'clatter')\n7. Hyperbole: Obvious intentional exaggeration for dramatic effect (e.g. 'rivers of blood flooded the field')",
+    "notes": "Frequently asked in 1-Marker and 2-Marker poetry extract questions in Class 11 & 12 Board examinations.",
+    "level": "Class 11"
+  },
+  {
+    "subject": "Maths",
+    "topic": "Relations & Functions",
+    "title": "Types of Relations & Functions",
+    "formula": "Reflexive: (a, a) \u2208 R \u2200 a \u2208 A\nSymmetric: (a, b) \u2208 R \u21d2 (b, a) \u2208 R\nTransitive: (a, b) \u2208 R and (b, c) \u2208 R \u21d2 (a, c) \u2208 R\nEquivalence: Reflexive + Symmetric + Transitive\nOne-One (Injective): f(x\u2081) = f(x\u2082) \u21d2 x\u2081 = x\u2082\nOnto (Surjective): Range = Codomain (\u2200 y \u2208 Y \u2203 x \u2208 X such that f(x) = y)\nBijective: One-One + Onto (Invertible function)",
+    "notes": "Essential for Class 12 Boards and JEE. A function f: X \u2192 Y has an inverse f\u207b\u00b9: Y \u2192 X if and only if f is bijective.",
+    "level": "Class 12"
+  },
+  {
+    "subject": "Maths",
+    "topic": "Inverse Trigonometric Functions",
+    "title": "Principal Value Branches & Properties",
+    "formula": "sin\u207b\u00b9x: [-1, 1] \u2192 [-\u03c0/2, \u03c0/2]\ncos\u207b\u00b9x: [-1, 1] \u2192 [0, \u03c0]\ntan\u207b\u00b9x: \u211d \u2192 (-\u03c0/2, \u03c0/2)\ncot\u207b\u00b9x: \u211d \u2192 (0, \u03c0)\nsec\u207b\u00b9x: \u211d - (-1, 1) \u2192 [0, \u03c0] - {\u03c0/2}\ncosec\u207b\u00b9x: \u211d - (-1, 1) \u2192 [-\u03c0/2, \u03c0/2] - {0}\nsin\u207b\u00b9x + cos\u207b\u00b9x = \u03c0/2   (x \u2208 [-1, 1])\ntan\u207b\u00b9x + cot\u207b\u00b9x = \u03c0/2   (x \u2208 \u211d)\ntan\u207b\u00b9x + tan\u207b\u00b9y = tan\u207b\u00b9((x + y)/(1 - xy))   (for xy < 1)",
+    "notes": "Always check the principal branch range when evaluating inverse trig expressions to avoid negative sign traps.",
+    "level": "Class 12"
+  },
+  {
+    "subject": "Maths",
+    "topic": "Matrices & Determinants",
+    "title": "Matrix Operations, Inverse & Linear Systems",
+    "formula": "Matrix Multiplication: A_(m\u00d7n) \u00b7 B_(n\u00d7p) = C_(m\u00d7p)\n(A \u00b7 B)\u1d40 = B\u1d40 \u00b7 A\u1d40,   |A \u00b7 B| = |A| \u00b7 |B|\n|k A| = k\u207f |A|  (for n\u00d7n matrix A)\nAdjoint: A \u00b7 adj(A) = adj(A) \u00b7 A = |A| \u00b7 I\u2099\n|adj(A)| = |A|\u207f\u207b\u00b9,   |adj(adj(A))| = |A|^( (n-1)\u00b2 )\nInverse: A\u207b\u00b9 = (1 / |A|) \u00b7 adj(A)   (|A| \u2260 0)\nMatrix Method: A X = B  \u21d2  X = A\u207b\u00b9 B",
+    "notes": "If |A| = 0, matrix is singular (no unique inverse). For homogeneous AX = 0, non-trivial solution exists iff |A| = 0.",
+    "level": "Class 12"
+  },
+  {
+    "subject": "Maths",
+    "topic": "Continuity & Differentiability",
+    "title": "Chain Rule, Logarithmic & Parametric",
+    "formula": "Continuity: lim_{x\u2192c\u207b} f(x) = lim_{x\u2192c\u207a} f(x) = f(c)\nChain Rule: (d/dx)[f(g(x))] = f'(g(x)) \u00b7 g'(x)\nLogarithmic: y = u(x)^v(x)  \u21d2  dy/dx = y [v'(x) ln u(x) + (v(x)/u(x)) u'(x)]\nParametric: x = f(t), y = g(t)  \u21d2  dy/dx = (dy/dt) / (dx/dt)\nd\u00b2y/dx\u00b2 = [d/dt(dy/dx)] / (dx/dt)",
+    "notes": "Take natural log on both sides when variable is in exponent or when dealing with long products/quotients.",
+    "level": "Class 12"
+  },
+  {
+    "subject": "Maths",
+    "topic": "Application of Derivatives (AOD)",
+    "title": "Monotonicity & Maxima-Minima",
+    "formula": "Strictly Increasing: f'(x) > 0 for all x \u2208 (a, b)\nStrictly Decreasing: f'(x) < 0 for all x \u2208 (a, b)\nCritical Point: x = c where f'(c) = 0 or f'(c) is undefined\nSecond Derivative Test:\n- If f'(c) = 0 and f''(c) < 0  \u21d2  Local Maximum at x = c\n- If f'(c) = 0 and f''(c) > 0  \u21d2  Local Minimum at x = c\n- If f''(c) = 0  \u21d2  Use First Derivative Sign Change Test",
+    "notes": "For absolute maxima/minima on closed interval [a, b], evaluate f(x) at critical points AND at boundary endpoints a and b.",
+    "level": "Class 12"
+  },
+  {
+    "subject": "Maths",
+    "topic": "Integrals (Indefinite & Definite)",
+    "title": "Standard Forms, Parts & King's Property",
+    "formula": "\u222b (1 / (x\u00b2 + a\u00b2)) dx = (1/a) tan\u207b\u00b9(x/a) + C\n\u222b (1 / \u221a(a\u00b2 - x\u00b2)) dx = sin\u207b\u00b9(x/a) + C\n\u222b (1 / \u221a(x\u00b2 \u00b1 a\u00b2)) dx = ln|x + \u221a(x\u00b2 \u00b1 a\u00b2)| + C\nIntegration by Parts: \u222b u v dx = u \u222b v dx - \u222b [u' \u222b v dx] dx   (ILATE Order)\nDefinite King's Property: \u222b_a^b f(x) dx = \u222b_a^b f(a + b - x) dx\nSymmetric Interval: \u222b_{-a}^a f(x) dx = 0 (if f is odd), = 2 \u222b_0^a f(x) dx (if f is even)\nPeriodicity: \u222b_0^{nT} f(x) dx = n \u222b_0^T f(x) dx  (if f(x+T) = f(x))",
+    "notes": "King's property (x \u2192 a + b - x) solves 80% of board and JEE definite integrals by adding I + I.",
+    "level": "Class 12"
+  },
+  {
+    "subject": "Maths",
+    "topic": "Differential Equations",
+    "title": "Variable Separable & Linear D.E.",
+    "formula": "Variable Separable: f(x) dx = g(y) dy  \u21d2  integrate directly\nLinear D.E. Form 1: dy/dx + P(x) y = Q(x)\nIntegrating Factor (I.F.) = e^(\u222b P(x) dx)\nGeneral Solution: y \u00b7 (I.F.) = \u222b [Q(x) \u00b7 (I.F.)] dx + C\nLinear D.E. Form 2: dx/dy + P(y) x = Q(y)  \u21d2  I.F. = e^(\u222b P(y) dy)\nHomogeneous: dy/dx = f(y/x)  \u21d2  substitute y = v x, dy/dx = v + x (dv/dx)",
+    "notes": "Always identify the independent variable first to choose whether Form 1 (dy/dx) or Form 2 (dx/dy) applies.",
+    "level": "Class 12"
+  },
+  {
+    "subject": "Maths",
+    "topic": "Vector Algebra & 3D Geometry",
+    "title": "Dot, Cross, Skew Lines & Plane",
+    "formula": "Dot Product: a \u00b7 b = |a||b| cos \u03b8 = a_x b_x + a_y b_y + a_z b_z  (Perpendicular if a \u00b7 b = 0)\nProjection of a on b = (a \u00b7 b) / |b|\nCross Product: a \u00d7 b = |a||b| sin \u03b8 n\u0302  (Parallel if a \u00d7 b = 0)\nDirection Cosines: l\u00b2 + m\u00b2 + n\u00b2 = 1\nEquation of Line: (x - x\u2081)/a = (y - y\u2081)/b = (z - z\u2081)/c  (Vector: r = a + \u03bb b)\nShortest Distance between Skew Lines (r = a\u2081 + \u03bb b\u2081 and r = a\u2082 + \u03bc b\u2082):\nd = |(a\u2082 - a\u2081) \u00b7 (b\u2081 \u00d7 b\u2082)| / |b\u2081 \u00d7 b\u2082|",
+    "notes": "Lines intersect if shortest distance d = 0, meaning (a\u2082 - a\u2081) \u00b7 (b\u2081 \u00d7 b\u2082) = 0 (coplanar).",
+    "level": "Class 12"
+  },
+  {
+    "subject": "Maths",
+    "topic": "Probability",
+    "title": "Conditional, Bayes' Theorem & Distributions",
+    "formula": "Conditional: P(A | B) = P(A \u2229 B) / P(B)   (P(B) > 0)\nIndependent Events: P(A \u2229 B) = P(A) \u00b7 P(B)\nTotal Probability: P(A) = \u03a3 P(E\u1d62) \u00b7 P(A | E\u1d62)\nBayes' Theorem: P(E_k | A) = [P(E_k) \u00b7 P(A | E_k)] / [\u03a3 P(E\u1d62) \u00b7 P(A | E\u1d62)]\nRandom Variable Mean: \u03bc = E(X) = \u03a3 x\u1d62 p\u1d62\nVariance: \u03c3\u00b2 = Var(X) = E(X\u00b2) - [E(X)]\u00b2 = \u03a3 x\u1d62\u00b2 p\u1d62 - \u03bc\u00b2",
+    "notes": "Bayes' theorem is tested every year in 4-Marker/5-Marker questions. Clearly define partition events E\u2081, E\u2082, ... first.",
+    "level": "Class 12"
+  },
+  {
+    "subject": "Physics",
+    "topic": "Electrostatics & Gauss's Law",
+    "title": "Coulomb's Law, Field & Gauss Flux",
+    "formula": "Coulomb's Law: F = (1 / 4\u03c0\u03b5\u2080) \u00b7 (|q\u2081q\u2082| / r\u00b2)   (1/4\u03c0\u03b5\u2080 \u2248 9 \u00d7 10\u2079 N\u00b7m\u00b2/C\u00b2)\nElectric Dipole: p = q \u00b7 2a\nTorque on Dipole: \u03c4 = p \u00d7 E = p E sin \u03b8\nPotential Energy: U = -p \u00b7 E = -p E cos \u03b8\nAxial Field: E_axial = (2 k p) / r\u00b3   (r >> a)\nEquatorial Field: E_equatorial = -(k p) / r\u00b3\nGauss's Law: \u03a6 = \u222e E \u00b7 dA = q_enclosed / \u03b5\u2080\nInfinite Line Charge: E = \u03bb / (2\u03c0\u03b5\u2080 r)\nInfinite Sheet: E = \u03c3 / (2\u03b5\u2080)",
+    "notes": "Field inside a charged spherical conductor is zero (E = 0); potential inside is uniform and equals surface potential.",
+    "level": "Class 12"
+  },
+  {
+    "subject": "Physics",
+    "topic": "Potential & Capacitance",
+    "title": "Potential, Energy & Capacitors",
+    "formula": "Potential: V = k q / r  (Relation: E = -dV/dr)\nCapacitance: C = Q / V\nParallel Plate Capacitor: C\u2080 = \u03b5\u2080 A / d   (With dielectric: C = K \u03b5\u2080 A / d)\nEnergy Stored: U = \u00bd C V\u00b2 = Q\u00b2 / (2C) = \u00bd Q V\nEnergy Density: u = \u00bd \u03b5\u2080 E\u00b2\nSeries Combination: 1/C_eq = 1/C\u2081 + 1/C\u2082 + ...\nParallel Combination: C_eq = C\u2081 + C\u2082 + ...\nCommon Potential after connection: V = (C\u2081V\u2081 + C\u2082V\u2082) / (C\u2081 + C\u2082)\nLoss of Energy: \u0394U = \u00bd \u00b7 [C\u2081C\u2082 / (C\u2081 + C\u2082)] \u00b7 (V\u2081 - V\u2082)\u00b2",
+    "notes": "When battery remains connected, V is constant. When battery is disconnected, Q is constant.",
+    "level": "Class 12"
+  },
+  {
+    "subject": "Physics",
+    "topic": "Current Electricity",
+    "title": "Drift, Ohm's Law, Kirchhoff & Cells",
+    "formula": "Drift Velocity: v_d = -(e E \u03c4) / m\nCurrent: I = n e A v_d\nCurrent Density: j = I / A = \u03c3 E = E / \u03c1\nResistivity & Temp: R_T = R\u2080(1 + \u03b1 \u0394T)\nKirchhoff's Current Law (KCL): \u03a3 I = 0   (Charge Conservation)\nKirchhoff's Voltage Law (KVL): \u03a3 \u0394V = 0  (Energy Conservation)\nWheatstone Bridge: P / Q = R / S   (Null deflection in galvanometer)\nInternal Resistance: r = R (E/V - 1)\nTerminal Voltage: V = E - I r (discharging), V = E + I r (charging)",
+    "notes": "Color code mnemonic: B B ROY of Great Britain had Very Good Wife (0 to 9).",
+    "level": "Class 12"
+  },
+  {
+    "subject": "Physics",
+    "topic": "Magnetism & Magnetic Effects",
+    "title": "Biot-Savart, Ampere & Lorentz Force",
+    "formula": "Biot-Savart Law: dB = (\u03bc\u2080 / 4\u03c0) \u00b7 (I dl \u00d7 r\u0302) / r\u00b2   (\u03bc\u2080/4\u03c0 = 10\u207b\u2077 T\u00b7m/A)\nCenter of Circular Loop: B = \u03bc\u2080 I / (2R)\nAxis of Circular Loop: B = (\u03bc\u2080 I R\u00b2) / [2 (R\u00b2 + x\u00b2)^(3/2)]\nAmpere's Law: \u222e B \u00b7 dl = \u03bc\u2080 I_enclosed\nSolenoid: B = \u03bc\u2080 n I\nLorentz Force: F = q (E + v \u00d7 B)\nMagnetic Force on Wire: F = I (L \u00d7 B)\nForce between Parallel Wires: F / L = (\u03bc\u2080 I\u2081 I\u2082) / (2\u03c0 d)  (Attract if parallel, repel if antiparallel)\nTorque on Loop: \u03c4 = M \u00d7 B = N I A B sin \u03b8",
+    "notes": "Radius of helical path: r = m v_\u22a5 / (q B); Time period T = 2\u03c0m / (q B) (independent of speed).",
+    "level": "Class 12"
+  },
+  {
+    "subject": "Physics",
+    "topic": "Electromagnetic Induction & AC",
+    "title": "Faraday, Lenz, Reactance & Resonance",
+    "formula": "Magnetic Flux: \u03a6 = B \u00b7 A = B A cos \u03b8\nFaraday-Lenz Law: \u03b5 = -d\u03a6/dt\nMotional EMF: \u03b5 = B v l\nSelf-Inductance: \u03b5 = -L (dI/dt),   U = \u00bd L I\u00b2\nMutual Inductance: \u03b5\u2082 = -M (dI\u2081/dt)\nRMS Values: I_rms = I\u2080 / \u221a2 \u2248 0.707 I\u2080,   V_rms = V\u2080 / \u221a2\nReactance: X_L = \u03c9 L,   X_C = 1 / (\u03c9 C)\nSeries LCR Impedance: Z = \u221a[R\u00b2 + (X_L - X_C)\u00b2]\nResonant Frequency: \u03c9\u2080 = 1 / \u221a(L C)  \u21d2  f\u2080 = 1 / (2\u03c0\u221a(LC))\nPower Factor: cos \u03c6 = R / Z,   P_avg = V_rms I_rms cos \u03c6",
+    "notes": "At resonance, Z is minimum (Z = R), current is maximum, and circuit behaves as purely resistive.",
+    "level": "Class 12"
+  },
+  {
+    "subject": "Physics",
+    "topic": "Optics (Ray & Wave)",
+    "title": "Lens Maker, Interference & Diffraction",
+    "formula": "Snell's Law: n\u2081 sin i = n\u2082 sin r\nTotal Internal Reflection: sin \u03b8_c = 1 / n\nRefraction at Spherical Surface: (n\u2082 / v) - (n\u2081 / u) = (n\u2082 - n\u2081) / R\nLens Maker's Formula: 1/f = (n - 1) [1/R\u2081 - 1/R\u2082]\nThin Lens Formula: 1/f = 1/v - 1/u,   Magnification m = v / u\nYoung's Double Slit (YDSE):\n- Fringe Width: \u03b2 = \u03bb D / d\n- Bright Fringe: y_n = n \u03bb D / d\n- Dark Fringe: y_n = (2n - 1) \u03bb D / (2d)\nSingle Slit Diffraction Minima: a sin \u03b8 = n \u03bb\nCentral Maximum Angular Width = 2\u03bb / a,   Linear Width = 2 \u03bb D / a",
+    "notes": "When light travels from rarer to denser medium, frequency remains constant, but wavelength and speed decrease.",
+    "level": "Class 12"
+  },
+  {
+    "subject": "Physics",
+    "topic": "Modern Physics & Semiconductors",
+    "title": "Photoelectric, Bohr, Nucleus & Diodes",
+    "formula": "Einstein's Photoelectric Eq: K_max = h \u03bd - \u03a6\u2080 = e V\u2080\nde Broglie Wavelength: \u03bb = h / p = h / \u221a(2mE) = 1.227 nm / \u221aV  (for electron)\nBohr Model: m v r = n h / 2\u03c0\nr_n = 0.529 (n\u00b2 / Z) \u00c5,   E_n = -13.6 (Z\u00b2 / n\u00b2) eV\nRydberg Formula: 1/\u03bb = R_H Z\u00b2 [1/n\u2081\u00b2 - 1/n\u2082\u00b2]\nMass Defect: \u0394m = [Z m_p + (A - Z) m_n] - M_nucleus\nBinding Energy: BE = \u0394m \u00d7 931.5 MeV\np-n Junction: Forward bias (depletion layer narrows), Reverse bias (depletion layer widens)\nRectifier: Half-wave efficiency = 40.6%, Full-wave efficiency = 81.2%",
+    "notes": "Work function \u03a6\u2080 depends only on metal surface material, not on intensity or frequency of incident light.",
+    "level": "Class 12"
+  },
+  {
+    "subject": "Chemistry",
+    "topic": "Solutions & Colligative Properties",
+    "title": "Raoult's Law, Van 't Hoff & Osmosis",
+    "formula": "Raoult's Law: P_total = P\u00b0_A x_A + P\u00b0_B x_B\nRelative Lowering of Vapor Pressure: (P\u00b0 - P) / P\u00b0 = i \u00b7 x_solute\nElevation in Boiling Point: \u0394T_b = i \u00b7 K_b \u00b7 m\nDepression in Freezing Point: \u0394T_f = i \u00b7 K_f \u00b7 m\nOsmotic Pressure: \u03c0 = i \u00b7 C R T\nVan 't Hoff Factor (i):\n- Dissociation: i = 1 + (n - 1) \u03b1\n- Association: i = 1 + (1/n - 1) \u03b1\nHenry's Law: P = K_H \u00b7 x",
+    "notes": "Ideal solutions follow Raoult's law over entire range (\u0394H_mix = 0, \u0394V_mix = 0, e.g. Benzene + Toluene).",
+    "level": "Class 12"
+  },
+  {
+    "subject": "Chemistry",
+    "topic": "Electrochemistry",
+    "title": "Nernst Equation, Kohlrausch & Faraday",
+    "formula": "Nernst Equation (at 298 K): E_cell = E\u00b0_cell - (0.0591 / n) log\u2081\u2080 Q\nEquilibrium Constant: log\u2081\u2080 K_c = (n E\u00b0_cell) / 0.0591\nGibbs Free Energy: \u0394G\u00b0 = -n F E\u00b0_cell\nKohlrausch's Law: \u039b\u00b0_m = \u03bd\u208a \u03bb\u00b0\u208a + \u03bd\u208b \u03bb\u00b0\u208b\nDegree of Dissociation: \u03b1 = \u039b_m / \u039b\u00b0_m\nDissociation Constant: K_a = (c \u03b1\u00b2) / (1 - \u03b1)\nFaraday's 1st Law: m = Z \u00b7 I \u00b7 t = (M / (n F)) \u00b7 Q",
+    "notes": "Standard Hydrogen Electrode (SHE) has E\u00b0 = 0.00 V. Positive E\u00b0_cell means cell reaction is spontaneous.",
+    "level": "Class 12"
+  },
+  {
+    "subject": "Chemistry",
+    "topic": "Chemical Kinetics",
+    "title": "Rate Law, Integrated Equations & Arrhenius",
+    "formula": "Zero Order: [A] = [A]\u2080 - k t,   t_\u00bd = [A]\u2080 / (2k)   (k unit: mol L\u207b\u00b9 s\u207b\u00b9)\nFirst Order: k = (2.303 / t) log\u2081\u2080([A]\u2080 / [A]),   t_\u00bd = 0.693 / k   (k unit: s\u207b\u00b9)\nArrhenius Equation: k = A e^(-Ea / RT)\nlog\u2081\u2080(k\u2082 / k\u2081) = (Ea / 2.303 R) [ (T\u2082 - T\u2081) / (T\u2081 T\u2082) ]\nPseudo First Order: Reaction where one reactant is in large excess (e.g. ester hydrolysis in water)",
+    "notes": "For a 1st order reaction, half-life t_\u00bd is independent of initial concentration [A]\u2080.",
+    "level": "Class 12"
+  },
+  {
+    "subject": "Chemistry",
+    "topic": "Coordination Compounds",
+    "title": "Werner, Crystal Field & Nomenclature",
+    "formula": "Werner's Theory: Primary Valency = Oxidation State (ionizable); Secondary Valency = Coordination Number (non-ionizable)\nCrystal Field Splitting: Octahedral \u0394\u2080 (t_2g lower by 0.4\u0394\u2080, e_g higher by 0.6\u0394\u2080)\nTetrahedral Splitting: \u0394_t = (4/9) \u0394\u2080\nSpectrochemical Series: I\u207b < Br\u207b < Cl\u207b < F\u207b < OH\u207b < H\u2082O < NH\u2083 < en < CN\u207b < CO\nStrong Field Ligands: Pairing occurs (Low Spin, Inner Orbital d\u00b2sp\u00b3)\nWeak Field Ligands: Pairing does NOT occur (High Spin, Outer Orbital sp\u00b3d\u00b2)\nMagnetic Moment: \u03bc = \u221a(n(n + 2)) BM  (n = number of unpaired electrons)",
+    "notes": "Colour in coordination complexes arises from d-d transitions when d-orbitals are partially filled (d\u00b9 to d\u2079).",
+    "level": "Class 12"
+  },
+  {
+    "subject": "Chemistry",
+    "topic": "Organic Reactions & Mechanisms",
+    "title": "S_N1/S_N2, Aldol, Cannizzaro & Amines",
+    "formula": "S_N1 Mechanism: 2-step, carbocation intermediate, 3\u00b0 > 2\u00b0 > 1\u00b0, racemization\nS_N2 Mechanism: 1-step concerted, backside attack, 1\u00b0 > 2\u00b0 > 3\u00b0, Walden inversion\nAldol Condensation: Carbonyl with \u03b1-H + dil. NaOH  \u21d2  \u03b2-hydroxy aldehyde/ketone  \u21d2  \u03b1,\u03b2-unsaturated\nCannizzaro Reaction: Carbonyl without \u03b1-H (HCHO, C\u2086H\u2085CHO) + conc. NaOH  \u21d2  Alcohol + Salt of acid\nClemmensen Reduction: C=O + Zn-Hg / conc. HCl  \u21d2  CH\u2082\nWolff-Kishner: C=O + NH\u2082NH\u2082 / KOH  \u21d2  CH\u2082\nCarbylamine Test: 1\u00b0 Amine + CHCl\u2083 + 3KOH  \u21d2  foul smelling isocyanide (R-NC)\nHinsberg Test: Benzenesulfonyl chloride (1\u00b0 amine product dissolves in alkali, 2\u00b0 does not)",
+    "notes": "Lucas Test: 3\u00b0 alcohol turns cloudy immediately, 2\u00b0 in 5 minutes, 1\u00b0 only on heating.",
+    "level": "Class 12"
+  },
+  {
+    "subject": "Biology",
+    "topic": "Reproduction in Organisms",
+    "title": "Flowering Plants & Human Reproduction",
+    "formula": "Double Fertilization in Angiosperms: Syngamy (Egg + Sperm \u2192 2n Zygote) + Triple Fusion (Central Cell + Sperm \u2192 3n Primary Endosperm Nucleus PEN)\nMale Reproductive: Seminiferous tubules \u2192 Rete testis \u2192 Vasa efferentia \u2192 Epididymis \u2192 Vas deferens\nSpermatogenesis: Spermatogonia (2n) \u2192 1\u00b0 Spermatocyte (2n) \u2192 2\u00b0 Spermatocyte (n) \u2192 Spermatids (n) \u2192 Sperm (n)\nOogenesis: Primary oocyte arrested at Prophase-I until puberty. Ovulation triggered by LH surge (releases 2\u00b0 oocyte arrested at Metaphase-II)\nMenstrual Cycle: Menstrual (1-5 d) \u2192 Follicular/Proliferative (6-13 d) \u2192 Ovulatory (14th d, LH surge) \u2192 Luteal/Secretory (15-28 d, Progesterone by Corpus luteum)",
+    "notes": "Oxytocin from posterior pituitary stimulates uterine contractions during parturition (positive feedback reflex).",
+    "level": "Class 12"
+  },
+  {
+    "subject": "Biology",
+    "topic": "Genetics & Molecular Inheritance",
+    "title": "Mendelism, DNA Replication & Lac Operon",
+    "formula": "Mendel's Ratios: Monohybrid F\u2082 phenotypic 3:1, genotypic 1:2:1. Dihybrid F\u2082 phenotypic 9:3:3:1\nIncomplete Dominance: 1 Red : 2 Pink : 1 White (Snapdragon / Mirabilis jalapa)\nCo-dominance: ABO Blood Group (I\u1d2c, I\u1d2e, i)\nSickle Cell Anemia: Point mutation in \u03b2-globin gene (GAG \u2192 GUG: Glutamic acid replaced by Valine at 6th position)\nDNA Structure: Watson-Crick double helix, 10 bp/turn, 3.4 nm pitch, A=T (2 H-bonds), G\u2261C (3 H-bonds)\nMeselson & Stahl: Demonstrated semi-conservative replication using \u00b9\u2075N and \u00b9\u2074N isotopes\nLac Operon: Repressor protein (i gene) binds Operator (o). Inducer (Lactose/Allolactose) binds repressor, allowing RNA polymerase to transcribe z (\u03b2-galactosidase), y (permease), a (transacetylase)",
+    "notes": "AUG has dual functions: codes for Methionine AND acts as the universal initiator codon.",
+    "level": "Class 12"
+  },
+  {
+    "subject": "English",
+    "topic": "Advanced Writing Formats",
+    "title": "Invitations, Job Application & Articles",
+    "formula": "Formal Invitation (Card Format):\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Mrs. and Mr. Sharma request the pleasure of   \u2502\n\u2502 your benign company on the auspicious occasion\u2502\n\u2502 of the WEDDING of their son ROHIT with PRIYA  \u2502\n\u2502 Date: 25 December 2026, Time: 7:00 PM         \u2502\n\u2502 Venue: Grand Palace, MG Road, New Delhi       \u2502\n\u2502 RSVP: Sharma Family, Contact: 98765xxxxx      \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\nJob Application (Letter + Bio-Data):\n1. Covering Letter (3 paragraphs: source of ad, suitability, enclosed resume).\n2. Bio-Data / Resume: Personal Details, Educational Qualifications (tabular), Work Experience, References (2 persons).",
+    "notes": "Job application with Bio-Data is worth 5 marks in Class 12 Boards. The tabular educational qualification carries method marks.",
+    "level": "Class 12"
+  }
+]
